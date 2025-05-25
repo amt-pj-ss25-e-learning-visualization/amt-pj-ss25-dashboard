@@ -1,7 +1,9 @@
 import express from "express";
-import ActorsController from '../controllers/actors-controller';
+import { BaseController } from "../controllers/base-controller";
+import { Actor } from "../models/actors-model";
 
 const router = express.Router();
+const ActorsController = new BaseController(Actor);
 
 /**
  * Returns all actors

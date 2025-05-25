@@ -12,7 +12,7 @@ router.get('/', StatementsController.getAll);
  * Returns a statement by its UUID
  * @param {string} id - The UUID of the statement
  */
-router.get('/:id', StatementsController.getById); // TODO: Resolve moduleID and actorID fields with the respective linked Objects (Join)
+router.get('/:id', StatementsController.getById);
 
 /**
  * Returns statements filtered by a specific actor, module, or verb.

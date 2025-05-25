@@ -45,7 +45,6 @@ Statement.init(
     result: {
       type: DataTypes.JSONB,
       allowNull: true,
-      comment: "may be null, depending on verb",
     },
     timestamp: {
       type: DataTypes.DATE,
