@@ -1,8 +1,8 @@
 import { Request, Response } from "express";
-import { BaseController } from "./base-controller";
-import { Statement } from "../models/statements-model";
-import { Actor } from "../models/actors-model";
-import { Module } from "../models/modules-model";
+import { BaseController } from "../../common/baseController";
+import { Statement } from "./statements.model";
+import { Actor } from "../actors/actors.model";
+import { Module } from "../modules/modules.model";
 
 class StatementsController extends BaseController<Statement> {
   constructor() {
@@ -19,11 +19,13 @@ class StatementsController extends BaseController<Statement> {
       const statement = await this.model.findByPk(id, {
         include: [
           { model: Actor, as: "actor" },
-          { model: Module, as: "module" }
-        ]
+          { model: Module, as: "module" },
+        ],
       });
       if (!statement) {
-        res.status(404).json({ error: `404: Entry with id '${id}' not found!` });
+        res
+          .status(404)
+          .json({ error: `404: Entry with id '${id}' not found!` });
         return;
       }
       res.json(this.omitFields(statement, ["actor_id", "module_id"]));

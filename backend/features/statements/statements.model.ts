@@ -1,5 +1,5 @@
-import { DataTypes, Model, Optional } from "sequelize";
-import { sequelize } from '../database';
+import { DataTypes, Model } from "sequelize";
+import { sequelize } from "../../common/database";
 
 export interface StatementAttributes {
   id: string;
@@ -10,8 +10,10 @@ export interface StatementAttributes {
   timestamp: Date;
 }
 
-export class Statement extends Model<StatementAttributes>
-  implements StatementAttributes {
+export class Statement
+  extends Model<StatementAttributes>
+  implements StatementAttributes
+{
   public id!: string;
   public actor_id!: string;
   public module_id!: string;

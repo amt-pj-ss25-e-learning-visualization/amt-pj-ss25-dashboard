@@ -1,5 +1,5 @@
-import { Model, DataTypes } from 'sequelize';
-import { sequelize } from '../database';
+import { Model, DataTypes } from "sequelize";
+import { sequelize } from "../../common/database";
 
 interface LearningResourceAttributes {
   id: string;
@@ -14,7 +14,10 @@ interface LearningResourceAttributes {
   typical_learning_time: string;
 }
 
-export class LearningResource extends Model<LearningResourceAttributes> implements LearningResourceAttributes {
+export class LearningResource
+  extends Model<LearningResourceAttributes>
+  implements LearningResourceAttributes
+{
   public id!: string;
   public title!: string;
   public description!: string;
@@ -74,7 +77,7 @@ LearningResource.init(
   },
   {
     sequelize,
-    tableName: 'learning_resources',
+    tableName: "learning_resources",
     timestamps: false,
   }
 );
