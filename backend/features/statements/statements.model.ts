@@ -1,5 +1,6 @@
 import { DataTypes, Model } from "sequelize";
 import { sequelize } from "../../common/database";
+import { ISO8601Duration } from "../../common/types";
 
 export interface StatementAttributes {
   id: string;
@@ -18,7 +19,19 @@ export class Statement
   public actor_id!: string;
   public module_id!: string;
   public verb!: string;
-  public result?: object | null;
+  public result?: {
+    score?: {
+      scaled?: number;
+      raw?: number;
+      min?: number;
+      max?: number;
+    };
+    success?: boolean;
+    completion?: boolean;
+    response?: string;
+    duration?: ISO8601Duration;
+    extensions?: Record<string, any>;
+  } | null;
   public timestamp!: Date;
 }
 
