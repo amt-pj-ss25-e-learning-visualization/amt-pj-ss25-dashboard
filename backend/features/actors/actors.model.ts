@@ -1,5 +1,5 @@
-import { Model, DataTypes } from 'sequelize';
-import { sequelize } from '../database';
+import { Model, DataTypes } from "sequelize";
+import { sequelize } from "../../common/database";
 
 interface ActorAttributes {
   id: string;
@@ -38,7 +38,7 @@ Actor.init(
   },
   {
     sequelize,
-    tableName: 'actors',
+    tableName: "actors",
     timestamps: false,
   }
 );
