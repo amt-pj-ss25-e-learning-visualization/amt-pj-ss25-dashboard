@@ -1,15 +1,16 @@
-import './models/associations';
+import "./common/associations";
 import express from "express";
 import config from "./config/config";
-import actorsRouter from "./routes/actors-routes";
-import statementsRouter from "./routes/statements-routes";
-import modulesRouter from "./routes/modules-routes";
-import coursesRouter from "./routes/courses-routes";
+import actorsRouter from "./features/actors/actors.routes";
+import statementsRouter from "./features/statements/statements.routes";
+import modulesRouter from "./features/modules/modules.routes";
+import coursesRouter from "./features/courses/courses.routes";
 
 const app = express();
 const PORT = config.port;
+app.use(express.json());
 
-app.get("/", (req, res) => {
+app.get("/", (_, res) => {
   res.send("API server is running");
 });
 

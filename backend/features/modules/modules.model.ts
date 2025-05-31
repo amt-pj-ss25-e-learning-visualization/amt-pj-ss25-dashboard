@@ -1,5 +1,5 @@
-import { Model, DataTypes } from 'sequelize';
-import { sequelize } from '../database';
+import { Model, DataTypes } from "sequelize";
+import { sequelize } from "../../common/database";
 
 interface ModuleAttributes {
   id: string;
@@ -9,7 +9,10 @@ interface ModuleAttributes {
   instructor_id?: string | null;
 }
 
-export class Module extends Model<ModuleAttributes> implements ModuleAttributes {
+export class Module
+  extends Model<ModuleAttributes>
+  implements ModuleAttributes
+{
   public id!: string;
   public course_id!: string;
   public parent_id!: string | null;
@@ -44,7 +47,7 @@ Module.init(
   },
   {
     sequelize,
-    tableName: 'modules',
+    tableName: "modules",
     timestamps: false,
   }
 );
