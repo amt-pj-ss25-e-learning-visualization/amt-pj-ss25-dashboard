@@ -1,6 +1,7 @@
 import "./common/associations";
 import express from "express";
 import morgan from "morgan";
+import cors from "cors";
 import config from "./config/config";
 import actorsRouter from "./features/actors/actors.routes";
 import statementsRouter from "./features/statements/statements.routes";
@@ -12,6 +13,7 @@ const app = express();
 const PORT = config.port;
 app.use(express.json());
 app.use(morgan("dev"));
+app.use(cors());
 
 app.get("/", (_, res) => {
   res.send("API server is running");
