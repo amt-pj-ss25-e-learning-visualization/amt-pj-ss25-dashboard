@@ -1,0 +1,37 @@
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { useActor } from "@/context/actor-context";
+
+export default function ActorSwitcher() {
+  const { actors, currentActor, setCurrentActor } = useActor();
+
+  if (!actors.length) return <p className="text-sm">No actors found!</p>;
+
+  return (
+    <div className="w-64 mb-4">
+      <Select
+        onValueChange={(value: string) => {
+          const selected = actors.find((actor) => actor.id === value);
+          if (selected) setCurrentActor(selected);
+        }}
+        value={currentActor?.id}
+      >
+        <SelectTrigger>
+          <SelectValue placeholder="Select actor" />
+        </SelectTrigger>
+        <SelectContent>
+          {actors.map((actor) => (
+            <SelectItem key={actor.id} value={actor.id}>
+              {actor.name} ({actor.role})
+            </SelectItem>
+          ))}
+        </SelectContent>
+      </Select>
+    </div>
+  );
+}

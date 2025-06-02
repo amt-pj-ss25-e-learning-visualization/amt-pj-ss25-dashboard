@@ -19,6 +19,8 @@ export class BaseController<T extends Model> {
       const items = await this.model.findAll();
       res.json(items);
     } catch (error) {
+      console.error("Error in getAll:", (error as Error).message);
+      console.error((error as Error).stack);
       res.status(500).json({ error: "500: Unexpected error occured!" });
     }
   };

@@ -1,0 +1,29 @@
+import { StatementDto } from "@/types/dto";
+
+
+const mockStatements: StatementDto[] = [
+  {
+    "id": "5a1520d4-52f2-453a-81f3-448f4afa5522",
+    "actor_id": "123e4567-e89b-12d3-a456-426614174000",
+    "module_id": "898be885-cbcf-40fb-a8a6-79f2a4849475",
+    "verb": "searched",
+    "result": null,
+    "timestamp": "2025-02-22T12:34:33.756Z"
+  },
+  {
+    "id": "612092d5-4400-491c-8f90-67e5746f4eac",
+    "actor_id": "123e4567-e89b-12d3-a456-426614174000",
+    "module_id": "b2c3d4e5-6789-2345-0bcd-234567890abc",
+    "verb": "rated",
+    "result": {
+      "score": {
+        "max": 5,
+        "min": 1,
+        "raw": 2
+      }
+    },
+    "timestamp": "2025-02-23T13:52:33.756Z"
+  }
+]
+
+export default mockStatements;

@@ -17,11 +17,13 @@ app.get("/", (_, res) => {
   res.send("API server is running");
 });
 
-app.use("/statements", statementsRouter);
 app.use("/actors", actorsRouter);
+app.use("/statements", statementsRouter);
 app.use("/modules", modulesRouter);
 app.use("/courses", coursesRouter);
 app.use(/.*\/metrics/, metricsRouter);
+
+console.log('Backend should be running!')
 
 app.listen(PORT, () => {
   console.log(`API-Server is running at http://localhost:${PORT}`);
