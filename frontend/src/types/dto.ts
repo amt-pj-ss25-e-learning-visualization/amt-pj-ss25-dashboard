@@ -44,12 +44,11 @@ export interface CourseDetailsDto {
         semantic_density: string;
         difficulty: string;
         typical_learning_time: string;
-      };
+      }[];
       submodules: [];
     }[];
   }[];
 }
-
 
 export interface ModuleDto {
   id: string;

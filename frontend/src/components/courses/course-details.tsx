@@ -65,49 +65,51 @@ export default function CourseDetails({ course }: CourseDetailsProps) {
                   {sub.title}
                 </div>
 
-                {sub.resources && (
+                {sub.resources.length && sub.resources[0] && (
                   <div className="ml-4 mt-2 space-y-2 bg-white p-4 rounded-md border shadow-sm">
                     <div className="flex items-center gap-2 text-gray-800 font-medium">
                       <FileText className="w-4 h-4" />
-                      {sub.resources.title}
+                      {sub.resources[0].title}
                     </div>
 
                     <div className="ml-6 text-gray-600 italic">
-                      {sub.resources.description}
+                      {sub.resources[0].description}
                     </div>
 
                     <div className="ml-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2 mt-3 text-sm text-gray-700">
                       <div className="flex items-center gap-2">
                         <Languages className="w-4 h-4 text-blue-500" />
                         <span>
-                          Language: {languageLabel(sub.resources.language)}
+                          Language: {languageLabel(sub.resources[0].language)}
                         </span>
                       </div>
                       <div className="flex items-center gap-2">
                         <Puzzle className="w-4 h-4 text-green-500" />
                         <span>
-                          Type: {sub.resources.learning_resource_type}
+                          Type: {sub.resources[0].learning_resource_type}
                         </span>
                       </div>
                       <div className="flex items-center gap-2">
                         <GaugeCircle className="w-4 h-4 text-purple-500" />
                         <span>
-                          Interactivity: {sub.resources.interactivity_type} (
-                          {sub.resources.interactivity_level})
+                          Interactivity: {sub.resources[0].interactivity_type} (
+                          {sub.resources[0].interactivity_level})
                         </span>
                       </div>
                       <div className="flex items-center gap-2">
                         <ListOrdered className="w-4 h-4 text-orange-500" />
-                        <span>Density: {sub.resources.semantic_density}</span>
+                        <span>
+                          Density: {sub.resources[0].semantic_density}
+                        </span>
                       </div>
                       <div className="flex items-center gap-2">
                         <Flame className="w-4 h-4 text-red-500" />
-                        <span>Difficulty: {sub.resources.difficulty}</span>
+                        <span>Difficulty: {sub.resources[0].difficulty}</span>
                       </div>
                       <div className="flex items-center gap-2">
                         <Clock className="w-4 h-4 text-yellow-600" />
                         <span>
-                          Duration: {sub.resources.typical_learning_time}
+                          Duration: {sub.resources[0].typical_learning_time}
                         </span>
                       </div>
                     </div>

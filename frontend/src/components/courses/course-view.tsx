@@ -1,11 +1,12 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";
 import { useCourseById } from "@/hooks/use-courses";
 import CourseDetails from "./course-details";
 
 export default function CourseDetailsView() {
-  const { data: course, loading, error } = useCourseById();
+  const { id } = useParams();
+  const { data: course, loading, error } = useCourseById(id);
   const navigate = useNavigate();
 
   if (loading) return <p className="text-sm">Loading course details...</p>;

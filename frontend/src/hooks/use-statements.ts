@@ -1,9 +1,8 @@
-import { ModuleDto, StatementDto } from "@/types/dto";
+import { StatementDto } from "@/types/dto";
 import { useApi } from "./use-api";
 
 export function useStatements() {
-  // const { data, loading, error } = useApi<StatementDto[]>("/statements"); //uncomment this when BE works
-  const { data, loading, error } = useApi<StatementDto[]>("/statements/statements"); // delete this when BE works
+  const { data, loading, error } = useApi<StatementDto[]>(["/statements"]);
   return {
     data: data || [],
     loading,
@@ -11,9 +10,8 @@ export function useStatements() {
   };
 }
 
-export function useStatementById(id?: string) {
-  // const { data, loading, error } = useApi<StatementDto>(`/statements/${id}`); //uncomment this when BE works
-  const { data, loading, error } = useApi<ModuleDto>("/statements/statementById"); // delete this when BE works
+export function useStatementById(id: string) {
+  const { data, loading, error } = useApi<StatementDto>(["statements", id]);
   return {
     data,
     loading,
@@ -22,8 +20,10 @@ export function useStatementById(id?: string) {
 }
 
 export function useStatementsByActor(actorId?: string) {
-  // const { data, loading, error } = useApi<StatementDto[]>(`/statements/actor/${actorId}`); //uncomment this when BE works
-  const { data, loading, error } = useApi<StatementDto[]>("/statements/statementsByActor"); // delete this when BE works
+  const { data, loading, error } = useApi<StatementDto[]>([
+    `/statements/actor/`,
+    actorId,
+  ]);
   return {
     data,
     loading,
@@ -32,8 +32,10 @@ export function useStatementsByActor(actorId?: string) {
 }
 
 export function useStatementsByModule(moduleId?: string) {
-  // const { data, loading, error } = useApi<StatementDto[]>(`/statements/module/${moduleId}`); //uncomment this when BE works
-  const { data, loading, error } = useApi<StatementDto[]>("/statements/statementsByModule"); // delete this when BE works
+  const { data, loading, error } = useApi<StatementDto[]>([
+    `/statements/module/`,
+    moduleId,
+  ]);
   return {
     data,
     loading,
@@ -42,8 +44,10 @@ export function useStatementsByModule(moduleId?: string) {
 }
 
 export function useStatementsByVerb(verb?: string) {
-  // const { data, loading, error } = useApi<StatementDto[]>(`/statements/verb/${verb}`); //uncomment this when BE works
-  const { data, loading, error } = useApi<StatementDto[]>("/statements/statementsByVerb"); // delete this when BE works
+  const { data, loading, error } = useApi<StatementDto[]>([
+    `/statements/verb/`,
+    verb,
+  ]);
   return {
     data,
     loading,

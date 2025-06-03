@@ -1,4 +1,3 @@
-import ActorSwitcher from "../actor-switcher";
 import { useActor } from "@/context/actor-context";
 import ActorActivity from "../actor-activity";
 
@@ -7,7 +6,6 @@ export default function Dashboard() {
 
   return (
     <div className="p-4">
-      <ActorSwitcher />
       {!currentActor ? (
         <p className="text-muted-foreground text-sm">
           Please select an actor to view dashboard data.

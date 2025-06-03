@@ -13,7 +13,7 @@ export default function ActorSwitcher() {
   if (!actors.length) return <p className="text-sm">No actors found!</p>;
 
   return (
-    <div className="w-64 mb-4">
+    <div className="w-full mb-4">
       <Select
         onValueChange={(value: string) => {
           const selected = actors.find((actor) => actor.id === value);
@@ -21,7 +21,7 @@ export default function ActorSwitcher() {
         }}
         value={currentActor?.id}
       >
-        <SelectTrigger>
+        <SelectTrigger className="w-full">
           <SelectValue placeholder="Select actor" />
         </SelectTrigger>
         <SelectContent>

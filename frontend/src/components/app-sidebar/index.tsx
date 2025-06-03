@@ -1,6 +1,7 @@
 import {
   Sidebar,
   SidebarContent,
+  SidebarFooter,
   SidebarGroup,
   SidebarGroupContent,
   SidebarGroupLabel,
@@ -9,6 +10,7 @@ import {
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
 import { menuItems } from "./menu";
+import ActorSwitcher from "../actor-switcher";
 
 export function AppSidebar() {
   return (
@@ -32,6 +34,9 @@ export function AppSidebar() {
           </SidebarGroupContent>
         </SidebarGroup>
       </SidebarContent>
+      <SidebarFooter>
+        <ActorSwitcher />
+      </SidebarFooter>
     </Sidebar>
   );
 }

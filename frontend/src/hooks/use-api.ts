@@ -1,26 +1,24 @@
+import { url } from "@/lib/utils";
 import { useEffect, useState } from "react";
 
-export function useApi<T>(url: string, options?: RequestInit) {
+export function useApi<T>(
+  paths: (string | undefined)[],
+  options?: RequestInit
+) {
   const [data, setData] = useState<T | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<Error | null>(null);
+  const baseURL = import.meta.env.VITE_SERVER;
 
   useEffect(() => {
-    //TODO: Temp fix since BE doesnt work
-    const useMock = true;
-
     async function fetchData() {
+      if (paths.some((p) => p === undefined)) return;
       try {
         setLoading(true);
-        if (useMock) {
-          const mock = await import(`./mock${url}`);
-          setData(mock.default);
-        } else {
-          const res = await fetch(url, options);
-          if (!res.ok) throw new Error(`Request failed: ${res.status}`);
-          const json = await res.json();
-          setData(json);
-        }
+        const res = await fetch(url(baseURL, ...(paths as string[])), options);
+        if (!res.ok) throw new Error(`Request failed: ${res.status}`);
+        const json = await res.json();
+        setData(json);
       } catch (err) {
         setError(err as Error);
       } finally {
@@ -29,7 +27,7 @@ export function useApi<T>(url: string, options?: RequestInit) {
     }
 
     fetchData();
-  }, [url]);
+  }, [...paths]);
 
   return { data, loading, error };
 }
