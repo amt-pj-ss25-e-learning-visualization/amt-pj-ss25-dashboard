@@ -22,7 +22,7 @@ export default function CourseList() {
   return (
     <div className="p-6">
       <h3 className="text-2xl">All Courses</h3>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 my-6">
+      <div className="flex flex-col gap-6 my-6">
         {courses.map((course) => (
           <Link key={course.id} to={`/courses/${course.id}`}>
             <Card className="hover:border-blue-600 hover:shadow-lg transition-all cursor-pointer h-full">
@@ -46,7 +46,7 @@ export default function CourseList() {
                   </span>
                 </div>
                 <div className="flex items-center gap-1 text-blue-600 font-medium">
-                  View Details
+                  View Course
                   <ArrowRight className="w-4 h-4" />
                 </div>
               </CardFooter>

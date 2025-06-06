@@ -20,7 +20,7 @@ router.get("/:id", ModulesController.getById);
  */
 router.get(
   "/course/:courseId",
-  ModulesController.getByField("course_id", "courseId")
+  ModulesController.getByField({ course_id: "courseId" })
 );
 
 /**
@@ -29,7 +29,7 @@ router.get(
  */
 router.get(
   "/instructor/:instructorId",
-  ModulesController.getByField("instructor_id", "instructorId")
+  ModulesController.getByField({ instructor_id: "instructorId" })
 );
 
 export default router;

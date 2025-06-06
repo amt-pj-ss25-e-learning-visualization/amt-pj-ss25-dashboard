@@ -5,8 +5,8 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <SidebarProvider>
       <AppSidebar />
-      <main>
-        <SidebarTrigger />
+      <main className="flex-1 relative">
+        <SidebarTrigger className="sticky top-0" />
         {children}
       </main>
     </SidebarProvider>

@@ -43,6 +43,18 @@ export function useStatementsByModule(moduleId?: string) {
   };
 }
 
+export function useStatementsByActorAndModule(
+  moduleId?: string,
+  actorId?: string
+) {
+  return useApi<StatementDto[]>([
+    "statements/module",
+    moduleId,
+    "actor",
+    actorId,
+  ]);
+}
+
 export function useStatementsByVerb(verb?: string) {
   const { data, loading, error } = useApi<StatementDto[]>([
     `/statements/verb/`,

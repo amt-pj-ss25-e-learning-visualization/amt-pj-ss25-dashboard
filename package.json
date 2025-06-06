@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "install": "cd frontend && npm install && cd ../backend && npm install",
+    "start": "npm run frontend & npm run backend",
     "frontend": "npm --prefix ./frontend start",
     "backend": "npm --prefix ./backend run dev"
   },

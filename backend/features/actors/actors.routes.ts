@@ -20,6 +20,6 @@ router.get("/:id", ActorsController.getById);
  * Returns actors filtered by a specific role.
  * @param {string} role - The role of the actor
  */
-router.get("/role/:role", ActorsController.getByField("role", "role"));
+router.get("/role/:role", ActorsController.getByField({ role: "role" }));
 
 export default router;

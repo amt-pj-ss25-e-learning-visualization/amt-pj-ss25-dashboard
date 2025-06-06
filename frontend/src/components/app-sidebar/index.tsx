@@ -11,6 +11,11 @@ import {
 } from "@/components/ui/sidebar";
 import { menuItems } from "./menu";
 import ActorSwitcher from "../actor-switcher";
+import { MenuItems } from "@/types/menu";
+
+const isActive = (item: MenuItems) => {
+  return item.url.replace("/", "") === window.location.pathname.split("/")[1];
+};
 
 export function AppSidebar() {
   return (
@@ -21,8 +26,16 @@ export function AppSidebar() {
           <SidebarGroupContent>
             <SidebarMenu>
               {menuItems.map((item) => (
-                <SidebarMenuItem key={item.title}>
-                  <SidebarMenuButton asChild>
+                <SidebarMenuItem
+                  key={item.title}
+                  aria-selected={isActive(item)}
+                >
+                  <SidebarMenuButton
+                    asChild
+                    className={
+                      isActive(item) ? "text-blue-600 hover:text-blue-600" : ""
+                    }
+                  >
                     <a href={item.url}>
                       <item.icon />
                       <span>{item.title}</span>
