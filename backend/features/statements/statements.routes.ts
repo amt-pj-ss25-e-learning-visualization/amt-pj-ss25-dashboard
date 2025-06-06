@@ -22,14 +22,21 @@ router.get("/:id", StatementsController.getById);
  */
 router.get(
   "/actor/:actorId",
-  StatementsController.getByField("actor_id", "actorId")
+  StatementsController.getByField({ actor_id: "actorId" })
 );
 router.get(
   "/module/:moduleId",
-  StatementsController.getByField("module_id", "moduleId")
+  StatementsController.getByField({ module_id: "moduleId" })
 );
-router.get("/verb/:verb", StatementsController.getByField("verb", "verb"));
+router.get("/verb/:verb", StatementsController.getByField({ verb: "verb" }));
 
+router.get(
+  "/module/:moduleId/actor/:actorId",
+  StatementsController.getByField({
+    actor_id: "actorId",
+    module_id: "moduleId",
+  })
+);
 // TODO: Do we need an endpoint for filtering by timestamp (e.g. last X entries for a specific student/module)?
 
 export default router;

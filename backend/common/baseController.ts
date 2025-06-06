@@ -19,6 +19,8 @@ export class BaseController<T extends Model> {
       const items = await this.model.findAll();
       res.json(items);
     } catch (error) {
+      console.error("Error in getAll:", (error as Error).message);
+      console.error((error as Error).stack);
       res.status(500).json({ error: "500: Unexpected error occured!" });
     }
   };
@@ -31,7 +33,9 @@ export class BaseController<T extends Model> {
       const id = req.params.id;
       const item = await this.model.findByPk(id);
       if (!item) {
-        res.status(404).json({ error: `404: Entry with id '${id}' not found!` });
+        res
+          .status(404)
+          .json({ error: `404: Entry with id '${id}' not found!` });
         return;
       }
       res.json(item);
@@ -42,19 +46,23 @@ export class BaseController<T extends Model> {
 
   /**
    * Retrieves items filtered by a specific field.
-   * @param field - The field to filter by.
+   * @param fields - The fields to filter by as keys and the params of the path as values.
    * @param paramName - The name of the request parameter to use for filtering.
    */
-  getByField = (field: string, paramName?: string) => async (req: Request, res: Response) => {
-    try {
-      const value = req.params[paramName || field];
-      const where: WhereOptions = { [field]: value };
-      const items = await this.model.findAll({ where });
-      res.json(items);
-    } catch (error) {
-      res.status(500).json({ error: "500: Unexpected error occured!" });
-    }
-  };
+  getByField =
+    (fields: Record<string, string>) => async (req: Request, res: Response) => {
+      try {
+        const fieldObject = { ...fields };
+        Object.keys(fieldObject).forEach(
+          (key) => (fieldObject[key] = req.params[fieldObject[key]])
+        );
+        const where: WhereOptions = { ...fieldObject };
+        const items = await this.model.findAll({ where });
+        res.json(items);
+      } catch (error) {
+        res.status(500).json({ error: "500: Unexpected error occured!" });
+      }
+    };
 
   /**
    * Recursively removes specified fields from an object properties (nested object or array).
@@ -64,16 +72,14 @@ export class BaseController<T extends Model> {
    * @returns A object with the specified fields removed.
    */
   protected omitFields(obj: any, fields: string[]): any {
-    const object = obj && typeof obj.get === "function" ? obj.get({ object: true }) : obj;
+    const object =
+      obj && typeof obj.get === "function" ? obj.get({ object: true }) : obj;
 
     if (Array.isArray(object)) {
-      return object.map(item => this.omitFields(item, fields));
-
+      return object.map((item) => this.omitFields(item, fields));
     } else if (object instanceof Date) {
       return object;
-    }
-    else if (object && typeof object === 'object') {
-
+    } else if (object && typeof object === "object") {
       const result: any = {};
       for (const key in object) {
         if (!fields.includes(key)) {
