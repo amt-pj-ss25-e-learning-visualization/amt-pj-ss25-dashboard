@@ -1,5 +1,5 @@
 # Schema
-![Alt text](../assets/db_schema.svg)
+![Alt text](./db_schema.svg)
 
 # Documentation
 TODO
