@@ -1,0 +1,61 @@
+<lom xmlns="http://ltsc.ieee.org/xsd/LOM">
+    <general>
+        <identifier>
+            <entry>https://dash.fokus.fraunhofer.de/tests/tan/awt/ws2425/objectMetadata/05</entry>
+        </identifier>
+        <title>
+            <string language="de-DE">Learning Object 05</string>
+        </title>
+        <language>de-DE</language>
+        <description>
+            <string language="de-DE">Example: Learning Object 05</string>
+        </description>
+        <keyword>
+            <string language="de-DE">Learning</string>
+            <string language="de-DE">Object</string>
+            <string language="de-DE">05</string>
+        </keyword>
+    </general>
+    <educational>
+        <interactivityType>
+            <source>LOMv1.0</source>
+            <value>expositive</value>
+        </interactivityType>
+        <learningResourceType>
+            <source>LOMv1.0</source>
+            <value>narrative text</value>
+        </learningResourceType>
+        <interactivityLevel>
+            <source>LOMv1.0</source>
+            <value>low</value>
+        </interactivityLevel>
+        <semanticDensity>
+            <source>LOMv1.0</source>
+            <value>low</value>
+        </semanticDensity>
+        <difficulty>
+            <source>LOMv1.0</source>
+            <value>low</value>
+        </difficulty>
+        <typicalLearningTime>
+            <duration>PT5M30S</duration>
+        </typicalLearningTime>
+    </educational>
+    <classification>
+        <purpose>
+            <source>LOMv1.0</source>
+            <value>competency</value>
+        </purpose>
+        <taxonPath>
+            <source>
+                <string language="de-DE">ESCO</string>
+            </source>
+            <taxon>
+                <id>http://data.europa.eu/esco/skill/8e0f43a3-7cb9-45bc-b6e3-0f9b1e3d18b5</id>
+                <entry>
+                    <string language="de-DE">mit Seilausrüstung Bäume erklettern</string>
+                </entry>
+            </taxon>
+        </taxonPath>
+    </classification>
+</lom>
