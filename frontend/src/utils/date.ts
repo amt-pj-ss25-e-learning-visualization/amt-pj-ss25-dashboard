@@ -13,3 +13,12 @@ export function formatDateTime(
   const date = typeof timestamp === "string" ? new Date(timestamp) : timestamp;
   return format(date, pattern);
 }
+
+
+export const formatDuration = (milli: number): string => {
+  const totalSeconds = Math.floor(milli / 1000);
+  const hours = Math.floor(totalSeconds / 3600);
+  const minutes = Math.floor((totalSeconds % 3600) / 60);
+
+  return `${hours}h ${minutes}m`;
+};

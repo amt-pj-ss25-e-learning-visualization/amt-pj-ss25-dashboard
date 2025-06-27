@@ -20,9 +20,12 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { formatDateTime } from "@/utils/date";
+import { Button } from "@/components/ui/button";
 
 export default function ExplorerView() {
   const [selectedVerb, setSelectedVerb] = useState<string | undefined>();
+  const [page, setPage] = useState(1);
+  const pageSize = 10;
 
   const { data: courses } = useCourses();
   const { data: actors } = useActors();
@@ -37,6 +40,9 @@ export default function ExplorerView() {
     ? statements.filter((s) => s.verb === selectedVerb)
     : statements;
 
+  const totalPages = Math.ceil(filtered.length / pageSize);
+  const paginated = filtered.slice((page - 1) * pageSize, page * pageSize);
+
   const allVerbs = Array.from(new Set(statements.map((s) => s.verb)));
 
   const getActor = (id?: string) => actors.find((a) => a.id === id);
@@ -50,7 +56,12 @@ export default function ExplorerView() {
     <div className="p-6">
       <div className="flex justify-between items-center">
         <h3 className="text-2xl">Statement Explorer</h3>
-        <Select onValueChange={setSelectedVerb}>
+        <Select
+          onValueChange={(v) => {
+            setSelectedVerb(v);
+            setPage(1);
+          }}
+        >
           <SelectTrigger className="w-40 cursor-pointer">
             <SelectValue placeholder="Filter by verb" />
           </SelectTrigger>
@@ -78,7 +89,7 @@ export default function ExplorerView() {
             </TableRow>
           </TableHeader>
           <TableBody>
-            {filtered.map((s) => {
+            {paginated.map((s) => {
               const actor = getActor(s.actor_id);
               const module = getModule(s.module_id);
               const course = getCourse(s.module_id);
@@ -100,6 +111,33 @@ export default function ExplorerView() {
             })}
           </TableBody>
         </Table>
+      </div>
+
+      <div className="flex justify-between items-center mt-4">
+        <p className="text-sm text-muted-foreground">
+          Showing {(page - 1) * pageSize + 1}–
+          {Math.min(page * pageSize, filtered.length)} of {filtered.length}
+        </p>
+        <div className="space-x-2">
+          <Button
+            className="cursor-pointer"
+            variant="outline"
+            size="sm"
+            disabled={page === 1}
+            onClick={() => setPage((p) => p - 1)}
+          >
+            Previous
+          </Button>
+          <Button
+            className="cursor-pointer"
+            variant="outline"
+            size="sm"
+            disabled={page === totalPages}
+            onClick={() => setPage((p) => p + 1)}
+          >
+            Next
+          </Button>
+        </div>
       </div>
     </div>
   );

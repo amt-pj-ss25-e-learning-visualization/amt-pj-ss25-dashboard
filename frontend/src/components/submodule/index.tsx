@@ -11,6 +11,7 @@ import { cn } from "@/lib/utils";
 import { StarRating } from "../rating";
 import { TimeMetric } from "../timeMetric";
 import { Score } from "../score";
+import { formatDuration } from "@/utils/date";
 
 type Module = CourseDetailsDto["modules"][number]["submodules"][number];
 
@@ -24,14 +25,6 @@ const exited = (s: StatementDto) => s.verb === "exited";
 const scored = (s: StatementDto) => s.verb === "scored";
 const sortRecency = (a: StatementDto, b: StatementDto) =>
   new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime();
-
-const formatDuration = (milli: number): string => {
-  const totalSeconds = Math.floor(milli / 1000);
-  const hours = Math.floor(totalSeconds / 3600);
-  const minutes = Math.floor((totalSeconds % 3600) / 60);
-
-  return `${hours}h ${minutes}m`;
-};
 
 export const Submodule = ({ module }: Props) => {
   const { currentActor } = useActor();

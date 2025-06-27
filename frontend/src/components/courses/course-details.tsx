@@ -3,6 +3,7 @@ import { CourseDetailsDto } from "@/types/dto";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Accordion } from "../ui/accordion";
 import { Module } from "../modules";
+import { CourseProgress } from "./course-progress";
 
 interface CourseDetailsProps {
   course: CourseDetailsDto;
@@ -24,6 +25,10 @@ export default function CourseDetails({ course }: CourseDetailsProps) {
           </span>
         </div>
       </CardHeader>
+
+      <CardContent>
+        <CourseProgress course={course} />
+      </CardContent>
 
       <CardContent className="space-y-8">
         <Accordion type="multiple" className="w-full flex flex-col gap-4">
