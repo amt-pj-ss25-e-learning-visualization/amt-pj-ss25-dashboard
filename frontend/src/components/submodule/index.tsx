@@ -8,19 +8,12 @@ import { cn } from "@/lib/utils";
 import { StarRating } from "../rating";
 import { TimeMetric } from "../timeMetric";
 import { Score } from "../score";
+import { formatDuration } from "@/utils/date";
 
 type Module = CourseDetailsDto["modules"][number]["submodules"][number];
 
 type Props = {
   module: Module;
-};
-
-const formatDuration = (milli: number): string => {
-  const totalSeconds = Math.floor(milli / 1000);
-  const hours = Math.floor(totalSeconds / 3600);
-  const minutes = Math.floor((totalSeconds % 3600) / 60);
-
-  return `${hours}h ${minutes}m`;
 };
 
 export const Submodule = ({ module }: Props) => {
