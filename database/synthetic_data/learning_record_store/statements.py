@@ -24,7 +24,7 @@ def build_statement_id_to_module_id_map(data, modules, resources):
 
 def insert_statements(cur, data, modules, resources, statement_id_to_module_id, get_or_create_actor, link_instructor_to_module):
     """
-    Insert all statements into the database, handling evaluated statements specially.
+    Insert all statements into the database.
     """
     for stmt in data:
         actor_id = get_or_create_actor(cur, stmt['actor'])
