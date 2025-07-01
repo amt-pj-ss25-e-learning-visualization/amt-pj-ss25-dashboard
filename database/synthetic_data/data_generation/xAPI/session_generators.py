@@ -39,10 +39,9 @@ def generate_material_sessions(user_id, material, current_date, profile):
         statements.append(s_exit)
 
         eval_time = exit_time + timedelta(minutes=1)
-        eval_score = random.randint(0, 100)
         s_eval = generate_statement_with_context(
             user_id, "evaluated", material, eval_time,
-            evaluation=eval_score,
+            evaluation=1,
             statement_ref_id=s_exit["id"]
         )
         statements.append(s_eval)
@@ -108,10 +107,9 @@ def generate_learning_session(user_id, material, timestamp, duration):
     statements.append(s_exit)
 
     eval_time = exit_time + timedelta(minutes=1)
-    eval_score = random.randint(0, 100)
     s_eval = generate_statement_with_context(
         user_id, "evaluated", material, eval_time,
-        evaluation=eval_score,
+        evaluation=1,
         statement_ref_id=s_exit["id"]
     )
     statements.append(s_eval)
@@ -138,11 +136,10 @@ def generate_test_session(user_id, material, timestamp, score):
     statements = [s_scored, s_comp]
 
     eval_time = timestamp + timedelta(minutes=2)
-    eval_score = random.randint(0, 100)
     s_eval = add_instructor_context(
         generate_statement(
             user_id, "evaluated", test_name, eval_time,
-            evaluation=eval_score,
+            evaluation=1,
             statement_ref_id=s_comp["id"]
         ),
         material

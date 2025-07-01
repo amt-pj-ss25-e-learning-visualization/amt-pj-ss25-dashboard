@@ -4,8 +4,33 @@
 # ------------------------------------------------------------------------------------------------- #
 
 import uuid
+import random
 from xAPI.config import TEST_PASS_THRESHOLD
 from xAPI.course_structure import COURSE_STRUCTURE
+
+# HT for self-evaluation per student-material
+SELF_EVAL_TRACKER = {}
+
+def get_next_self_evaluation(user_id, material):
+    """
+    Get the next self-evaluation value for a user and material.
+    If the user has not evaluated this material before, assign a random initial value.
+    Else, vary the previous value by ±10–20.
+    This function prevents using random values in order to a more realistic simulation of self-evaluation behavior.
+    """
+    key = (user_id, material)
+    
+    # Assign initial value between 30 and 80
+    if key not in SELF_EVAL_TRACKER:
+        SELF_EVAL_TRACKER[key] = random.randint(30, 80)
+    
+    # Vary previous value by ±10–20
+    else:
+        prev = SELF_EVAL_TRACKER[key]
+        delta = random.randint(10, 20) * random.choice([-1, 1])
+        SELF_EVAL_TRACKER[key] = max(0, min(100, prev + delta))
+        
+    return SELF_EVAL_TRACKER[key]
 
 def deep_merge(json1, json2):
     """
@@ -148,12 +173,16 @@ def generate_statement(
             }
         }
     if evaluation is not None:
+        if verb == "evaluated":
+            eval_value = get_next_self_evaluation(user_id, activity)
+        else:
+            eval_value = int(evaluation)
         statement["result"] = {
             "score": {
-                "raw": int(evaluation),
+                "raw": eval_value,
                 "min": 0,
                 "max": 100,
-                "scaled": evaluation / 100
+                "scaled": eval_value / 100
             }
         }
 
