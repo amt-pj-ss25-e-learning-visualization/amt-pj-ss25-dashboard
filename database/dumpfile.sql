@@ -21,7 +21,7 @@ SET default_tablespace = '';
 SET default_table_access_method = heap;
 
 --
--- Name: actors; Type: TABLE; Schema: public; Owner: admin
+-- Name: actors; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.actors (
@@ -32,10 +32,8 @@ CREATE TABLE public.actors (
 );
 
 
-ALTER TABLE public.actors OWNER TO admin;
-
 --
--- Name: courses; Type: TABLE; Schema: public; Owner: admin
+-- Name: courses; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.courses (
@@ -46,10 +44,8 @@ CREATE TABLE public.courses (
 );
 
 
-ALTER TABLE public.courses OWNER TO admin;
-
 --
--- Name: learning_resources; Type: TABLE; Schema: public; Owner: admin
+-- Name: learning_resources; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.learning_resources (
@@ -66,10 +62,8 @@ CREATE TABLE public.learning_resources (
 );
 
 
-ALTER TABLE public.learning_resources OWNER TO admin;
-
 --
--- Name: module_resources; Type: TABLE; Schema: public; Owner: admin
+-- Name: module_resources; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.module_resources (
@@ -78,10 +72,8 @@ CREATE TABLE public.module_resources (
 );
 
 
-ALTER TABLE public.module_resources OWNER TO admin;
-
 --
--- Name: modules; Type: TABLE; Schema: public; Owner: admin
+-- Name: modules; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.modules (
@@ -93,17 +85,15 @@ CREATE TABLE public.modules (
 );
 
 
-ALTER TABLE public.modules OWNER TO admin;
-
 --
--- Name: COLUMN modules.instructor_id; Type: COMMENT; Schema: public; Owner: admin
+-- Name: COLUMN modules.instructor_id; Type: COMMENT; Schema: public; Owner: -
 --
 
 COMMENT ON COLUMN public.modules.instructor_id IS 'only set for top-level modules (parent_id == NULL)';
 
 
 --
--- Name: statements; Type: TABLE; Schema: public; Owner: admin
+-- Name: statements; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.statements (
@@ -116,17 +106,15 @@ CREATE TABLE public.statements (
 );
 
 
-ALTER TABLE public.statements OWNER TO admin;
-
 --
--- Name: COLUMN statements.result; Type: COMMENT; Schema: public; Owner: admin
+-- Name: COLUMN statements.result; Type: COMMENT; Schema: public; Owner: -
 --
 
 COMMENT ON COLUMN public.statements.result IS 'may be null, depending on verb';
 
 
 --
--- Data for Name: actors; Type: TABLE DATA; Schema: public; Owner: admin
+-- Data for Name: actors; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY public.actors (id, mail, name, role) FROM stdin;
@@ -149,7 +137,7 @@ f8478e87-8fee-5ef3-95b1-41c971c4abab	user_test_inconsistent_4w_9e7b2bbf@example.
 
 
 --
--- Data for Name: courses; Type: TABLE DATA; Schema: public; Owner: admin
+-- Data for Name: courses; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY public.courses (id, title, description, language) FROM stdin;
@@ -158,7 +146,7 @@ COPY public.courses (id, title, description, language) FROM stdin;
 
 
 --
--- Data for Name: learning_resources; Type: TABLE DATA; Schema: public; Owner: admin
+-- Data for Name: learning_resources; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY public.learning_resources (id, title, description, language, interactivity_type, interactivity_level, learning_resource_type, semantic_density, difficulty, typical_learning_time) FROM stdin;
@@ -181,7 +169,7 @@ bc8092d0-8540-5f4a-9910-83d0354ae856	Learning Object 13	Example: Learning Object
 
 
 --
--- Data for Name: module_resources; Type: TABLE DATA; Schema: public; Owner: admin
+-- Data for Name: module_resources; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY public.module_resources (module_id, resource_id) FROM stdin;
@@ -204,7 +192,7 @@ ab3ff241-b1ca-54ed-aa92-b324f1a5155b	bc8092d0-8540-5f4a-9910-83d0354ae856
 
 
 --
--- Data for Name: modules; Type: TABLE DATA; Schema: public; Owner: admin
+-- Data for Name: modules; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY public.modules (id, course_id, parent_id, title, instructor_id) FROM stdin;
@@ -230,7 +218,7 @@ d33a5ca9-9a16-57b0-92a2-51dae47aa69a	179c8402-d46f-48fd-87f3-e463d76fbd1c	\N	Gru
 
 
 --
--- Data for Name: statements; Type: TABLE DATA; Schema: public; Owner: admin
+-- Data for Name: statements; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY public.statements (id, actor_id, module_id, verb, result, "timestamp") FROM stdin;
@@ -2672,7 +2660,7 @@ b0e2b6af-5a8d-437f-b8b6-790406cdc05d	92bf70e3-1598-5b49-9db4-d4b7dcff8d55	0f8226
 
 
 --
--- Name: actors actors_pkey; Type: CONSTRAINT; Schema: public; Owner: admin
+-- Name: actors actors_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.actors
@@ -2680,7 +2668,7 @@ ALTER TABLE ONLY public.actors
 
 
 --
--- Name: courses courses_pkey; Type: CONSTRAINT; Schema: public; Owner: admin
+-- Name: courses courses_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.courses
@@ -2688,7 +2676,7 @@ ALTER TABLE ONLY public.courses
 
 
 --
--- Name: learning_resources learning_resources_pkey; Type: CONSTRAINT; Schema: public; Owner: admin
+-- Name: learning_resources learning_resources_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.learning_resources
@@ -2696,7 +2684,7 @@ ALTER TABLE ONLY public.learning_resources
 
 
 --
--- Name: modules modules_pkey; Type: CONSTRAINT; Schema: public; Owner: admin
+-- Name: modules modules_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.modules
@@ -2704,7 +2692,7 @@ ALTER TABLE ONLY public.modules
 
 
 --
--- Name: statements statements_pkey; Type: CONSTRAINT; Schema: public; Owner: admin
+-- Name: statements statements_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.statements
@@ -2712,7 +2700,7 @@ ALTER TABLE ONLY public.statements
 
 
 --
--- Name: module_resources module_resources_module_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: admin
+-- Name: module_resources module_resources_module_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.module_resources
@@ -2720,7 +2708,7 @@ ALTER TABLE ONLY public.module_resources
 
 
 --
--- Name: module_resources module_resources_resource_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: admin
+-- Name: module_resources module_resources_resource_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.module_resources
@@ -2728,7 +2716,7 @@ ALTER TABLE ONLY public.module_resources
 
 
 --
--- Name: modules modules_course_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: admin
+-- Name: modules modules_course_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.modules
@@ -2736,7 +2724,7 @@ ALTER TABLE ONLY public.modules
 
 
 --
--- Name: modules modules_instructor_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: admin
+-- Name: modules modules_instructor_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.modules
@@ -2744,7 +2732,7 @@ ALTER TABLE ONLY public.modules
 
 
 --
--- Name: statements statements_actor_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: admin
+-- Name: statements statements_actor_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.statements
@@ -2752,53 +2740,11 @@ ALTER TABLE ONLY public.statements
 
 
 --
--- Name: statements statements_module_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: admin
+-- Name: statements statements_module_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.statements
     ADD CONSTRAINT statements_module_id_fkey FOREIGN KEY (module_id) REFERENCES public.modules(id);
-
-
---
--- Name: TABLE actors; Type: ACL; Schema: public; Owner: admin
---
-
-GRANT SELECT,INSERT,DELETE,UPDATE ON TABLE public.actors TO api_user;
-
-
---
--- Name: TABLE courses; Type: ACL; Schema: public; Owner: admin
---
-
-GRANT SELECT,INSERT,DELETE,UPDATE ON TABLE public.courses TO api_user;
-
-
---
--- Name: TABLE learning_resources; Type: ACL; Schema: public; Owner: admin
---
-
-GRANT SELECT,INSERT,DELETE,UPDATE ON TABLE public.learning_resources TO api_user;
-
-
---
--- Name: TABLE module_resources; Type: ACL; Schema: public; Owner: admin
---
-
-GRANT SELECT,INSERT,DELETE,UPDATE ON TABLE public.module_resources TO api_user;
-
-
---
--- Name: TABLE modules; Type: ACL; Schema: public; Owner: admin
---
-
-GRANT SELECT,INSERT,DELETE,UPDATE ON TABLE public.modules TO api_user;
-
-
---
--- Name: TABLE statements; Type: ACL; Schema: public; Owner: admin
---
-
-GRANT SELECT,INSERT,DELETE,UPDATE ON TABLE public.statements TO api_user;
 
 
 --
