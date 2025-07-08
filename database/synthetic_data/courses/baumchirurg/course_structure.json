@@ -1,0 +1,41 @@
+{
+  "Grundlagen der Baumpflege": {
+    "materials": [
+      "Bäume schützen",
+      "Bäume kappen",
+      "Bäume ausdünnen",
+      "Baumkonservierung",
+      "Beratung zu Fragen rund um Bäume",
+      "Krankheits- und Schädlingsbekämpfung durchführen",
+      "Grünpflanzen pflanzen",
+      "Baumkrankheiten bekämpfen"
+    ],
+    "instructor": {
+      "mbox": "mailto:instructor2@example.com",
+      "name": "instructor2"
+    }
+  },
+  "Grundlagen des Kletterns": {
+    "materials": [
+      "Auf Bäume klettern",
+      "Gefahren im Umgang mit Bäumen mindern",
+      "Mit Seilausrüstung Bäume erklimmen",
+      "Sicherheitsverfahren in großen Höhen befolgen"
+    ],
+    "instructor": {
+      "mbox": "mailto:instructor1@example.com",
+      "name": "instructor1"
+    }
+  },
+  "Grundlagen der Instandhaltung": {
+    "materials": [
+      "Kettensäge bedienen",
+      "Forstwirtschaftliche Ausrüstung instand halten",
+      "Bei der Baumidentifizierung assistieren"
+    ],
+    "instructor": {
+      "mbox": "mailto:instructor3@example.com",
+      "name": "instructor3"
+    }
+  }
+}
