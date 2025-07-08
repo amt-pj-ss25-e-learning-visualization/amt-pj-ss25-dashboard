@@ -87,7 +87,7 @@ if __name__ == "__main__":
             for mod in modules:
                 cur.execute("""
                     INSERT INTO modules (id, course_id, parent_id, title, instructor_id)
-                    VALUES (%s, %s, %s, %s, %s)
+                    VALUES (%s, %s, %s, %s, %s) ON CONFLICT (id) DO NOTHING
                 """, (
                     mod['id'],
                     course_id,
@@ -112,11 +112,11 @@ if __name__ == "__main__":
             print(f"Linked {link_count} resources to modules.")
 
             print(">> Building statement-to-module map...")
-            statement_id_to_module_id = build_statement_id_to_module_id_map(data, modules, resources)
+            statement_id_to_module_id = build_statement_id_to_module_id_map(data, modules)
             
             print(">> Inserting xAPI statements - this may take a while...")
             insert_statements(
-                cur, data, modules, resources, statement_id_to_module_id,
+                cur, data, modules, statement_id_to_module_id,
                 get_or_create_actor, link_instructor_to_module
             )
             print("All xAPI statements inserted.")
