@@ -32,6 +32,9 @@ def generate_manifest(
     # Create root element
     root_id = "R_" + ''.join(random.choices(string.ascii_uppercase + string.digits, k=8))
     manifest = ET.Element("manifest", {
+        "xmlns": NAMESPACE["ims"],
+        "xmlns:lom": NAMESPACE["lom"],
+        "xmlns:xsi": NAMESPACE["xsi"],
         "identifier": root_id,
         "xsi:schemaLocation": (
             f'{NAMESPACE["ims"]} http://www.imsglobal.org/profile/cc/ccv1p1/ccv1p1_imscp_v1p2_v1p0.xsd '

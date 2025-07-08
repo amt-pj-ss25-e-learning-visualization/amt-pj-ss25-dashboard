@@ -194,17 +194,19 @@ def generate_statement(
 
 def add_instructor_context(statement, material):
     """Add instructor context to a statement based on the material."""
-    for subcourse, info in COURSE_STRUCTURE.items():
-        if material in info["materials"]:
-            instructor_info = info["instructor"]
-            instructor_context = create_context(
-                instructor_name=instructor_info["name"],
-                instructor_email=instructor_info["mbox"].replace("mailto:", ""),
-                parent_activity_name=subcourse,
-                parent_activity_id=f"http://example.com/activities/{subcourse.replace(' ', '_')}"
-            )
-            deep_merge(statement, instructor_context)
-            break
+    for module in COURSE_STRUCTURE["modules"]:
+        module_title = module["title"]
+        for submodule in module["submodules"]:
+            if material == submodule["title"]:
+                instructor_info = module["instructor"]
+                instructor_context = create_context(
+                    instructor_name=instructor_info["name"],
+                    instructor_email=instructor_info["mbox"],
+                    parent_activity_name=module_title,
+                    parent_activity_id=f"http://example.com/activities/{module_title.replace(' ', '_')}"
+                )
+                deep_merge(statement, instructor_context)
+                break
     return statement
 
 def generate_statement_with_context(

@@ -99,7 +99,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(
         description="Generate IMS CC manifest and LOM files from ESCO occupation."
     )
-    parser.add_argument("occupation_uri", help="Refered on the site as concept URI")
+    parser.add_argument("occupation_uri", help="Referenced concept URI at the ESCO site")
     parser.add_argument("catalog", help="categorization/subject area for the course")
     parser.add_argument(
         "--output", "-o", default="output_course",

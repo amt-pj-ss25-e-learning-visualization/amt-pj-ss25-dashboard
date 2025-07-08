@@ -22,7 +22,11 @@ def generate_user_journey_of_inconsistent_learner(user_id, start_date, profile):
     completed_materials = set()
     learning_sessions = {}
 
-    uncompleted_materials = {material for subcourse in COURSE_STRUCTURE.values() for material in subcourse["materials"]}
+    uncompleted_materials = {
+        submodule["title"]
+        for module in COURSE_STRUCTURE["modules"]
+        for submodule in module["submodules"]
+    }
 
     while current_date < start_date + timedelta(days=90):
         if not uncompleted_materials:

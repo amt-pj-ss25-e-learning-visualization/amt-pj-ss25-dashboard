@@ -16,21 +16,22 @@ def generate_user_journey_consistent(user_id, start_date, profile):
     current_date = start_date
 
     # Get materials grouped by subcourse for semi-random ordering
-    materials_by_subcourse = {}
-    for subcourse, content in COURSE_STRUCTURE.items():
-        materials_by_subcourse[subcourse] = content["materials"].copy()
+    materials_by_module = {
+        module["title"]: [sub["title"] for sub in module["submodules"]]
+        for module in COURSE_STRUCTURE["modules"]
+    }
 
     # Process materials with some randomness but maintaining some course structure
-    while materials_by_subcourse:
-        available_subcourses = [s for s, m in materials_by_subcourse.items() if m]
-        if not available_subcourses:
+    while materials_by_module:
+        available_modules = [module_title for module_title, materials in materials_by_module.items() if materials]
+        if not available_modules:
             break
 
-        subcourse = random.choice(available_subcourses)
-        num_materials = min(random.randint(1, 3), len(materials_by_subcourse[subcourse]))
+        module = random.choice(available_modules)
+        num_materials = min(random.randint(1, 3), len(materials_by_module[module]))
         for _ in range(num_materials):
-            material = random.choice(materials_by_subcourse[subcourse])
-            materials_by_subcourse[subcourse].remove(material)
+            material = random.choice(materials_by_module[module])
+            materials_by_module[module].remove(material)
 
             if random.random() < profile["completion_rate"]:
                 material_statements, new_date = generate_material_sessions(
@@ -41,7 +42,7 @@ def generate_user_journey_consistent(user_id, start_date, profile):
 
             current_date = get_next_study_date(current_date, profile, diminished_factor=0.5)
 
-        if not materials_by_subcourse[subcourse]:
-            del materials_by_subcourse[subcourse]
+        if not materials_by_module[module]:
+            del materials_by_module[module]
 
     return statements

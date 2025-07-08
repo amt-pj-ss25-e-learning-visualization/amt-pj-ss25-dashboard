@@ -20,8 +20,11 @@ def generate_user_journey_of_ushaped_learner(user_id, start_date, profile):
     statements = []
     current_date = start_date
     # Get only the learning materials without subcourse structure
-    uncompleted_materials = {material for subcourse in COURSE_STRUCTURE.values() for material in
-                             subcourse["materials"]}
+    uncompleted_materials = {
+        submodule["title"]
+        for module in COURSE_STRUCTURE["modules"]
+        for submodule in module["submodules"]
+    }
     completed_materials = set()
     learning_sessions = {}
 

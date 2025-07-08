@@ -23,7 +23,9 @@ def generate_user_journey_of_diminished_drive_easy_quitter(user_id, start_date, 
     learning_sessions = {}
 
     uncompleted_materials = {
-        material for subcourse in COURSE_STRUCTURE.values() for material in subcourse["materials"]
+        submodule["title"]
+        for module in COURSE_STRUCTURE["modules"]
+        for submodule in module["submodules"]
     }
 
     diminishing_factor = 1.0  # User starts with full motivation
