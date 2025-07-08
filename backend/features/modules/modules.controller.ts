@@ -4,6 +4,7 @@ import { Module } from "./modules.model";
 import { Course } from "../courses/courses.model";
 import { Actor } from "../actors/actors.model";
 import { LearningResource } from "../learningResources/learningResources.model";
+import { omitFields } from "../../common/utils";
 
 class ModulesController extends BaseController<Module> {
   constructor() {
@@ -32,11 +33,7 @@ class ModulesController extends BaseController<Module> {
       }
 
       res.json(
-        this.omitFields(module, [
-          "course_id",
-          "instructor_id",
-          "module_resources",
-        ])
+        omitFields(module, ["course_id", "instructor_id", "module_resources"])
       );
     } catch (error) {
       console.error("Error fetching module by ID:", error);

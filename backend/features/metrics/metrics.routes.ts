@@ -14,9 +14,21 @@ const middleware = new MetricsMiddleware();
  * ```
  */
 router.get(
-  "/moduleScore",
+  "",
   middleware.allowPath("/modules/:moduleId{/actors/:actorId}"),
-  controller.moduleScore
+  controller.getModuleMetrics
 );
 
+/**
+ * Like module score but also aggregates the score metric along the whole course structures
+ * ```
+ * \modules\:moduleId\metrics\moduleScore
+ * \modules\:moduleId\actors\:actorId\metrics\moduleScore
+ * ```
+ */
+router.get(
+  "/aggregated",
+  middleware.allowPath("/courses/:courseId{/actors/:actorId}"),
+  controller.getCourseMetrics
+);
 export default router;

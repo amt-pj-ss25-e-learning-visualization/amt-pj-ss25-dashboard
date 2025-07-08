@@ -1,7 +1,7 @@
 import { Model, DataTypes } from "sequelize";
 import { sequelize } from "../../common/database";
 
-interface ModuleAttributes {
+export interface ModuleAttributes {
   id: string;
   course_id: string;
   parent_id?: string | null;

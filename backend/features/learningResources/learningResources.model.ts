@@ -1,7 +1,7 @@
 import { Model, DataTypes } from "sequelize";
 import { sequelize } from "../../common/database";
 
-interface LearningResourceAttributes {
+export interface LearningResourceAttributes {
   id: string;
   title: string;
   description: string;

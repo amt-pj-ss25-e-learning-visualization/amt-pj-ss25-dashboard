@@ -1,94 +1,303 @@
-import { Score } from "./metrics.types";
 import { Statement } from "../statements/statements.model";
-import { groupBy } from "../../common/utils";
+import {
+  forgettingEffect,
+  groupBy,
+  mean,
+  parseISO8601,
+  sum,
+} from "../../common/utils";
+import { Verb } from "../statements/statements.constants";
+import { LearningResource } from "../learningResources/learningResources.model";
+import { Module } from "../modules/modules.model";
+import { ISO8601Duration } from "../../common/types";
+import {
+  AggregatedMetricObject,
+  Metric,
+  MetricNames,
+  MetricObject,
+} from "./metrics.types";
 
+/**
+ * Class that contains functions for the calculation of metrics.
+ *```
+ * const {
+ *  attempts,
+ *  performance,
+ *  masteryRaw,
+ *  masteryEbbinghaus,
+ *  completion,
+ *  timeSpent,
+ *  realVsExpectedTime,
+ *  lastVisit,
+ *  totalVisits,
+ *  rating
+ * } = await Metrics.compute("some_module_id")
+ * ```
+ */
 export class Metrics {
-  readonly METRIC_TYPES = [
-    "moduleScore",
-    "moduleAvgAttempts",
-    "moduleCompletionRatio",
-  ] as const;
+  /**
+   * Fetchtes the statements of a module, as well as its learning resource.
+   * Then exectutes the calculation for all the metrics.
+   */
+  static async compute(module_id: string): Promise<MetricObject> {
+    const statements = (await Statement.findAll({ where: { module_id } })).sort(
+      (b, a) =>
+        new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime()
+    );
+    const learningResource = (
+      (await Module.findOne({
+        where: { id: module_id },
+        include: [
+          {
+            model: LearningResource,
+            as: "resources",
+          },
+        ],
+      })) as Module & { resources: LearningResource[] }
+    ).resources[0];
 
-  private data: Statement[];
-
-  private readonly _computed: {
-    moduleScore: { [actor: string]: Score };
-    moduleAvgAttempts: number;
-    moduleCompletionRatio: number;
-  } = {
-    moduleScore: {},
-    moduleAvgAttempts: 0,
-    moduleCompletionRatio: 0,
-  };
-
-  constructor(data: Statement[]) {
-    this.data = data;
+    return {
+      attempts: this.getAttempts(statements),
+      performance: this.getPerformance(statements),
+      masteryRaw: this.getMastery(statements, false),
+      masteryEbbinghaus: this.getMastery(statements, true),
+      completion: this.getCompletion(statements),
+      timeSpent: this.getTimeSpent(statements),
+      realVsExpectedTime: this.getTimeToExpectedTime(
+        statements,
+        learningResource
+      ),
+      lastVisit: this.getLastVisit(statements),
+      totalVisits: this.getTotalVisits(statements),
+      rating: this.getRating(statements),
+    };
   }
 
-  public setData(data: Statement[]): void {
-    this.data = data;
-  }
-
-  get computed() {
-    return { ...this._computed };
-  }
-
-  compute(...metrics: (typeof this.METRIC_TYPES)[number][]) {
-    for (const metric of metrics) {
-      this[metric]();
-    }
-    return this;
-  }
-
-  /* -------------------------------------------------------------------------- */
-  /*                                   METRICS                                  */
-  /* -------------------------------------------------------------------------- */
-  private moduleScore() {
-    const statementsGroupedByActor = groupBy(this.data, "actor_id");
-    const scores: { [K: string]: Score } = {};
-    for (const actor in statementsGroupedByActor) {
-      const scoredStatements = statementsGroupedByActor[actor].filter(
-        (s) => s.verb === "scored"
-      );
-      const attempts = scoredStatements.length;
-      const highestScore = scoredStatements.reduce((prev, curr) => {
-        if (!curr.result?.score || curr.result.score.raw === undefined)
-          return prev;
-        if (curr.result.score.raw >= prev) return curr.result.score.raw;
-        return prev;
-      }, 0);
-      const completed = !!statementsGroupedByActor[actor].find(
-        (s) => s.verb === "completed"
-      );
-      scores[actor] = {
-        attempts,
-        highestScore,
-        completed,
+  static aggregate(metrics: MetricObject[]): AggregatedMetricObject {
+    const aggregatedMetrics: Partial<AggregatedMetricObject> = {};
+    for (const metricName of MetricNames) {
+      const data = metrics
+        .reduce((prev, curr) => {
+          const flattenedData = [...prev];
+          for (const actorData of curr[metricName].data) {
+            const index = flattenedData.findIndex(
+              (d) => d.actor === actorData.actor
+            );
+            if (index !== -1) {
+              flattenedData[index].values = [
+                ...flattenedData[index].values,
+                actorData.value,
+              ];
+            } else {
+              flattenedData.push({
+                actor: actorData.actor,
+                values: [actorData.value],
+              });
+            }
+          }
+          return flattenedData;
+        }, [] as { actor: string; values: number[] }[])
+        .map((dataEntry) => ({
+          ...dataEntry,
+          ...this.getStatistics(dataEntry.values),
+          sum: sum(...dataEntry.values),
+        }));
+      aggregatedMetrics[metricName] = {
+        data,
+        ...this.getStatistics(data, "mean"),
+        meanOfSums: mean(...data.map((d) => d.sum)),
       };
     }
-    this._computed.moduleScore = scores;
+    return aggregatedMetrics as AggregatedMetricObject;
   }
 
-  private moduleAvgAttempts() {
-    if (!this._computed.moduleScore) this.moduleScore();
-    if (!this._computed.moduleScore) return;
-    const scores = this._computed.moduleScore;
-    const actors = Object.keys(scores);
-    const actualAttempts = actors
-      .filter((actor) => scores[actor].attempts > 0)
-      .map((actor) => scores[actor]);
-    this._computed.moduleAvgAttempts = actualAttempts.length
-      ? actualAttempts.reduce((prev, curr) => curr.attempts + prev, 0) /
-        actualAttempts.length
-      : 0;
+  /* --------------------------- METRIC CALCULATION --------------------------- */
+
+  private static getAttempts(statements: Statement[]): Metric {
+    const data = this.calculateOnActor(
+      statements,
+      [Verb.scored],
+      (actor, groups) => groups[actor].length
+    );
+    const withoutNoAttempt = data
+      .filter((d) => d.value > 0)
+      .map((d) => d.value);
+    return { data, ...this.getStatistics(withoutNoAttempt) };
   }
 
-  private moduleCompletionRatio() {
-    if (!this._computed.moduleScore) this.moduleScore();
-    if (!this._computed.moduleScore) return;
-    const scores = this._computed.moduleScore;
-    const actors = Object.keys(scores);
-    this._computed.moduleCompletionRatio =
-      actors.filter((user) => scores[user].completed).length / actors.length;
+  private static getPerformance(statements: Statement[]): Metric {
+    const data = this.calculateOnActor(
+      statements,
+      [Verb.scored],
+      (actor, groups) =>
+        Math.max(
+          ...groups[actor]
+            .map((statement) => statement.result?.score?.scaled)
+            .filter((statement) => statement !== undefined)
+        )
+    );
+    return { data, ...this.getStatistics(data, "value") };
+  }
+
+  private static getMastery(
+    statements: Statement[],
+    withForgetting: boolean
+  ): Metric {
+    const completedStatementsGrouped = groupBy(
+      statements.filter((statement) => statement.verb === Verb.completed),
+      "actor_id"
+    );
+    const data = this.calculateOnActor(
+      statements,
+      [Verb.evaluated],
+      (actor, groups) => {
+        const lastEntry = groups[actor][groups[actor].length - 1];
+        if (lastEntry?.result?.score?.scaled === undefined) return null;
+        if (!withForgetting) return lastEntry.result.score.scaled;
+        const from = new Date(lastEntry.timestamp).getTime();
+        const to = completedStatementsGrouped[actor]?.length
+          ? new Date(
+              completedStatementsGrouped[actor][
+                completedStatementsGrouped[actor].length - 1
+              ].timestamp
+            ).getTime()
+          : Date.now();
+        if (to <= from) return lastEntry.result.score.scaled;
+        const timePastInMin = (to - from) / 60000;
+        const forgetRate = forgettingEffect(
+          timePastInMin,
+          groups[actor].length
+        );
+        return lastEntry.result.score.scaled * forgetRate;
+      }
+    );
+    return { data, ...this.getStatistics(data, "value") };
+  }
+
+  private static getCompletion(statements: Statement[]): Metric {
+    const completedStatementsGrouped = groupBy(
+      statements.filter((statement) => statement.verb === Verb.completed),
+      "actor_id"
+    );
+    const data = this.calculateOnActor(
+      statements,
+      [Verb.initialized],
+      (actor) => (completedStatementsGrouped[actor]?.length ? 1 : 0)
+    );
+    return { data, ...this.getStatistics(data, "value") };
+  }
+
+  /**
+   * Calculates the time spent as the sum of parsed duration values \
+   * in statements with the verb `exited`. \
+   * Time in milliseconds.
+   */
+  private static getTimeSpent(statements: Statement[]): Metric {
+    const data = this.calculateOnActor(
+      statements,
+      [Verb.exited],
+      (actor, groups) =>
+        sum(...groups[actor].map((s) => parseISO8601(s.result?.duration)))
+    );
+    return { data, ...this.getStatistics(data, "value") };
+  }
+
+  private static getTimeToExpectedTime(
+    statements: Statement[],
+    resource: LearningResource
+  ): Metric {
+    const expectedTime = parseISO8601(
+      resource.typical_learning_time as ISO8601Duration
+    );
+    const data = this.calculateOnActor(
+      statements,
+      [Verb.exited],
+      (actor, groups) =>
+        mean(
+          ...groups[actor].map(
+            (s) => parseISO8601(s.result?.duration) / expectedTime
+          )
+        )
+    );
+    return { data, ...this.getStatistics(data, "value") };
+  }
+
+  private static getLastVisit(statements: Statement[]): Metric {
+    const completedStatementsGrouped = groupBy(
+      statements.filter((statement) => statement.verb === Verb.completed),
+      "actor_id"
+    );
+    const data = this.calculateOnActor(
+      statements,
+      [Verb.exited, Verb.initialized],
+      (actor, groups) => {
+        const from = new Date(
+          groups[actor][groups[actor].length - 1].timestamp
+        ).getTime();
+        const to = !completedStatementsGrouped[actor]
+          ? Date.now()
+          : new Date(
+              completedStatementsGrouped[actor][
+                completedStatementsGrouped[actor].length - 1
+              ].timestamp
+            ).getTime();
+        return Math.max(to - from, 0);
+      }
+    );
+    return { data, ...this.getStatistics(data, "value") };
+  }
+
+  private static getTotalVisits(statements: Statement[]): Metric {
+    const data = this.calculateOnActor(
+      statements,
+      [Verb.initialized],
+      (actor, groups) => groups[actor].length
+    );
+    return { data, ...this.getStatistics(data, "value") };
+  }
+
+  private static getRating(statements: Statement[]): Metric {
+    const data = this.calculateOnActor(
+      statements,
+      [Verb.rated],
+      (actor, groups) => {
+        const rating =
+          groups[actor][groups[actor].length - 1].result?.score?.raw;
+        return rating !== undefined ? rating : null;
+      }
+    );
+    return { data: data, ...this.getStatistics(data, "value") };
+  }
+
+  /* ---------------------------------- UTILS --------------------------------- */
+
+  private static calculateOnActor(
+    statements: Statement[],
+    verbs: Verb[],
+    calculation: (
+      actor: string,
+      groups: { [actor: string]: Statement[] }
+    ) => number | null
+  ) {
+    const statementsByActor = groupBy(
+      statements.filter((statement) => verbs.some((v) => v === statement.verb)),
+      "actor_id"
+    );
+    const data: Metric["data"] = [];
+    for (const actor in statementsByActor) {
+      const value = calculation(actor, statementsByActor);
+      if (value === null) continue;
+      data.push({ actor, value });
+    }
+    return data;
+  }
+
+  private static getStatistics(data: any[], key?: string) {
+    const values = (!key ? data : data.map((d) => d[key])) as number[];
+    return {
+      mean: mean(...values),
+      min: Math.min(...values),
+      max: Math.max(...values),
+    };
   }
 }
