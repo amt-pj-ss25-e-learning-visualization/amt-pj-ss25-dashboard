@@ -102,8 +102,20 @@ def generate_lom_xml(
     out_path
 ):
     """
-    Generate a LOM XML file for a learning object (submodule).
+    Generate a LOM XML file for a learning object (submodule) with random values for specific tags.
     """
+
+    # Allowed ranges for the different metadata fields
+    interactivity_types = ["active", "expositive", "mixed"]
+    learning_resource_types = [
+        "Exercise", "simulation", "questionnaire", "diagram", "figure",
+        "graph", "index", "slide", "table", "narrativetext"
+    ]
+    rating_levels = ["high", "low", "medium", "very high", "very low"]
+    difficulties = ["difficult", "easy", "medium", "very difficult", "very easy"]
+
+    # Generate typical learning time
+    typical_learning_time = f"PT{random.randint(1, 30)}M{random.randint(0, 59)}S"
 
     # Create root element with namespace
     lom = ET.Element("lom", xmlns="http://ltsc.ieee.org/xsd/LOM")
@@ -131,17 +143,18 @@ def generate_lom_xml(
     # Set the properties of the learning object
     educational = ET.SubElement(lom, "educational")
     for tag, value in [
-        ("interactivityType", "expositive"),
-        ("learningResourceType", "narrative text"),
-        ("interactivityLevel", "low"),
-        ("semanticDensity", "low"),
-        ("difficulty", "low")
+        ("interactivityType", random.choice(interactivity_types)),
+        ("learningResourceType", random.choice(learning_resource_types)),
+        ("interactivityLevel", random.choice(rating_levels)),
+        ("semanticDensity", random.choice(rating_levels)),
+        ("difficulty", random.choice(difficulties))
     ]:
         t = ET.SubElement(educational, tag)
         ET.SubElement(t, "source").text = "LOMv1.0"
         ET.SubElement(t, "value").text = value
+
     typicalLearningTime = ET.SubElement(educational, "typicalLearningTime")
-    ET.SubElement(typicalLearningTime, "duration").text = "PT5M30S"
+    ET.SubElement(typicalLearningTime, "duration").text = typical_learning_time
 
     classification = ET.SubElement(lom, "classification")
     purpose = ET.SubElement(classification, "purpose")
