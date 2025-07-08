@@ -28,9 +28,9 @@ def insert_statements(cur, data, modules, resources, statement_id_to_module_id, 
     """
     for stmt in data:
         actor_id = get_or_create_actor(cur, stmt['actor'])
-        verb = stmt['verb']['id']
+        verb = stmt['verb']['id'].split('/')[-1]
 
-        if verb != 'http://adlnet.gov/expapi/verbs/evaluated':
+        if verb != 'evaluated':
             module_id = find_module_for_statement(stmt, modules, resources)
         else:
             statement_ref_id = stmt.get('object', {}).get('id')
