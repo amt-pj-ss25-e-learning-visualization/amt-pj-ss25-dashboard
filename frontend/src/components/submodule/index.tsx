@@ -1,12 +1,9 @@
-import { CourseDetailsDto, StatementDto } from "@/types/dto";
+import { CourseDetailsDto } from "@/types/dto";
 import { CheckCircle, Layers, Sparkles } from "lucide-react";
 import { Ressource } from "../ressource";
 import { useActor } from "@/context/actor-context";
 import { useStatementsByActorAndModule } from "@/hooks/use-statements";
-import { useMemo } from "react";
-import { parseISO8601 } from "../../../../backend/common/utils";
-import { ISO8601Duration } from "../../../../backend/common/types";
-import { useScore } from "@/hooks/use-metrics";
+import { useMetrics } from "@/hooks/use-metrics";
 import { cn } from "@/lib/utils";
 import { StarRating } from "../rating";
 import { TimeMetric } from "../timeMetric";
@@ -17,13 +14,6 @@ type Module = CourseDetailsDto["modules"][number]["submodules"][number];
 type Props = {
   module: Module;
 };
-
-const initialized = (s: StatementDto) => s.verb === "initialized";
-const rated = (s: StatementDto) => s.verb === "rated";
-const exited = (s: StatementDto) => s.verb === "exited";
-const scored = (s: StatementDto) => s.verb === "scored";
-const sortRecency = (a: StatementDto, b: StatementDto) =>
-  new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime();
 
 const formatDuration = (milli: number): string => {
   const totalSeconds = Math.floor(milli / 1000);
@@ -36,87 +26,67 @@ const formatDuration = (milli: number): string => {
 export const Submodule = ({ module }: Props) => {
   const { currentActor } = useActor();
   const { data } = useStatementsByActorAndModule(module.id, currentActor?.id);
-  const { data: score } = useScore(module.id, currentActor?.id);
-  const metrics = useMemo(() => {
-    if (!data) return {};
-    const visited = data.filter(initialized).length;
-    const timeSpentInMilliseconds =
-      data
-        .filter(exited)
-        .map((s) =>
-          s.result?.duration
-            ? parseISO8601(s.result?.duration as ISO8601Duration)
-            : 0
-        )
-        .reduce((prev, curr) => prev + curr, 0) *
-      60 *
-      1000;
-    const timeSpent =
-      timeSpentInMilliseconds === 0
-        ? undefined
-        : formatDuration(timeSpentInMilliseconds);
-    const exitsSorted = data.filter(exited).sort(sortRecency);
-    const timeSinceLastVisit = exitsSorted.length
-      ? formatDuration(
-          Date.now() - new Date(exitsSorted[0].timestamp).getTime()
-        )
-      : undefined;
-    const ratedSorted = data.filter(rated).sort(sortRecency);
-    const rating = ratedSorted.length
-      ? ratedSorted[0].result?.score
-      : undefined;
-    const scoredData = data.filter(scored);
-    const maxScore = scoredData[0]
-      ? scoredData[0].result?.score?.max
-      : undefined;
+  const { data: metrics } = useMetrics(module.id, currentActor?.id);
 
-    return {
-      visited,
-      timeSpent,
-      timeSinceLastVisit,
-      rating,
-      score,
-      maxScore,
-    };
-  }, [data, score]);
-
-  if (!data) return null;
+  if (!data || !metrics || !currentActor) return null;
+  // TODO: make this part nicer
+  const completed = !!metrics.completion.data.find(
+    (d) => d.actor === currentActor.id
+  )?.value;
+  const visits =
+    metrics.totalVisits.data.find((d) => d.actor === currentActor.id)?.value ||
+    0;
+  const timeSpent = metrics.timeSpent.data.find(
+    (d) => d.actor === currentActor.id
+  )?.value;
+  const lastVisit = metrics.lastVisit.data.find(
+    (d) => d.actor === currentActor.id
+  )?.value;
+  const performance = metrics.performance.data.find(
+    (d) => d.actor === currentActor.id
+  )?.value;
+  const rating = metrics.rating.data.find(
+    (d) => d.actor === currentActor.id
+  )?.value;
 
   return (
     <div
       className={cn(
         "pl-5 ml-2 border-l-2 border-blue-100 mt-6 space-y-2",
-        metrics.score?.actor?.completed ? "border-green-200" : ""
+        completed ? "border-green-200" : ""
       )}
     >
       <div
         className={cn(
           "flex items-center gap-2 text-base font-medium text-blue-600",
-          metrics.score?.actor?.completed ? "text-green-500" : ""
+          completed ? "text-green-500" : ""
         )}
       >
         <Layers className="w-4 h-4" />
         {module.title}
-        {metrics.score?.actor?.completed && (
+        {completed && (
           <span className="flex-1 flex justify-end">
             <CheckCircle />
           </span>
         )}
-        {metrics.visited === 0 && (
+        {visits === 0 && (
           <Sparkles size={18} className="fill-amber-400 text-amber-300" />
         )}
       </div>
-      {!metrics.score?.actor?.completed && (
+      {!completed && visits > 0 && (
         <TimeMetric
-          timeSpent={metrics.timeSpent}
-          lastVisit={metrics.timeSinceLastVisit}
-          visits={metrics.visited}
+          timeSpent={formatDuration(timeSpent || 0)}
+          lastVisit={formatDuration(lastVisit || 0)}
+          visits={visits}
         />
       )}
-      {/* TODO: Attempts */}
-      {/* TODO: Completion ratio */}
-      {metrics.score && metrics.maxScore && (
-        <Score score={metrics.score} max={metrics.maxScore} />
+      {performance !== undefined && (
+        <Score
+          score={Math.round(performance * 100)}
+          max={100}
+          mean={Math.round(metrics.performance.mean * 100)}
+          passed={completed}
+        />
       )}
       {module.resources.length &&
         module.resources.map((ressource) => (
@@ -124,7 +94,7 @@ export const Submodule = ({ module }: Props) => {
         ))}
       <div className="mt-4 mr-4 flex gap-2 w-full items-center justify-end">
         {metrics?.rating ? "Your rating of this module:" : "Rate this module:"}
-        <StarRating rating={metrics?.rating?.raw} of={metrics?.rating?.max} />
+        <StarRating rating={rating} of={5} />
       </div>
     </div>
   );

@@ -5,12 +5,13 @@ import {
   RadialBar,
   RadialBarChart,
 } from "recharts";
-import { ScoreDTO } from "../../../../backend/features/metrics/metrics.dto";
 import { ChartContainer, ChartTooltip, ChartTooltipContent } from "../ui/chart";
 
 type Props = {
-  score: ScoreDTO["response"];
+  score: number;
   max: number;
+  mean: number;
+  passed: boolean;
 };
 
 const chartConfig = {
@@ -22,24 +23,17 @@ const chartConfig = {
   },
 };
 
-export const Score = ({ score, max }: Props) => {
-  const highscore = score.actor?.highestScore || 0;
-  const avg = Math.round(
-    score.module.overallAchievedScores.reduce((prev, curr) => prev + curr, 0) /
-      score.module.overallAchievedScores.length
-  );
+export const Score = ({ score, max, mean, passed }: Props) => {
   const chartData = [
     {
       label: "avg",
-      score: avg,
+      score: mean,
       fill: "var(--color-gray-200)",
     },
     {
       label: "actor",
-      score: highscore,
-      fill: score.actor?.completed
-        ? "var(--color-green-500)"
-        : "var(--color-blue-500)",
+      score: score,
+      fill: passed ? "var(--color-green-500)" : "var(--color-blue-500)",
     },
     { label: "max", score: max, fill: "transparent" },
   ];
