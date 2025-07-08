@@ -21,19 +21,19 @@ def print_statistics(statements):
     # Build id_to_material mapping
     for stmt in statements:
         if "object" in stmt and "definition" in stmt["object"] and "name" in stmt["object"]["definition"]:
-            material = stmt['object']['definition']['name']['de-DE']
+            material = stmt['object']['definition']['name']['en-US']
             id_to_material[stmt["id"]] = material
             stats['materials'].add(material)
 
     # Collect self-evaluations
     for stmt in statements:
-        verb = stmt.get('verb', {}).get('display', {}).get('de-DE')
+        verb = stmt.get('verb', {}).get('display', {}).get('en-US')
         stats['verbs'][verb] += 1
 
         # Get material name directly if possible
         material = None
         if "object" in stmt and "definition" in stmt["object"] and "name" in stmt["object"]["definition"]:
-            material = stmt['object']['definition']['name']['de-DE']
+            material = stmt['object']['definition']['name']['en-US']
         
         # Look up referenced statement material (via StatementRef)
         elif "object" in stmt and "id" in stmt["object"]:

@@ -76,10 +76,9 @@ def parse_modules_from_manifest(manifest_path):
 
     def walk_items(parent_elem_list, parent_id=None):
         for item in parent_elem_list:
-            module_title = item.findtext('ims:title', default="Untitled Module", namespaces=ns)
-            identifier = item.attrib.get('identifier')
+            module_title = item.findtext('ims:title', namespaces=ns)
             resource_ref = item.attrib.get('identifierref')
-            module_id = str(uuid.uuid5(uuid.NAMESPACE_DNS, identifier))
+            module_id = str(uuid.uuid5(uuid.NAMESPACE_DNS, module_title))
             modules.append({
                 'id': module_id,
                 'title': module_title,

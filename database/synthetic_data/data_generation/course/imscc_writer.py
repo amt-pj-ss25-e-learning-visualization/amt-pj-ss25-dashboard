@@ -52,13 +52,13 @@ def generate_manifest(
     
     # Course Title
     lomimscc_title = ET.SubElement(lomimscc_general, "{%s}title" % NAMESPACE["lomimscc"])
-    lomimscc_title_str = ET.SubElement(lomimscc_title, "{%s}string" % NAMESPACE["lomimscc"], language="de")
+    lomimscc_title_str = ET.SubElement(lomimscc_title, "{%s}string" % NAMESPACE["lomimscc"], language="en")
     lomimscc_title_str.text = lomimscc_title_str.text = course_title.split("/")[0].strip()
-    ET.SubElement(lomimscc_general, "{%s}language" % NAMESPACE["lomimscc"]).text = "de"
+    ET.SubElement(lomimscc_general, "{%s}language" % NAMESPACE["lomimscc"]).text = "en"
     
     # Course Description
     lomimscc_desc = ET.SubElement(lomimscc_general, "{%s}description" % NAMESPACE["lomimscc"])
-    lomimscc_desc_str = ET.SubElement(lomimscc_desc, "{%s}string" % NAMESPACE["lomimscc"], language="de")
+    lomimscc_desc_str = ET.SubElement(lomimscc_desc, "{%s}string" % NAMESPACE["lomimscc"], language="en")
     lomimscc_desc_str.text = course_desc
     
     # Identifier (Entry code & Catalog)
@@ -127,18 +127,18 @@ def generate_lom_xml(
     
     # Title & Language
     title = ET.SubElement(general, "title")
-    ET.SubElement(title, "string", language="de-DE").text = lo_name
-    ET.SubElement(general, "language").text = "de-DE"
+    ET.SubElement(title, "string", language="en-US").text = lo_name
+    ET.SubElement(general, "language").text = "en-US"
     
     # Description
     desc = ET.SubElement(general, "description")
-    ET.SubElement(desc, "string", language="de-DE").text = lo_desc
+    ET.SubElement(desc, "string", language="en-US").text = lo_desc
 
     # Keywords
     keyword = ET.SubElement(general, "keyword")
-    ET.SubElement(keyword, "string", language="de-DE").text = "Learning"
-    ET.SubElement(keyword, "string", language="de-DE").text = "Object"
-    ET.SubElement(keyword, "string", language="de-DE").text = f"{lo_id:02d}"
+    ET.SubElement(keyword, "string", language="en-US").text = "Learning"
+    ET.SubElement(keyword, "string", language="en-US").text = "Object"
+    ET.SubElement(keyword, "string", language="en-US").text = f"{lo_id:02d}"
 
     # Set the properties of the learning object
     educational = ET.SubElement(lom, "educational")
@@ -162,11 +162,11 @@ def generate_lom_xml(
     ET.SubElement(purpose, "value").text = "competency"
     taxonPath = ET.SubElement(classification, "taxonPath")
     source = ET.SubElement(taxonPath, "source")
-    ET.SubElement(source, "string", language="de-DE").text = "ESCO"
+    ET.SubElement(source, "string", language="en-US").text = "ESCO"
     taxon = ET.SubElement(taxonPath, "taxon")
     ET.SubElement(taxon, "id").text = skill["uri"]
     entry = ET.SubElement(taxon, "entry")
-    ET.SubElement(entry, "string", language="de-DE").text = skill["title"]
+    ET.SubElement(entry, "string", language="en-US").text = skill["title"]
 
     # Write the LOM XML to file
     tree = ET.ElementTree(lom)

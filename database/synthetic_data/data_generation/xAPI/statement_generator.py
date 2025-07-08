@@ -66,13 +66,13 @@ def create_context(
             {
                 "id": parent_activity_id,
                 "definition": {
-                    "name": {"de-DE": parent_activity_name}
+                    "name": {"en-US": parent_activity_name}
                 }
             },
             {
                 "id": f"http://example.com/activities/{course_title.replace(' ', '_')}",
                 "definition": {
-                    "name": {"de-DE": course_title}
+                    "name": {"en-US": course_title}
                 }
             }
         ]
@@ -94,7 +94,7 @@ def generate_statement(
         },
         "verb": {
             "id": f"http://adlnet.gov/expapi/verbs/{verb}",
-            "display": {"de-DE": verb}
+            "display": {"en-US": verb}
         }
     }
 
@@ -107,7 +107,7 @@ def generate_statement(
         statement["object"] = {
             "id": f"http://example.com/activities/{activity.replace(' ', '_')}",
             "definition": {
-                "name": {"de-DE": activity}
+                "name": {"en-US": activity}
             }
         }
 
