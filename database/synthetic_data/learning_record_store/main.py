@@ -56,13 +56,13 @@ if __name__ == "__main__":
             print(">> Inserting learning resources into 'learning_resources' table...")
             resource_id_map = {}
             lr_count = 0
-            for identifier, url in resources.items():
-                if not url.endswith('.xml'):
+            for identifier, path in resources.items():  # 'path' is now relative to the manifest location
+                if not path.endswith('.xml'):
                     continue
-                xml_bytes = get_resource_xml(url)
+                xml_bytes = get_resource_xml(path)  # Pass the relative path directly
                 meta = parse_learning_resource_xml(xml_bytes)
-                lr_id = str(uuid.uuid5(uuid.NAMESPACE_URL, url))
-                resource_id_map[url] = lr_id
+                lr_id = str(uuid.uuid5(uuid.NAMESPACE_URL, path))
+                resource_id_map[path] = lr_id
                 cur.execute("""
                     INSERT INTO learning_resources
                     (id, title, description, language, interactivity_type, interactivity_level, learning_resource_type, semantic_density, difficulty, typical_learning_time)

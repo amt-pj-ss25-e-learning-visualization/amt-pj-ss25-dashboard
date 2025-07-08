@@ -1,6 +1,6 @@
 import json
 
-def find_module_for_statement(stmt, modules, resources):
+def find_module_for_statement(stmt, modules):
     """
     Try to find the module whose title matches the statement's object definition name.
     """
@@ -18,7 +18,7 @@ def build_statement_id_to_module_id_map(data, modules, resources):
     for stmt in data:
         verb = stmt['verb']['id']
         if verb != 'http://adlnet.gov/expapi/verbs/evaluated':
-            module_id = find_module_for_statement(stmt, modules, resources)
+            module_id = find_module_for_statement(stmt, modules)
             statement_id_to_module_id[stmt['id']] = module_id
     return statement_id_to_module_id
 
@@ -31,7 +31,7 @@ def insert_statements(cur, data, modules, resources, statement_id_to_module_id, 
         verb = stmt['verb']['id'].split('/')[-1]
 
         if verb != 'evaluated':
-            module_id = find_module_for_statement(stmt, modules, resources)
+            module_id = find_module_for_statement(stmt, modules)
         else:
             statement_ref_id = stmt.get('object', {}).get('id')
             module_id = statement_id_to_module_id.get(statement_ref_id)

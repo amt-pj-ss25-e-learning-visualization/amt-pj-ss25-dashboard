@@ -1,5 +1,6 @@
 import xml.etree.ElementTree as ET
 import uuid
+from pathlib import Path
 
 def parse_imsmanifest(manifest_path):
     """
@@ -10,12 +11,16 @@ def parse_imsmanifest(manifest_path):
     tree = ET.parse(manifest_path)
     root = tree.getroot()
     resources = {}
+
+    manifest_dir = Path(manifest_path).parent  # Get the directory containing the manifest file
+
     for res in root.findall('.//ims:resource', ns):
         identifier = res.attrib.get('identifier')
         file_elem = res.find('ims:file', ns)
         if file_elem is not None:
             href = file_elem.attrib.get('href')
-            resources[identifier] = href
+            absolute_path = manifest_dir / href # Local path to the LOM file
+            resources[identifier] = str(absolute_path)
     return resources
 
 def parse_course_metadata(manifest_path):

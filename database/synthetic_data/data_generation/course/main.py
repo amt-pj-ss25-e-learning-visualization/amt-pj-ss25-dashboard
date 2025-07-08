@@ -62,12 +62,10 @@ def main(occupation_uri, catalog, out_dir="output_course"):
             res_id = f"LO_{lo_counter:02d}_R"
             lom_file = f"loms/{lo_counter:02d}.xml"
             lo_name = f"Learning Object {lo_counter:02d}"
-            lo_desc = sub['title']
             try:
-                desc = fetch_skill_description(sub["uri"])
-                if desc:
-                    lo_desc = f"{sub['title']} ({desc[:60]}...)"
+                lo_desc = fetch_skill_description(sub["uri"])
             except Exception:
+                lo_desc = None
                 pass
 
             # Generate LOM that will be referenced by a submodule
