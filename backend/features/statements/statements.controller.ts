@@ -3,6 +3,7 @@ import { BaseController } from "../../common/baseController";
 import { Statement } from "./statements.model";
 import { Actor } from "../actors/actors.model";
 import { Module } from "../modules/modules.model";
+import { omitFields } from "../../common/utils";
 
 class StatementsController extends BaseController<Statement> {
   constructor() {
@@ -28,7 +29,7 @@ class StatementsController extends BaseController<Statement> {
           .json({ error: `404: Entry with id '${id}' not found!` });
         return;
       }
-      res.json(this.omitFields(statement, ["actor_id", "module_id"]));
+      res.json(omitFields(statement, ["actor_id", "module_id"]));
     } catch (error) {
       console.error("Error fetching statement by ID:", error);
       res.status(500).json({ error: "500: Unexpected error occured!" });

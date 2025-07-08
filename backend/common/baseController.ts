@@ -63,32 +63,4 @@ export class BaseController<T extends Model> {
         res.status(500).json({ error: "500: Unexpected error occured!" });
       }
     };
-
-  /**
-   * Recursively removes specified fields from an object properties (nested object or array).
-   * This function is being used to remove fields that are not needed in an API response,
-   * @param obj - The object to process.
-   * @param fields - The fields to remove.
-   * @returns A object with the specified fields removed.
-   */
-  protected omitFields(obj: any, fields: string[]): any {
-    const object =
-      obj && typeof obj.get === "function" ? obj.get({ object: true }) : obj;
-
-    if (Array.isArray(object)) {
-      return object.map((item) => this.omitFields(item, fields));
-    } else if (object instanceof Date) {
-      return object;
-    } else if (object && typeof object === "object") {
-      const result: any = {};
-      for (const key in object) {
-        if (!fields.includes(key)) {
-          result[key] = this.omitFields(object[key], fields);
-        }
-      }
-      return result;
-    }
-
-    return object;
-  }
 }
