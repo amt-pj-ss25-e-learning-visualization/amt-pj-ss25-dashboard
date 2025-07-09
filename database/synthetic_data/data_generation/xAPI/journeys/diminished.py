@@ -13,7 +13,7 @@ from xAPI.utils import (
 from xAPI.config import TEST_PASS_THRESHOLD
 from xAPI.session_generators import generate_learning_session, generate_test_session
 
-def generate_user_journey_of_diminished_drive_easy_quitter(user_id, start_date, profile):
+def generate_user_journey_of_diminished_drive_easy_quitter(user_id, start_date, profile, skip_probability):
     """
     Generates a learning journey for a user who starts highly motivated but whose engagement diminishes over time.
     """
@@ -36,6 +36,11 @@ def generate_user_journey_of_diminished_drive_easy_quitter(user_id, start_date, 
             break
 
         material = random.choice(list(uncompleted_materials))
+
+        if random.random() < skip_probability:
+            uncompleted_materials.remove(material)
+            continue
+
         difficulty_decimal = get_difficulty_decimal(material)
         if random.random() < profile["completion_rate"] * diminishing_factor:
             duration = random.randint(

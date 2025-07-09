@@ -25,7 +25,7 @@ if __name__ == "__main__":
     print(f"Found {len(resources)} resources in manifest.")
 
     print(">> Parsing course metadata...")
-    course_title, course_desc, course_lang = parse_course_metadata(IMS_MANIFEST)
+    course_title, course_desc, course_lang, course_subj = parse_course_metadata(IMS_MANIFEST)
     print(f"Course title: {course_title}")
 
     print(">> Parsing modules from manifest...")
@@ -49,9 +49,9 @@ if __name__ == "__main__":
             print(">> Inserting course into 'courses' table...")
             course_id = str(uuid.uuid4())
             cur.execute("""
-                INSERT INTO courses (id, title, description, language)
-                VALUES (%s, %s, %s, %s)
-            """, (course_id, course_title, course_desc, course_lang))
+                INSERT INTO courses (id, title, description, subject, language)
+                VALUES (%s, %s, %s, %s, %s)
+            """, (course_id, course_title, course_desc, course_subj, course_lang))
 
             print(">> Inserting learning resources into 'learning_resources' table...")
             resource_id_map = {}

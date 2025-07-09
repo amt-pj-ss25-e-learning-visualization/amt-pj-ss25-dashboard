@@ -13,7 +13,7 @@ from xAPI.utils import (
 from xAPI.config import TEST_PASS_THRESHOLD
 from xAPI.session_generators import generate_learning_session, generate_test_session
 
-def generate_user_journey_of_ushaped_learner(user_id, start_date, profile):
+def generate_user_journey_of_ushaped_learner(user_id, start_date, profile, skip_probability):
     """
     Generate a learning journey for a U-shaped learner (starts strong, declines, recovers)
     """
@@ -45,6 +45,11 @@ def generate_user_journey_of_ushaped_learner(user_id, start_date, profile):
         else:  # Recovery phase
             engagement_multiplier = 2.5
             study_frequency_modifier = 2
+
+        if random.random() < skip_probability:
+            material = random.choice(list(uncompleted_materials))
+            uncompleted_materials.remove(material)
+            continue
 
         # Randomly search for any material (including completed ones)
         if random.random() < (0.4 * engagement_multiplier) and (uncompleted_materials or completed_materials):

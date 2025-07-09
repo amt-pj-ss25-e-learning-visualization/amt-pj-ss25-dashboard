@@ -26,7 +26,7 @@ def parse_imsmanifest(manifest_path):
 def parse_course_metadata(manifest_path):
     """
     Parse the course metadata from the IMS manifest file.
-    Returns the course title, description, and language.
+    Returns the course title, description, subject and language.
     """
     ns = {
         'ims': 'http://www.imsglobal.org/xsd/imsccv1p1/imscp_v1p1',
@@ -34,18 +34,15 @@ def parse_course_metadata(manifest_path):
     }
     tree = ET.parse(manifest_path)
     root = tree.getroot()
-    title = description = language = None
     lom = root.find('.//ims:metadata/lomimscc:lom', ns)
     if lom is not None:
         title_elem = lom.find('.//lomimscc:general/lomimscc:title/lomimscc:string', ns)
         desc_elem = lom.find('.//lomimscc:general/lomimscc:description/lomimscc:string', ns)
         lang_elem = lom.find('.//lomimscc:general/lomimscc:language', ns)
-        title = title_elem.text if title_elem is not None else "Imported Course"
-        description = desc_elem.text if desc_elem is not None else "Imported from IMS"
-        language = lang_elem.text if lang_elem is not None else "und"
+        catalog_elem = lom.find('.//lomimscc:general/lomimscc:identifier/lomimscc:catalog', ns)
     else:
         raise ValueError("No LOM metadata found in the manifest file.")
-    return title, description, language
+    return title_elem.text, desc_elem.text, lang_elem.text, catalog_elem.text
 
 def parse_modules_from_manifest(manifest_path):
     """

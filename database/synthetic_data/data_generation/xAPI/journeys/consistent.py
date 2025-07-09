@@ -8,9 +8,10 @@ from xAPI.course_structure import COURSE_STRUCTURE
 from xAPI.session_generators import generate_material_sessions
 from xAPI.utils import get_next_study_date
 
-def generate_user_journey_consistent(user_id, start_date, profile):
+def generate_user_journey_consistent(user_id, start_date, profile, skip_probability):
     """
     Generate a consistent learning journey for a user who follows a structured approach.
+    Some submodules may be skipped based on the skip_probability.
     """
     statements = []
     current_date = start_date
@@ -32,6 +33,9 @@ def generate_user_journey_consistent(user_id, start_date, profile):
         for _ in range(num_materials):
             material = random.choice(materials_by_module[module])
             materials_by_module[module].remove(material)
+
+            if random.random() < skip_probability:
+                continue
 
             if random.random() < profile["completion_rate"]:
                 material_statements, new_date = generate_material_sessions(
