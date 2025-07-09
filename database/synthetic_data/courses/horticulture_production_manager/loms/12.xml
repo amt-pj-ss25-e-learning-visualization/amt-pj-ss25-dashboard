@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='utf-8'?>
+<lom xmlns="http://ltsc.ieee.org/xsd/LOM">
+	<general>
+		<identifier>
+			<entry>https://example.com/objectMetadata/12</entry>
+		</identifier>
+		<title>
+			<string language="en-US">Learning Object 12</string>
+		</title>
+		<language>en-US</language>
+		<description>
+			<string language="en-US">Guide and direct others towards a common goal, often in a group or team.</string>
+		</description>
+		<keyword>
+			<string language="en-US">Learning</string>
+			<string language="en-US">Object</string>
+			<string language="en-US">12</string>
+		</keyword>
+	</general>
+	<educational>
+		<interactivityType>
+			<source>LOMv1.0</source>
+			<value>active</value>
+		</interactivityType>
+		<learningResourceType>
+			<source>LOMv1.0</source>
+			<value>Exercise</value>
+		</learningResourceType>
+		<interactivityLevel>
+			<source>LOMv1.0</source>
+			<value>very high</value>
+		</interactivityLevel>
+		<semanticDensity>
+			<source>LOMv1.0</source>
+			<value>medium</value>
+		</semanticDensity>
+		<difficulty>
+			<source>LOMv1.0</source>
+			<value>very easy</value>
+		</difficulty>
+		<typicalLearningTime>
+			<duration>PT29M23S</duration>
+		</typicalLearningTime>
+	</educational>
+	<classification>
+		<purpose>
+			<source>LOMv1.0</source>
+			<value>competency</value>
+		</purpose>
+		<taxonPath>
+			<source>
+				<string language="en-US">ESCO</string>
+			</source>
+			<taxon>
+				<id>http://data.europa.eu/esco/skill/75d8e5d9-bef3-418b-9011-01bff9f27207</id>
+				<entry>
+					<string language="en-US">lead others</string>
+				</entry>
+			</taxon>
+		</taxonPath>
+	</classification>
+</lom>

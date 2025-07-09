@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='utf-8'?>
+<lom xmlns="http://ltsc.ieee.org/xsd/LOM">
+	<general>
+		<identifier>
+			<entry>https://example.com/objectMetadata/08</entry>
+		</identifier>
+		<title>
+			<string language="en-US">Learning Object 08</string>
+		</title>
+		<language>en-US</language>
+		<description>
+			<string language="en-US">Select and apply system and network monitoring techniques. Identify and fix operational problems. Ensure that system's capabilities and efficiency match company specifications.</string>
+		</description>
+		<keyword>
+			<string language="en-US">Learning</string>
+			<string language="en-US">Object</string>
+			<string language="en-US">08</string>
+		</keyword>
+	</general>
+	<educational>
+		<interactivityType>
+			<source>LOMv1.0</source>
+			<value>expositive</value>
+		</interactivityType>
+		<learningResourceType>
+			<source>LOMv1.0</source>
+			<value>table</value>
+		</learningResourceType>
+		<interactivityLevel>
+			<source>LOMv1.0</source>
+			<value>very low</value>
+		</interactivityLevel>
+		<semanticDensity>
+			<source>LOMv1.0</source>
+			<value>low</value>
+		</semanticDensity>
+		<difficulty>
+			<source>LOMv1.0</source>
+			<value>very difficult</value>
+		</difficulty>
+		<typicalLearningTime>
+			<duration>PT9M32S</duration>
+		</typicalLearningTime>
+	</educational>
+	<classification>
+		<purpose>
+			<source>LOMv1.0</source>
+			<value>competency</value>
+		</purpose>
+		<taxonPath>
+			<source>
+				<string language="en-US">ESCO</string>
+			</source>
+			<taxon>
+				<id>http://data.europa.eu/esco/skill/fbbcb9ab-4b95-4e57-a756-30d08b7da7a5</id>
+				<entry>
+					<string language="en-US">maintain ICT system</string>
+				</entry>
+			</taxon>
+		</taxonPath>
+	</classification>
+</lom>

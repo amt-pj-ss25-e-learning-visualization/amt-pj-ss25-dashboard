@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='utf-8'?>
+<lom xmlns="http://ltsc.ieee.org/xsd/LOM">
+	<general>
+		<identifier>
+			<entry>https://example.com/objectMetadata/07</entry>
+		</identifier>
+		<title>
+			<string language="en-US">Learning Object 07</string>
+		</title>
+		<language>en-US</language>
+		<description>
+			<string language="en-US">Adhere to procedures at work in a structured and systematic manner.</string>
+		</description>
+		<keyword>
+			<string language="en-US">Learning</string>
+			<string language="en-US">Object</string>
+			<string language="en-US">07</string>
+		</keyword>
+	</general>
+	<educational>
+		<interactivityType>
+			<source>LOMv1.0</source>
+			<value>active</value>
+		</interactivityType>
+		<learningResourceType>
+			<source>LOMv1.0</source>
+			<value>table</value>
+		</learningResourceType>
+		<interactivityLevel>
+			<source>LOMv1.0</source>
+			<value>high</value>
+		</interactivityLevel>
+		<semanticDensity>
+			<source>LOMv1.0</source>
+			<value>high</value>
+		</semanticDensity>
+		<difficulty>
+			<source>LOMv1.0</source>
+			<value>medium</value>
+		</difficulty>
+		<typicalLearningTime>
+			<duration>PT12M12S</duration>
+		</typicalLearningTime>
+	</educational>
+	<classification>
+		<purpose>
+			<source>LOMv1.0</source>
+			<value>competency</value>
+		</purpose>
+		<taxonPath>
+			<source>
+				<string language="en-US">ESCO</string>
+			</source>
+			<taxon>
+				<id>http://data.europa.eu/esco/skill/a23659b1-a8bc-4331-a58d-eef263ca6a14</id>
+				<entry>
+					<string language="en-US">follow work procedures</string>
+				</entry>
+			</taxon>
+		</taxonPath>
+	</classification>
+</lom>

@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='utf-8'?>
+<lom xmlns="http://ltsc.ieee.org/xsd/LOM">
+	<general>
+		<identifier>
+			<entry>https://example.com/objectMetadata/12</entry>
+		</identifier>
+		<title>
+			<string language="en-US">Learning Object 12</string>
+		</title>
+		<language>en-US</language>
+		<description>
+			<string language="en-US">Principles of botanicals with a primary focus in herbaceous and annual plants in raw form.</string>
+		</description>
+		<keyword>
+			<string language="en-US">Learning</string>
+			<string language="en-US">Object</string>
+			<string language="en-US">12</string>
+		</keyword>
+	</general>
+	<educational>
+		<interactivityType>
+			<source>LOMv1.0</source>
+			<value>mixed</value>
+		</interactivityType>
+		<learningResourceType>
+			<source>LOMv1.0</source>
+			<value>diagram</value>
+		</learningResourceType>
+		<interactivityLevel>
+			<source>LOMv1.0</source>
+			<value>low</value>
+		</interactivityLevel>
+		<semanticDensity>
+			<source>LOMv1.0</source>
+			<value>high</value>
+		</semanticDensity>
+		<difficulty>
+			<source>LOMv1.0</source>
+			<value>very easy</value>
+		</difficulty>
+		<typicalLearningTime>
+			<duration>PT29M34S</duration>
+		</typicalLearningTime>
+	</educational>
+	<classification>
+		<purpose>
+			<source>LOMv1.0</source>
+			<value>competency</value>
+		</purpose>
+		<taxonPath>
+			<source>
+				<string language="en-US">ESCO</string>
+			</source>
+			<taxon>
+				<id>http://data.europa.eu/esco/skill/0fb63e16-f674-4b96-9954-b9d63b666650</id>
+				<entry>
+					<string language="en-US">variety of botanicals</string>
+				</entry>
+			</taxon>
+		</taxonPath>
+	</classification>
+</lom>

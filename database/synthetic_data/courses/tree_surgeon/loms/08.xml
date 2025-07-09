@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='utf-8'?>
+<lom xmlns="http://ltsc.ieee.org/xsd/LOM">
+	<general>
+		<identifier>
+			<entry>https://example.com/objectMetadata/08</entry>
+		</identifier>
+		<title>
+			<string language="en-US">Learning Object 08</string>
+		</title>
+		<language>en-US</language>
+		<description>
+			<string language="en-US">Apply principles, policies and institutional regulations aimed at guaranteeing a safe work place for all employees.</string>
+		</description>
+		<keyword>
+			<string language="en-US">Learning</string>
+			<string language="en-US">Object</string>
+			<string language="en-US">08</string>
+		</keyword>
+	</general>
+	<educational>
+		<interactivityType>
+			<source>LOMv1.0</source>
+			<value>mixed</value>
+		</interactivityType>
+		<learningResourceType>
+			<source>LOMv1.0</source>
+			<value>narrativetext</value>
+		</learningResourceType>
+		<interactivityLevel>
+			<source>LOMv1.0</source>
+			<value>very low</value>
+		</interactivityLevel>
+		<semanticDensity>
+			<source>LOMv1.0</source>
+			<value>low</value>
+		</semanticDensity>
+		<difficulty>
+			<source>LOMv1.0</source>
+			<value>difficult</value>
+		</difficulty>
+		<typicalLearningTime>
+			<duration>PT13M53S</duration>
+		</typicalLearningTime>
+	</educational>
+	<classification>
+		<purpose>
+			<source>LOMv1.0</source>
+			<value>competency</value>
+		</purpose>
+		<taxonPath>
+			<source>
+				<string language="en-US">ESCO</string>
+			</source>
+			<taxon>
+				<id>http://data.europa.eu/esco/skill/d2d9051a-10e1-41c5-9cfb-bbdc58016176</id>
+				<entry>
+					<string language="en-US">follow safety precautions in work practices</string>
+				</entry>
+			</taxon>
+		</taxonPath>
+	</classification>
+</lom>

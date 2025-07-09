@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='utf-8'?>
+<lom xmlns="http://ltsc.ieee.org/xsd/LOM">
+	<general>
+		<identifier>
+			<entry>https://example.com/objectMetadata/03</entry>
+		</identifier>
+		<title>
+			<string language="en-US">Learning Object 03</string>
+		</title>
+		<language>en-US</language>
+		<description>
+			<string language="en-US">Principles in growing crops, the natural cycle, nursing of nature, growth conditions and principles of organic and sustainable production. Quality criterias and requirements of seeds, plants and crop.</string>
+		</description>
+		<keyword>
+			<string language="en-US">Learning</string>
+			<string language="en-US">Object</string>
+			<string language="en-US">03</string>
+		</keyword>
+	</general>
+	<educational>
+		<interactivityType>
+			<source>LOMv1.0</source>
+			<value>active</value>
+		</interactivityType>
+		<learningResourceType>
+			<source>LOMv1.0</source>
+			<value>simulation</value>
+		</learningResourceType>
+		<interactivityLevel>
+			<source>LOMv1.0</source>
+			<value>high</value>
+		</interactivityLevel>
+		<semanticDensity>
+			<source>LOMv1.0</source>
+			<value>very high</value>
+		</semanticDensity>
+		<difficulty>
+			<source>LOMv1.0</source>
+			<value>very difficult</value>
+		</difficulty>
+		<typicalLearningTime>
+			<duration>PT28M5S</duration>
+		</typicalLearningTime>
+	</educational>
+	<classification>
+		<purpose>
+			<source>LOMv1.0</source>
+			<value>competency</value>
+		</purpose>
+		<taxonPath>
+			<source>
+				<string language="en-US">ESCO</string>
+			</source>
+			<taxon>
+				<id>http://data.europa.eu/esco/skill/4ca83b9d-afa0-49f8-b7af-e4e6a42ad299</id>
+				<entry>
+					<string language="en-US">crop production principles</string>
+				</entry>
+			</taxon>
+		</taxonPath>
+	</classification>
+</lom>

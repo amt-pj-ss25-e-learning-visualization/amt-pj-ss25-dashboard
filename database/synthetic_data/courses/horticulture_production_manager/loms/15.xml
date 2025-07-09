@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='utf-8'?>
+<lom xmlns="http://ltsc.ieee.org/xsd/LOM">
+	<general>
+		<identifier>
+			<entry>https://example.com/objectMetadata/15</entry>
+		</identifier>
+		<title>
+			<string language="en-US">Learning Object 15</string>
+		</title>
+		<language>en-US</language>
+		<description>
+			<string language="en-US">Different types of greenhouses (plastic, glass) and other horticultural facilities such as hotbed, seedbed, irrigations systems, storage and protective facilities etc.</string>
+		</description>
+		<keyword>
+			<string language="en-US">Learning</string>
+			<string language="en-US">Object</string>
+			<string language="en-US">15</string>
+		</keyword>
+	</general>
+	<educational>
+		<interactivityType>
+			<source>LOMv1.0</source>
+			<value>expositive</value>
+		</interactivityType>
+		<learningResourceType>
+			<source>LOMv1.0</source>
+			<value>slide</value>
+		</learningResourceType>
+		<interactivityLevel>
+			<source>LOMv1.0</source>
+			<value>very high</value>
+		</interactivityLevel>
+		<semanticDensity>
+			<source>LOMv1.0</source>
+			<value>very high</value>
+		</semanticDensity>
+		<difficulty>
+			<source>LOMv1.0</source>
+			<value>very difficult</value>
+		</difficulty>
+		<typicalLearningTime>
+			<duration>PT6M19S</duration>
+		</typicalLearningTime>
+	</educational>
+	<classification>
+		<purpose>
+			<source>LOMv1.0</source>
+			<value>competency</value>
+		</purpose>
+		<taxonPath>
+			<source>
+				<string language="en-US">ESCO</string>
+			</source>
+			<taxon>
+				<id>http://data.europa.eu/esco/skill/624fd970-2877-4290-9c01-0dedd5735bfe</id>
+				<entry>
+					<string language="en-US">greenhouse types</string>
+				</entry>
+			</taxon>
+		</taxonPath>
+	</classification>
+</lom>

@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='utf-8'?>
+<lom xmlns="http://ltsc.ieee.org/xsd/LOM">
+	<general>
+		<identifier>
+			<entry>https://example.com/objectMetadata/04</entry>
+		</identifier>
+		<title>
+			<string language="en-US">Learning Object 04</string>
+		</title>
+		<language>en-US</language>
+		<description>
+			<string language="en-US">Methods for service, maintaining and adjusting of technical equipment, machines and instatallations used for crop production</string>
+		</description>
+		<keyword>
+			<string language="en-US">Learning</string>
+			<string language="en-US">Object</string>
+			<string language="en-US">04</string>
+		</keyword>
+	</general>
+	<educational>
+		<interactivityType>
+			<source>LOMv1.0</source>
+			<value>active</value>
+		</interactivityType>
+		<learningResourceType>
+			<source>LOMv1.0</source>
+			<value>index</value>
+		</learningResourceType>
+		<interactivityLevel>
+			<source>LOMv1.0</source>
+			<value>medium</value>
+		</interactivityLevel>
+		<semanticDensity>
+			<source>LOMv1.0</source>
+			<value>very high</value>
+		</semanticDensity>
+		<difficulty>
+			<source>LOMv1.0</source>
+			<value>difficult</value>
+		</difficulty>
+		<typicalLearningTime>
+			<duration>PT22M50S</duration>
+		</typicalLearningTime>
+	</educational>
+	<classification>
+		<purpose>
+			<source>LOMv1.0</source>
+			<value>competency</value>
+		</purpose>
+		<taxonPath>
+			<source>
+				<string language="en-US">ESCO</string>
+			</source>
+			<taxon>
+				<id>http://data.europa.eu/esco/skill/07862bb1-835a-4f14-9245-17717dc550a8</id>
+				<entry>
+					<string language="en-US">technical equipment for crop production</string>
+				</entry>
+			</taxon>
+		</taxonPath>
+	</classification>
+</lom>

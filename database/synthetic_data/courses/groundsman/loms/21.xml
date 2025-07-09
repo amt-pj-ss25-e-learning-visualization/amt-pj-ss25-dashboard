@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='utf-8'?>
+<lom xmlns="http://ltsc.ieee.org/xsd/LOM">
+	<general>
+		<identifier>
+			<entry>https://example.com/objectMetadata/21</entry>
+		</identifier>
+		<title>
+			<string language="en-US">Learning Object 21</string>
+		</title>
+		<language>en-US</language>
+		<description>
+			<string language="en-US">The factors which are involved in the calculation and estimation of water consumption in a residence or facility, and methods in which water consumption can be lowered or made more efficient.</string>
+		</description>
+		<keyword>
+			<string language="en-US">Learning</string>
+			<string language="en-US">Object</string>
+			<string language="en-US">21</string>
+		</keyword>
+	</general>
+	<educational>
+		<interactivityType>
+			<source>LOMv1.0</source>
+			<value>expositive</value>
+		</interactivityType>
+		<learningResourceType>
+			<source>LOMv1.0</source>
+			<value>index</value>
+		</learningResourceType>
+		<interactivityLevel>
+			<source>LOMv1.0</source>
+			<value>high</value>
+		</interactivityLevel>
+		<semanticDensity>
+			<source>LOMv1.0</source>
+			<value>medium</value>
+		</semanticDensity>
+		<difficulty>
+			<source>LOMv1.0</source>
+			<value>very difficult</value>
+		</difficulty>
+		<typicalLearningTime>
+			<duration>PT9M36S</duration>
+		</typicalLearningTime>
+	</educational>
+	<classification>
+		<purpose>
+			<source>LOMv1.0</source>
+			<value>competency</value>
+		</purpose>
+		<taxonPath>
+			<source>
+				<string language="en-US">ESCO</string>
+			</source>
+			<taxon>
+				<id>http://data.europa.eu/esco/skill/72886bc5-eeb0-42d5-9b01-f83b4cf138b4</id>
+				<entry>
+					<string language="en-US">water consumption</string>
+				</entry>
+			</taxon>
+		</taxonPath>
+	</classification>
+</lom>

@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='utf-8'?>
+<lom xmlns="http://ltsc.ieee.org/xsd/LOM">
+	<general>
+		<identifier>
+			<entry>https://example.com/objectMetadata/03</entry>
+		</identifier>
+		<title>
+			<string language="en-US">Learning Object 03</string>
+		</title>
+		<language>en-US</language>
+		<description>
+			<string language="en-US">The characteristics, use and operations of various software products such as computer programmes and application software.</string>
+		</description>
+		<keyword>
+			<string language="en-US">Learning</string>
+			<string language="en-US">Object</string>
+			<string language="en-US">03</string>
+		</keyword>
+	</general>
+	<educational>
+		<interactivityType>
+			<source>LOMv1.0</source>
+			<value>active</value>
+		</interactivityType>
+		<learningResourceType>
+			<source>LOMv1.0</source>
+			<value>Exercise</value>
+		</learningResourceType>
+		<interactivityLevel>
+			<source>LOMv1.0</source>
+			<value>very high</value>
+		</interactivityLevel>
+		<semanticDensity>
+			<source>LOMv1.0</source>
+			<value>medium</value>
+		</semanticDensity>
+		<difficulty>
+			<source>LOMv1.0</source>
+			<value>medium</value>
+		</difficulty>
+		<typicalLearningTime>
+			<duration>PT2M11S</duration>
+		</typicalLearningTime>
+	</educational>
+	<classification>
+		<purpose>
+			<source>LOMv1.0</source>
+			<value>competency</value>
+		</purpose>
+		<taxonPath>
+			<source>
+				<string language="en-US">ESCO</string>
+			</source>
+			<taxon>
+				<id>http://data.europa.eu/esco/skill/9ce670ec-318c-4a91-9179-03437db728dc</id>
+				<entry>
+					<string language="en-US">ICT software specifications</string>
+				</entry>
+			</taxon>
+		</taxonPath>
+	</classification>
+</lom>

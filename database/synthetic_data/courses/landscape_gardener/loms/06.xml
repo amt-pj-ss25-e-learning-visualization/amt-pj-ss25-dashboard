@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='utf-8'?>
+<lom xmlns="http://ltsc.ieee.org/xsd/LOM">
+	<general>
+		<identifier>
+			<entry>https://example.com/objectMetadata/06</entry>
+		</identifier>
+		<title>
+			<string language="en-US">Learning Object 06</string>
+		</title>
+		<language>en-US</language>
+		<description>
+			<string language="en-US">Safely handle industrial chemicals; use them efficiently and ensure that no harm is done to the environment.</string>
+		</description>
+		<keyword>
+			<string language="en-US">Learning</string>
+			<string language="en-US">Object</string>
+			<string language="en-US">06</string>
+		</keyword>
+	</general>
+	<educational>
+		<interactivityType>
+			<source>LOMv1.0</source>
+			<value>expositive</value>
+		</interactivityType>
+		<learningResourceType>
+			<source>LOMv1.0</source>
+			<value>slide</value>
+		</learningResourceType>
+		<interactivityLevel>
+			<source>LOMv1.0</source>
+			<value>high</value>
+		</interactivityLevel>
+		<semanticDensity>
+			<source>LOMv1.0</source>
+			<value>high</value>
+		</semanticDensity>
+		<difficulty>
+			<source>LOMv1.0</source>
+			<value>very easy</value>
+		</difficulty>
+		<typicalLearningTime>
+			<duration>PT23M17S</duration>
+		</typicalLearningTime>
+	</educational>
+	<classification>
+		<purpose>
+			<source>LOMv1.0</source>
+			<value>competency</value>
+		</purpose>
+		<taxonPath>
+			<source>
+				<string language="en-US">ESCO</string>
+			</source>
+			<taxon>
+				<id>http://data.europa.eu/esco/skill/2416dc09-6384-409e-8b1d-80bb7a2e7369</id>
+				<entry>
+					<string language="en-US">handle chemicals</string>
+				</entry>
+			</taxon>
+		</taxonPath>
+	</classification>
+</lom>

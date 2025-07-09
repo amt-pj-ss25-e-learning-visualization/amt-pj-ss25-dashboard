@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='utf-8'?>
+<lom xmlns="http://ltsc.ieee.org/xsd/LOM">
+	<general>
+		<identifier>
+			<entry>https://example.com/objectMetadata/09</entry>
+		</identifier>
+		<title>
+			<string language="en-US">Learning Object 09</string>
+		</title>
+		<language>en-US</language>
+		<description>
+			<string language="en-US">Store products to ensure the quality and in accordance with standards and regulations. Ensure the stock facilities are kept according to hygiene standards, regulating temperature, heating and air conditioning of storage facilities.</string>
+		</description>
+		<keyword>
+			<string language="en-US">Learning</string>
+			<string language="en-US">Object</string>
+			<string language="en-US">09</string>
+		</keyword>
+	</general>
+	<educational>
+		<interactivityType>
+			<source>LOMv1.0</source>
+			<value>mixed</value>
+		</interactivityType>
+		<learningResourceType>
+			<source>LOMv1.0</source>
+			<value>narrativetext</value>
+		</learningResourceType>
+		<interactivityLevel>
+			<source>LOMv1.0</source>
+			<value>medium</value>
+		</interactivityLevel>
+		<semanticDensity>
+			<source>LOMv1.0</source>
+			<value>high</value>
+		</semanticDensity>
+		<difficulty>
+			<source>LOMv1.0</source>
+			<value>easy</value>
+		</difficulty>
+		<typicalLearningTime>
+			<duration>PT2M9S</duration>
+		</typicalLearningTime>
+	</educational>
+	<classification>
+		<purpose>
+			<source>LOMv1.0</source>
+			<value>competency</value>
+		</purpose>
+		<taxonPath>
+			<source>
+				<string language="en-US">ESCO</string>
+			</source>
+			<taxon>
+				<id>http://data.europa.eu/esco/skill/f675d28f-9e1f-4938-ae49-c1d07f902fed</id>
+				<entry>
+					<string language="en-US">store products</string>
+				</entry>
+			</taxon>
+		</taxonPath>
+	</classification>
+</lom>

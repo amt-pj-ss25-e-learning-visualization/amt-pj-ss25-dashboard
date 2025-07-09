@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='utf-8'?>
+<lom xmlns="http://ltsc.ieee.org/xsd/LOM">
+	<general>
+		<identifier>
+			<entry>https://example.com/objectMetadata/11</entry>
+		</identifier>
+		<title>
+			<string language="en-US">Learning Object 11</string>
+		</title>
+		<language>en-US</language>
+		<description>
+			<string language="en-US">Prepare planting area and soil for planting by for example fertilising, mulching by hand or using mechanical tools or machinery; prepare seeds and plants for sowing and planting by ensuring the quality of seed and plants.Sow and plant by hand, using mechanical tools or machinery and in accordance with national legislation.</string>
+		</description>
+		<keyword>
+			<string language="en-US">Learning</string>
+			<string language="en-US">Object</string>
+			<string language="en-US">11</string>
+		</keyword>
+	</general>
+	<educational>
+		<interactivityType>
+			<source>LOMv1.0</source>
+			<value>expositive</value>
+		</interactivityType>
+		<learningResourceType>
+			<source>LOMv1.0</source>
+			<value>Exercise</value>
+		</learningResourceType>
+		<interactivityLevel>
+			<source>LOMv1.0</source>
+			<value>low</value>
+		</interactivityLevel>
+		<semanticDensity>
+			<source>LOMv1.0</source>
+			<value>very high</value>
+		</semanticDensity>
+		<difficulty>
+			<source>LOMv1.0</source>
+			<value>very difficult</value>
+		</difficulty>
+		<typicalLearningTime>
+			<duration>PT18M8S</duration>
+		</typicalLearningTime>
+	</educational>
+	<classification>
+		<purpose>
+			<source>LOMv1.0</source>
+			<value>competency</value>
+		</purpose>
+		<taxonPath>
+			<source>
+				<string language="en-US">ESCO</string>
+			</source>
+			<taxon>
+				<id>http://data.europa.eu/esco/skill/6495182b-d548-425d-8596-bdf527c98cd7</id>
+				<entry>
+					<string language="en-US">prepare planting area</string>
+				</entry>
+			</taxon>
+		</taxonPath>
+	</classification>
+</lom>

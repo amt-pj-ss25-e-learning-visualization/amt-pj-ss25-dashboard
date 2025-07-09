@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='utf-8'?>
+<lom xmlns="http://ltsc.ieee.org/xsd/LOM">
+	<general>
+		<identifier>
+			<entry>https://example.com/objectMetadata/09</entry>
+		</identifier>
+		<title>
+			<string language="en-US">Learning Object 09</string>
+		</title>
+		<language>en-US</language>
+		<description>
+			<string language="en-US">The principles of integrating ICT components and products from a number of sources to create an operational ICT system, techniques which ensure interoperability and interfaces between components and the system.</string>
+		</description>
+		<keyword>
+			<string language="en-US">Learning</string>
+			<string language="en-US">Object</string>
+			<string language="en-US">09</string>
+		</keyword>
+	</general>
+	<educational>
+		<interactivityType>
+			<source>LOMv1.0</source>
+			<value>mixed</value>
+		</interactivityType>
+		<learningResourceType>
+			<source>LOMv1.0</source>
+			<value>simulation</value>
+		</learningResourceType>
+		<interactivityLevel>
+			<source>LOMv1.0</source>
+			<value>high</value>
+		</interactivityLevel>
+		<semanticDensity>
+			<source>LOMv1.0</source>
+			<value>medium</value>
+		</semanticDensity>
+		<difficulty>
+			<source>LOMv1.0</source>
+			<value>difficult</value>
+		</difficulty>
+		<typicalLearningTime>
+			<duration>PT17M20S</duration>
+		</typicalLearningTime>
+	</educational>
+	<classification>
+		<purpose>
+			<source>LOMv1.0</source>
+			<value>competency</value>
+		</purpose>
+		<taxonPath>
+			<source>
+				<string language="en-US">ESCO</string>
+			</source>
+			<taxon>
+				<id>http://data.europa.eu/esco/skill/6fa1c2c0-a012-4ca0-9642-e01569ba322c</id>
+				<entry>
+					<string language="en-US">ICT system integration</string>
+				</entry>
+			</taxon>
+		</taxonPath>
+	</classification>
+</lom>

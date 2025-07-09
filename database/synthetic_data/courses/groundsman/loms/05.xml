@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='utf-8'?>
+<lom xmlns="http://ltsc.ieee.org/xsd/LOM">
+	<general>
+		<identifier>
+			<entry>https://example.com/objectMetadata/05</entry>
+		</identifier>
+		<title>
+			<string language="en-US">Learning Object 05</string>
+		</title>
+		<language>en-US</language>
+		<description>
+			<string language="en-US">Precautions and regulations concerning the transport, storage and handling of chemical substances that exterminate pests.</string>
+		</description>
+		<keyword>
+			<string language="en-US">Learning</string>
+			<string language="en-US">Object</string>
+			<string language="en-US">05</string>
+		</keyword>
+	</general>
+	<educational>
+		<interactivityType>
+			<source>LOMv1.0</source>
+			<value>active</value>
+		</interactivityType>
+		<learningResourceType>
+			<source>LOMv1.0</source>
+			<value>table</value>
+		</learningResourceType>
+		<interactivityLevel>
+			<source>LOMv1.0</source>
+			<value>medium</value>
+		</interactivityLevel>
+		<semanticDensity>
+			<source>LOMv1.0</source>
+			<value>medium</value>
+		</semanticDensity>
+		<difficulty>
+			<source>LOMv1.0</source>
+			<value>very easy</value>
+		</difficulty>
+		<typicalLearningTime>
+			<duration>PT10M20S</duration>
+		</typicalLearningTime>
+	</educational>
+	<classification>
+		<purpose>
+			<source>LOMv1.0</source>
+			<value>competency</value>
+		</purpose>
+		<taxonPath>
+			<source>
+				<string language="en-US">ESCO</string>
+			</source>
+			<taxon>
+				<id>http://data.europa.eu/esco/skill/078e6210-224d-4331-9c8e-f881259b6bb0</id>
+				<entry>
+					<string language="en-US">safe use of pesticides</string>
+				</entry>
+			</taxon>
+		</taxonPath>
+	</classification>
+</lom>

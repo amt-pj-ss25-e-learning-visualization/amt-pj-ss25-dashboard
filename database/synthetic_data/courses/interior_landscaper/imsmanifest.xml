@@ -1,0 +1,111 @@
+<?xml version='1.0' encoding='utf-8'?>
+<manifest xmlns:lomimscc="http://ltsc.ieee.org/xsd/imsccv1p1/LOM/manifest" xmlns="http://www.imsglobal.org/xsd/imsccv1p1/imscp_v1p1" xmlns:lom="http://ltsc.ieee.org/xsd/imsccv1p1/LOM/resource" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" identifier="R_1EBMKCBZ" xsi:schemaLocation="http://www.imsglobal.org/xsd/imsccv1p1/imscp_v1p1 http://www.imsglobal.org/profile/cc/ccv1p1/ccv1p1_imscp_v1p2_v1p0.xsd http://ltsc.ieee.org/xsd/imsccv1p1/LOM/manifest http://www.imsglobal.org/profile/cc/ccv1p1/LOM/ccv1p1_lommanifest_v1p0.xsd http://ltsc.ieee.org/xsd/imsccv1p1/LOM/resource http://www.imsglobal.org/profile/cc/ccv1p1/LOM/ccv1p1_lomresource_v1p0.xsd">
+	<metadata>
+		<schema>IMS Common Cartridge</schema>
+		<schemaversion>1.1.0</schemaversion>
+		<lomimscc:lom>
+			<lomimscc:general>
+				<lomimscc:title>
+					<lomimscc:string language="en">interior landscaper</lomimscc:string>
+				</lomimscc:title>
+				<lomimscc:language>en</lomimscc:language>
+				<lomimscc:description>
+					<lomimscc:string language="en">Interior landscapers design, install, manage and maintain indoor green spaces to customer requirements.</lomimscc:string>
+				</lomimscc:description>
+				<lomimscc:identifier>
+					<lomimscc:catalog>Horticulture</lomimscc:catalog>
+					<lomimscc:entry>6113.5</lomimscc:entry>
+				</lomimscc:identifier>
+			</lomimscc:general>
+		</lomimscc:lom>
+	</metadata>
+	<organizations>
+		<organization identifier="O_IGBPW0LY" structure="rooted-hierarchy">
+			<item identifier="root">
+				<item identifier="M_QD3XLCDP">
+					<title>communicate with customers</title>
+					<item identifier="SUB_SMV8X2EB" identifierref="LO_01_R">
+						<title>establish customer rapport</title>
+					</item>
+					<item identifier="SUB_87Z8JG5F" identifierref="LO_02_R">
+						<title>interact with others</title>
+					</item>
+				</item>
+				<item identifier="M_A71W4R5X">
+					<title>develop architectural plans</title>
+					<item identifier="SUB_51BR5RR7" identifierref="LO_03_R">
+						<title>landscape architectural instruments</title>
+					</item>
+					<item identifier="SUB_DJJ8UNE8" identifierref="LO_04_R">
+						<title>landscape architecture</title>
+					</item>
+				</item>
+				<item identifier="M_O3R2ZMG1">
+					<title>assess risks and implications of a design</title>
+					<item identifier="SUB_KGZ06PDR" identifierref="LO_05_R">
+						<title>risk management</title>
+					</item>
+				</item>
+				<item identifier="M_TMWN34XT">
+					<title>perform pest control</title>
+					<item identifier="SUB_TVN7P12M" identifierref="LO_06_R">
+						<title>pest control in plants</title>
+					</item>
+					<item identifier="SUB_BNXA268N" identifierref="LO_07_R">
+						<title>pest biology</title>
+					</item>
+				</item>
+				<item identifier="M_IWBPKTQ0">
+					<title>specify landscape design components</title>
+					<item identifier="SUB_6OAQGJF9" identifierref="LO_08_R">
+						<title>landscape design</title>
+					</item>
+				</item>
+				<item identifier="M_P7LML94T">
+					<title>prepare flower arrangements</title>
+					<item identifier="SUB_P9FKIU7M" identifierref="LO_09_R">
+						<title>create flower arrangements</title>
+					</item>
+				</item>
+				<item identifier="M_E95J4O63">
+					<title>prune hedges and trees</title>
+					<item identifier="SUB_S9SM5PZ8" identifierref="LO_10_R">
+						<title>pruning types</title>
+					</item>
+				</item>
+			</item>
+		</organization>
+	</organizations>
+	<resources>
+		<resource identifier="LO_01_R" type="imswl_xmlv1p1">
+			<file href="loms/01.xml" />
+		</resource>
+		<resource identifier="LO_02_R" type="imswl_xmlv1p1">
+			<file href="loms/02.xml" />
+		</resource>
+		<resource identifier="LO_03_R" type="imswl_xmlv1p1">
+			<file href="loms/03.xml" />
+		</resource>
+		<resource identifier="LO_04_R" type="imswl_xmlv1p1">
+			<file href="loms/04.xml" />
+		</resource>
+		<resource identifier="LO_05_R" type="imswl_xmlv1p1">
+			<file href="loms/05.xml" />
+		</resource>
+		<resource identifier="LO_06_R" type="imswl_xmlv1p1">
+			<file href="loms/06.xml" />
+		</resource>
+		<resource identifier="LO_07_R" type="imswl_xmlv1p1">
+			<file href="loms/07.xml" />
+		</resource>
+		<resource identifier="LO_08_R" type="imswl_xmlv1p1">
+			<file href="loms/08.xml" />
+		</resource>
+		<resource identifier="LO_09_R" type="imswl_xmlv1p1">
+			<file href="loms/09.xml" />
+		</resource>
+		<resource identifier="LO_10_R" type="imswl_xmlv1p1">
+			<file href="loms/10.xml" />
+		</resource>
+	</resources>
+</manifest>
