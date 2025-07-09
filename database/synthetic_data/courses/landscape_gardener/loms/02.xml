@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='utf-8'?>
+<lom xmlns="http://ltsc.ieee.org/xsd/LOM">
+	<general>
+		<identifier>
+			<entry>https://example.com/objectMetadata/02</entry>
+		</identifier>
+		<title>
+			<string language="en-US">Learning Object 02</string>
+		</title>
+		<language>en-US</language>
+		<description>
+			<string language="en-US">The varieties, characteristics and structural and functional features of plants, depending on their habitat.</string>
+		</description>
+		<keyword>
+			<string language="en-US">Learning</string>
+			<string language="en-US">Object</string>
+			<string language="en-US">02</string>
+		</keyword>
+	</general>
+	<educational>
+		<interactivityType>
+			<source>LOMv1.0</source>
+			<value>active</value>
+		</interactivityType>
+		<learningResourceType>
+			<source>LOMv1.0</source>
+			<value>slide</value>
+		</learningResourceType>
+		<interactivityLevel>
+			<source>LOMv1.0</source>
+			<value>high</value>
+		</interactivityLevel>
+		<semanticDensity>
+			<source>LOMv1.0</source>
+			<value>low</value>
+		</semanticDensity>
+		<difficulty>
+			<source>LOMv1.0</source>
+			<value>easy</value>
+		</difficulty>
+		<typicalLearningTime>
+			<duration>PT27M46S</duration>
+		</typicalLearningTime>
+	</educational>
+	<classification>
+		<purpose>
+			<source>LOMv1.0</source>
+			<value>competency</value>
+		</purpose>
+		<taxonPath>
+			<source>
+				<string language="en-US">ESCO</string>
+			</source>
+			<taxon>
+				<id>http://data.europa.eu/esco/skill/a3f1d933-728d-494a-a260-293132b8fdd4</id>
+				<entry>
+					<string language="en-US">characteristics of plants</string>
+				</entry>
+			</taxon>
+		</taxonPath>
+	</classification>
+</lom>

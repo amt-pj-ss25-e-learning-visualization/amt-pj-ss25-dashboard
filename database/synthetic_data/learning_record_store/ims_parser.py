@@ -1,5 +1,6 @@
 import xml.etree.ElementTree as ET
 import uuid
+from pathlib import Path
 
 def parse_imsmanifest(manifest_path):
     """
@@ -10,18 +11,22 @@ def parse_imsmanifest(manifest_path):
     tree = ET.parse(manifest_path)
     root = tree.getroot()
     resources = {}
+
+    manifest_dir = Path(manifest_path).parent  # Get the directory containing the manifest file
+
     for res in root.findall('.//ims:resource', ns):
         identifier = res.attrib.get('identifier')
         file_elem = res.find('ims:file', ns)
         if file_elem is not None:
             href = file_elem.attrib.get('href')
-            resources[identifier] = href
+            absolute_path = manifest_dir / href # Local path to the LOM file
+            resources[identifier] = str(absolute_path)
     return resources
 
 def parse_course_metadata(manifest_path):
     """
     Parse the course metadata from the IMS manifest file.
-    Returns the course title, description, and language.
+    Returns the course title, description, subject and language.
     """
     ns = {
         'ims': 'http://www.imsglobal.org/xsd/imsccv1p1/imscp_v1p1',
@@ -29,18 +34,15 @@ def parse_course_metadata(manifest_path):
     }
     tree = ET.parse(manifest_path)
     root = tree.getroot()
-    title = description = language = None
     lom = root.find('.//ims:metadata/lomimscc:lom', ns)
     if lom is not None:
         title_elem = lom.find('.//lomimscc:general/lomimscc:title/lomimscc:string', ns)
         desc_elem = lom.find('.//lomimscc:general/lomimscc:description/lomimscc:string', ns)
         lang_elem = lom.find('.//lomimscc:general/lomimscc:language', ns)
-        title = title_elem.text if title_elem is not None else "Imported Course"
-        description = desc_elem.text if desc_elem is not None else "Imported from IMS"
-        language = lang_elem.text if lang_elem is not None else "und"
+        catalog_elem = lom.find('.//lomimscc:general/lomimscc:identifier/lomimscc:catalog', ns)
     else:
         raise ValueError("No LOM metadata found in the manifest file.")
-    return title, description, language
+    return title_elem.text, desc_elem.text, lang_elem.text, catalog_elem.text
 
 def parse_modules_from_manifest(manifest_path):
     """
@@ -71,10 +73,9 @@ def parse_modules_from_manifest(manifest_path):
 
     def walk_items(parent_elem_list, parent_id=None):
         for item in parent_elem_list:
-            module_title = item.findtext('ims:title', default="Untitled Module", namespaces=ns)
-            identifier = item.attrib.get('identifier')
+            module_title = item.findtext('ims:title', namespaces=ns)
             resource_ref = item.attrib.get('identifierref')
-            module_id = str(uuid.uuid5(uuid.NAMESPACE_DNS, identifier))
+            module_id = str(uuid.uuid5(uuid.NAMESPACE_DNS, module_title))
             modules.append({
                 'id': module_id,
                 'title': module_title,

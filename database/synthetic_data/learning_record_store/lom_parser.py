@@ -1,18 +1,13 @@
-import requests
 from pathlib import Path
 import xml.etree.ElementTree as ET
 
-def get_resource_xml(url, cache_dir="resource_cache"):
+def get_resource_xml(path):
     """
-    Download the referenced LOM file the given URL in the IMS CC and cache it locally.
-    If the file already exists in the cache, it will be read from there.
+    Read the referenced LOM file from the local filesystem.
     """
-    Path(cache_dir).mkdir(exist_ok=True)
-    fname = Path(cache_dir) / Path(url).name
+    fname = Path(path)
     if not fname.exists():
-        r = requests.get(url)
-        r.raise_for_status()
-        fname.write_bytes(r.content)
+        raise FileNotFoundError(f"LOM file not found: {path}")
     return fname.read_bytes()
 
 def parse_learning_resource_xml(xml_content):

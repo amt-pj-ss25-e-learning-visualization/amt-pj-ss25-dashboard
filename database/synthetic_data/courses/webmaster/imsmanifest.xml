@@ -1,0 +1,207 @@
+<?xml version='1.0' encoding='utf-8'?>
+<manifest xmlns:lomimscc="http://ltsc.ieee.org/xsd/imsccv1p1/LOM/manifest" xmlns="http://www.imsglobal.org/xsd/imsccv1p1/imscp_v1p1" xmlns:lom="http://ltsc.ieee.org/xsd/imsccv1p1/LOM/resource" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" identifier="R_N5NX1OHX" xsi:schemaLocation="http://www.imsglobal.org/xsd/imsccv1p1/imscp_v1p1 http://www.imsglobal.org/profile/cc/ccv1p1/ccv1p1_imscp_v1p2_v1p0.xsd http://ltsc.ieee.org/xsd/imsccv1p1/LOM/manifest http://www.imsglobal.org/profile/cc/ccv1p1/LOM/ccv1p1_lommanifest_v1p0.xsd http://ltsc.ieee.org/xsd/imsccv1p1/LOM/resource http://www.imsglobal.org/profile/cc/ccv1p1/LOM/ccv1p1_lomresource_v1p0.xsd">
+	<metadata>
+		<schema>IMS Common Cartridge</schema>
+		<schemaversion>1.1.0</schemaversion>
+		<lomimscc:lom>
+			<lomimscc:general>
+				<lomimscc:title>
+					<lomimscc:string language="en">webmaster</lomimscc:string>
+				</lomimscc:title>
+				<lomimscc:language>en</lomimscc:language>
+				<lomimscc:description>
+					<lomimscc:string language="en">Webmasters deploy, maintain, monitor and support a web server to meet service requirements. They ensure optimum system integrity, security, backup and performance. They coordinate the content, quality and style of websites, execute the website strategy and update and add new features to websites.</lomimscc:string>
+				</lomimscc:description>
+				<lomimscc:identifier>
+					<lomimscc:catalog>IT</lomimscc:catalog>
+					<lomimscc:entry>3514.1</lomimscc:entry>
+				</lomimscc:identifier>
+			</lomimscc:general>
+		</lomimscc:lom>
+	</metadata>
+	<organizations>
+		<organization identifier="O_6ISQIEGR" structure="rooted-hierarchy">
+			<item identifier="root">
+				<item identifier="M_76AGRAEX">
+					<title>maintain ICT server</title>
+					<item identifier="SUB_PO93J678" identifierref="LO_01_R">
+						<title>maintain ICT system</title>
+					</item>
+					<item identifier="SUB_3L9XUN80" identifierref="LO_02_R">
+						<title>proxy servers</title>
+					</item>
+				</item>
+				<item identifier="M_XLCF7675">
+					<title>graphics editor software</title>
+					<item identifier="SUB_R2FZREWW" identifierref="LO_03_R">
+						<title>ICT software specifications</title>
+					</item>
+					<item identifier="SUB_TD7G37PP" identifierref="LO_04_R">
+						<title>design graphics</title>
+					</item>
+				</item>
+				<item identifier="M_4QTKV8AX">
+					<title>web programming advanced</title>
+					<item identifier="SUB_E2ND87VF" identifierref="LO_05_R">
+						<title>computer programming</title>
+					</item>
+				</item>
+				<item identifier="M_Q03M5LDR">
+					<title>use software libraries</title>
+					<item identifier="SUB_I8A0CT54" identifierref="LO_06_R">
+						<title>software components libraries</title>
+					</item>
+				</item>
+				<item identifier="M_G21P67NF">
+					<title>use markup languages</title>
+					<item identifier="SUB_VGLN5AZC" identifierref="LO_07_R">
+						<title>web programming intro</title>
+					</item>
+				</item>
+				<item identifier="M_9H00304O">
+					<title>quality assurance methodologies</title>
+					<item identifier="SUB_SIPA04XO" identifierref="LO_08_R">
+						<title>manage quality</title>
+					</item>
+				</item>
+				<item identifier="M_KAS8M9IE">
+					<title>study website behaviour patterns</title>
+					<item identifier="SUB_35Y2R6XH" identifierref="LO_09_R">
+						<title>use learning strategies</title>
+					</item>
+					<item identifier="SUB_42NRPB5L" identifierref="LO_10_R">
+						<title>web analytics</title>
+					</item>
+				</item>
+				<item identifier="M_YU28ASGW">
+					<title>troubleshoot website</title>
+					<item identifier="SUB_0RLIXIDS" identifierref="LO_11_R">
+						<title>perform ICT troubleshooting</title>
+					</item>
+					<item identifier="SUB_99V4762J" identifierref="LO_12_R">
+						<title>troubleshoot</title>
+					</item>
+					<item identifier="SUB_TZGY6QO3" identifierref="LO_13_R">
+						<title>manage website</title>
+					</item>
+				</item>
+				<item identifier="M_DDFTSZZH">
+					<title>implement front-end website design</title>
+					<item identifier="SUB_Z2BLVH66" identifierref="LO_14_R">
+						<title>usability engineering</title>
+					</item>
+				</item>
+				<item identifier="M_31ZFHM6S">
+					<title>use scripting programming</title>
+					<item identifier="SUB_SJC3TJWY" identifierref="LO_15_R">
+						<title>Ruby (computer programming)</title>
+					</item>
+					<item identifier="SUB_LZDWC6EX" identifierref="LO_16_R">
+						<title>computer programming</title>
+					</item>
+					<item identifier="SUB_V2N9BGM4" identifierref="LO_17_R">
+						<title>JavaScript</title>
+					</item>
+					<item identifier="SUB_I7O8HO1I" identifierref="LO_18_R">
+						<title>Python (computer programming)</title>
+					</item>
+					<item identifier="SUB_DRQ7CKCG" identifierref="LO_19_R">
+						<title>ICT system programming</title>
+					</item>
+				</item>
+				<item identifier="M_ZBZHQ69A">
+					<title>apply tools for content development</title>
+					<item identifier="SUB_4DGI8QQL" identifierref="LO_20_R">
+						<title>publishing strategy</title>
+					</item>
+					<item identifier="SUB_YDGF4S2J" identifierref="LO_21_R">
+						<title>content development processes</title>
+					</item>
+				</item>
+				<item identifier="M_7QW6K5B3">
+					<title>proxy servers</title>
+					<item identifier="SUB_G0M9TBP7" identifierref="LO_22_R">
+						<title>ICT infrastructure</title>
+					</item>
+				</item>
+				<item identifier="M_02ZJNO11">
+					<title>use ICT ticketing system</title>
+					<item identifier="SUB_QMD6WCIT" identifierref="LO_23_R">
+						<title>use ICT systems</title>
+					</item>
+				</item>
+			</item>
+		</organization>
+	</organizations>
+	<resources>
+		<resource identifier="LO_01_R" type="imswl_xmlv1p1">
+			<file href="loms/01.xml" />
+		</resource>
+		<resource identifier="LO_02_R" type="imswl_xmlv1p1">
+			<file href="loms/02.xml" />
+		</resource>
+		<resource identifier="LO_03_R" type="imswl_xmlv1p1">
+			<file href="loms/03.xml" />
+		</resource>
+		<resource identifier="LO_04_R" type="imswl_xmlv1p1">
+			<file href="loms/04.xml" />
+		</resource>
+		<resource identifier="LO_05_R" type="imswl_xmlv1p1">
+			<file href="loms/05.xml" />
+		</resource>
+		<resource identifier="LO_06_R" type="imswl_xmlv1p1">
+			<file href="loms/06.xml" />
+		</resource>
+		<resource identifier="LO_07_R" type="imswl_xmlv1p1">
+			<file href="loms/07.xml" />
+		</resource>
+		<resource identifier="LO_08_R" type="imswl_xmlv1p1">
+			<file href="loms/08.xml" />
+		</resource>
+		<resource identifier="LO_09_R" type="imswl_xmlv1p1">
+			<file href="loms/09.xml" />
+		</resource>
+		<resource identifier="LO_10_R" type="imswl_xmlv1p1">
+			<file href="loms/10.xml" />
+		</resource>
+		<resource identifier="LO_11_R" type="imswl_xmlv1p1">
+			<file href="loms/11.xml" />
+		</resource>
+		<resource identifier="LO_12_R" type="imswl_xmlv1p1">
+			<file href="loms/12.xml" />
+		</resource>
+		<resource identifier="LO_13_R" type="imswl_xmlv1p1">
+			<file href="loms/13.xml" />
+		</resource>
+		<resource identifier="LO_14_R" type="imswl_xmlv1p1">
+			<file href="loms/14.xml" />
+		</resource>
+		<resource identifier="LO_15_R" type="imswl_xmlv1p1">
+			<file href="loms/15.xml" />
+		</resource>
+		<resource identifier="LO_16_R" type="imswl_xmlv1p1">
+			<file href="loms/16.xml" />
+		</resource>
+		<resource identifier="LO_17_R" type="imswl_xmlv1p1">
+			<file href="loms/17.xml" />
+		</resource>
+		<resource identifier="LO_18_R" type="imswl_xmlv1p1">
+			<file href="loms/18.xml" />
+		</resource>
+		<resource identifier="LO_19_R" type="imswl_xmlv1p1">
+			<file href="loms/19.xml" />
+		</resource>
+		<resource identifier="LO_20_R" type="imswl_xmlv1p1">
+			<file href="loms/20.xml" />
+		</resource>
+		<resource identifier="LO_21_R" type="imswl_xmlv1p1">
+			<file href="loms/21.xml" />
+		</resource>
+		<resource identifier="LO_22_R" type="imswl_xmlv1p1">
+			<file href="loms/22.xml" />
+		</resource>
+		<resource identifier="LO_23_R" type="imswl_xmlv1p1">
+			<file href="loms/23.xml" />
+		</resource>
+	</resources>
+</manifest>

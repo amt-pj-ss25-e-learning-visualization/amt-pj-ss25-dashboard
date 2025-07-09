@@ -46,15 +46,9 @@ def deep_merge(json1, json2):
 def create_context(
     instructor_name: str,
     instructor_email: str,
-    team_name: str = None,
-    team_member_names: list = None,
-    activity_name: str = None,
-    activity_id: str = None,
-    parent_activity_name: str = None,
-    parent_activity_id: str = None,
-    revision: str = None,
-    platform: str = None,
-    language: str = None
+    course_title: str,
+    parent_activity_name: str,
+    parent_activity_id: str,
 ) -> dict:
     """
     Create a context JSON object for a learning record with customizable attributes.
@@ -66,51 +60,24 @@ def create_context(
         }
     }
 
-    # Add team details if provided
-    if team_name or team_member_names:
-        context["team"] = {
-            "name": team_name or "Default Team",
-            "member": [
-                {"name": name, "objectType": "Agent"} for name in (team_member_names or [])
-            ],
-            "objectType": "Group"
-        }
-
-    # Add context activities if provided
     context_activities = {}
-    if activity_name or activity_id:
-        context_activities["grouping"] = [
-            {
-                "definition": {"name": {"en-US": activity_name or "Default Activity"}},
-                "id": activity_id or "http://example.com/default-activity",
-                "objectType": "Activity"
-            }
-        ]
     if parent_activity_name or parent_activity_id:
         context_activities["parent"] = [
             {
-                "id": parent_activity_id or "http://example.com/default-parent-activity",
+                "id": parent_activity_id,
                 "definition": {
-                    "name": {"de-DE": parent_activity_name or "Default Parent Activity"}
+                    "name": {"en-US": parent_activity_name}
                 }
             },
             {
-                "id": "http://example.com/activities/Baumchirurgie",
+                "id": f"http://example.com/activities/{course_title.replace(' ', '_')}",
                 "definition": {
-                    "name": {"de-DE": "Baumchirurgie"}
+                    "name": {"en-US": course_title}
                 }
             }
         ]
     if context_activities:
         context["contextActivities"] = context_activities
-
-    # Add optional attributes if provided
-    if revision:
-        context["revision"] = revision
-    if platform:
-        context["platform"] = platform
-    if language:
-        context["language"] = language
 
     return {"context": context}
 
@@ -127,7 +94,7 @@ def generate_statement(
         },
         "verb": {
             "id": f"http://adlnet.gov/expapi/verbs/{verb}",
-            "display": {"de-DE": verb}
+            "display": {"en-US": verb}
         }
     }
 
@@ -140,7 +107,7 @@ def generate_statement(
         statement["object"] = {
             "id": f"http://example.com/activities/{activity.replace(' ', '_')}",
             "definition": {
-                "name": {"de-DE": activity}
+                "name": {"en-US": activity}
             }
         }
 
@@ -194,17 +161,20 @@ def generate_statement(
 
 def add_instructor_context(statement, material):
     """Add instructor context to a statement based on the material."""
-    for subcourse, info in COURSE_STRUCTURE.items():
-        if material in info["materials"]:
-            instructor_info = info["instructor"]
-            instructor_context = create_context(
-                instructor_name=instructor_info["name"],
-                instructor_email=instructor_info["mbox"].replace("mailto:", ""),
-                parent_activity_name=subcourse,
-                parent_activity_id=f"http://example.com/activities/{subcourse.replace(' ', '_')}"
-            )
-            deep_merge(statement, instructor_context)
-            break
+    for module in COURSE_STRUCTURE["modules"]:
+        module_title = module["title"]
+        for submodule in module["submodules"]:
+            if material == submodule["title"]:
+                instructor_info = module["instructor"]
+                instructor_context = create_context(
+                    instructor_name=instructor_info["name"],
+                    instructor_email=instructor_info["mbox"],
+                    course_title = COURSE_STRUCTURE["title"],
+                    parent_activity_name=module_title,
+                    parent_activity_id=f"http://example.com/activities/{module_title.replace(' ', '_')}"
+                )
+                deep_merge(statement, instructor_context)
+                break
     return statement
 
 def generate_statement_with_context(

@@ -1,0 +1,214 @@
+<?xml version='1.0' encoding='utf-8'?>
+<manifest xmlns:lomimscc="http://ltsc.ieee.org/xsd/imsccv1p1/LOM/manifest" xmlns="http://www.imsglobal.org/xsd/imsccv1p1/imscp_v1p1" xmlns:lom="http://ltsc.ieee.org/xsd/imsccv1p1/LOM/resource" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" identifier="R_1U5VHVSG" xsi:schemaLocation="http://www.imsglobal.org/xsd/imsccv1p1/imscp_v1p1 http://www.imsglobal.org/profile/cc/ccv1p1/ccv1p1_imscp_v1p2_v1p0.xsd http://ltsc.ieee.org/xsd/imsccv1p1/LOM/manifest http://www.imsglobal.org/profile/cc/ccv1p1/LOM/ccv1p1_lommanifest_v1p0.xsd http://ltsc.ieee.org/xsd/imsccv1p1/LOM/resource http://www.imsglobal.org/profile/cc/ccv1p1/LOM/ccv1p1_lomresource_v1p0.xsd">
+	<metadata>
+		<schema>IMS Common Cartridge</schema>
+		<schemaversion>1.1.0</schemaversion>
+		<lomimscc:lom>
+			<lomimscc:general>
+				<lomimscc:title>
+					<lomimscc:string language="en">groundsman</lomimscc:string>
+				</lomimscc:title>
+				<lomimscc:language>en</lomimscc:language>
+				<lomimscc:description>
+					<lomimscc:string language="en">Groundsmen/groundswomen provide landscape and lawn services and maintain grounds for private households, commercial and public facilities, schools, hotels, botanical gardens, golf courses, parks and athletic fields.\
+</lomimscc:string>
+				</lomimscc:description>
+				<lomimscc:identifier>
+					<lomimscc:catalog>Horticulture</lomimscc:catalog>
+					<lomimscc:entry>6113.1</lomimscc:entry>
+				</lomimscc:identifier>
+			</lomimscc:general>
+		</lomimscc:lom>
+	</metadata>
+	<organizations>
+		<organization identifier="O_7X7ZRNK3" structure="rooted-hierarchy">
+			<item identifier="root">
+				<item identifier="M_OYPME5ZC">
+					<title>maintain landscape site</title>
+					<item identifier="SUB_B6DM2N14" identifierref="LO_01_R">
+						<title>landscape architecture</title>
+					</item>
+					<item identifier="SUB_YKKR9EI3" identifierref="LO_02_R">
+						<title>landscaping materials</title>
+					</item>
+					<item identifier="SUB_ICQPFTI7" identifierref="LO_03_R">
+						<title>landscape analysis</title>
+					</item>
+				</item>
+				<item identifier="M_KX7851SF">
+					<title>spray pesticides</title>
+					<item identifier="SUB_BPFZZRJI" identifierref="LO_04_R">
+						<title>apply spraying techniques</title>
+					</item>
+					<item identifier="SUB_YYTY2D5M" identifierref="LO_05_R">
+						<title>safe use of pesticides</title>
+					</item>
+					<item identifier="SUB_7AY8O7OT" identifierref="LO_06_R">
+						<title>pesticides sprayers</title>
+					</item>
+					<item identifier="SUB_CE9EY36R" identifierref="LO_07_R">
+						<title>herbicides</title>
+					</item>
+					<item identifier="SUB_N4ELUFXN" identifierref="LO_08_R">
+						<title>European pesticide legislation</title>
+					</item>
+				</item>
+				<item identifier="M_JTE9Q0VR">
+					<title>prepare ground for construction</title>
+					<item identifier="SUB_6OHJGO4Z" identifierref="LO_09_R">
+						<title>prepare building site</title>
+					</item>
+					<item identifier="SUB_UUYOQAYH" identifierref="LO_10_R">
+						<title>principles of landscape construction</title>
+					</item>
+				</item>
+				<item identifier="M_HZOUQNDG">
+					<title>handle chemical products for soil and plants</title>
+					<item identifier="SUB_HFXWP4WP" identifierref="LO_11_R">
+						<title>prepare planting area</title>
+					</item>
+					<item identifier="SUB_QYA75X9Y" identifierref="LO_12_R">
+						<title>handle chemicals</title>
+					</item>
+					<item identifier="SUB_DDIORO7Y" identifierref="LO_13_R">
+						<title>work with chemicals</title>
+					</item>
+					<item identifier="SUB_IEGNRIIB" identifierref="LO_14_R">
+						<title>chemical products</title>
+					</item>
+					<item identifier="SUB_ZC8JD8KJ" identifierref="LO_15_R">
+						<title>fertiliser products</title>
+					</item>
+				</item>
+				<item identifier="M_8RN4Y72S">
+					<title>prepare sites for planting of grass</title>
+					<item identifier="SUB_LLICSJJ7" identifierref="LO_16_R">
+						<title>prepare planting area for planting</title>
+					</item>
+				</item>
+				<item identifier="M_MWX5GTNV">
+					<title>perform pest control</title>
+					<item identifier="SUB_4GL0YRJR" identifierref="LO_17_R">
+						<title>pest biology</title>
+					</item>
+					<item identifier="SUB_W1ZB97TK" identifierref="LO_18_R">
+						<title>pest control in plants</title>
+					</item>
+				</item>
+				<item identifier="M_72R4TEM4">
+					<title>operate turf management equipment 1</title>
+					<item identifier="SUB_AOVA7NT6" identifierref="LO_19_R">
+						<title>turf management</title>
+					</item>
+				</item>
+				<item identifier="M_V4RB12LK">
+					<title>maintain irrigation systems</title>
+					<item identifier="SUB_S89B240M" identifierref="LO_20_R">
+						<title>irrigation systems</title>
+					</item>
+				</item>
+				<item identifier="M_AS9AB3P7">
+					<title>estimate consumption of water</title>
+					<item identifier="SUB_E11NO0RG" identifierref="LO_21_R">
+						<title>water consumption</title>
+					</item>
+				</item>
+				<item identifier="M_IE4IOSW8">
+					<title>execute disease and pest control activities</title>
+					<item identifier="SUB_SEY0VI4W" identifierref="LO_22_R">
+						<title>pests and diseases</title>
+					</item>
+					<item identifier="SUB_HBQM8Z72" identifierref="LO_23_R">
+						<title>pest control in plants</title>
+					</item>
+				</item>
+				<item identifier="M_G19ZPNHT">
+					<title>prepare land for turf laying</title>
+					<item identifier="SUB_N84B7AYS" identifierref="LO_24_R">
+						<title>operate turf management equipment 2</title>
+					</item>
+					<item identifier="SUB_2CHX256V" identifierref="LO_25_R">
+						<title>turf management</title>
+					</item>
+				</item>
+			</item>
+		</organization>
+	</organizations>
+	<resources>
+		<resource identifier="LO_01_R" type="imswl_xmlv1p1">
+			<file href="loms/01.xml" />
+		</resource>
+		<resource identifier="LO_02_R" type="imswl_xmlv1p1">
+			<file href="loms/02.xml" />
+		</resource>
+		<resource identifier="LO_03_R" type="imswl_xmlv1p1">
+			<file href="loms/03.xml" />
+		</resource>
+		<resource identifier="LO_04_R" type="imswl_xmlv1p1">
+			<file href="loms/04.xml" />
+		</resource>
+		<resource identifier="LO_05_R" type="imswl_xmlv1p1">
+			<file href="loms/05.xml" />
+		</resource>
+		<resource identifier="LO_06_R" type="imswl_xmlv1p1">
+			<file href="loms/06.xml" />
+		</resource>
+		<resource identifier="LO_07_R" type="imswl_xmlv1p1">
+			<file href="loms/07.xml" />
+		</resource>
+		<resource identifier="LO_08_R" type="imswl_xmlv1p1">
+			<file href="loms/08.xml" />
+		</resource>
+		<resource identifier="LO_09_R" type="imswl_xmlv1p1">
+			<file href="loms/09.xml" />
+		</resource>
+		<resource identifier="LO_10_R" type="imswl_xmlv1p1">
+			<file href="loms/10.xml" />
+		</resource>
+		<resource identifier="LO_11_R" type="imswl_xmlv1p1">
+			<file href="loms/11.xml" />
+		</resource>
+		<resource identifier="LO_12_R" type="imswl_xmlv1p1">
+			<file href="loms/12.xml" />
+		</resource>
+		<resource identifier="LO_13_R" type="imswl_xmlv1p1">
+			<file href="loms/13.xml" />
+		</resource>
+		<resource identifier="LO_14_R" type="imswl_xmlv1p1">
+			<file href="loms/14.xml" />
+		</resource>
+		<resource identifier="LO_15_R" type="imswl_xmlv1p1">
+			<file href="loms/15.xml" />
+		</resource>
+		<resource identifier="LO_16_R" type="imswl_xmlv1p1">
+			<file href="loms/16.xml" />
+		</resource>
+		<resource identifier="LO_17_R" type="imswl_xmlv1p1">
+			<file href="loms/17.xml" />
+		</resource>
+		<resource identifier="LO_18_R" type="imswl_xmlv1p1">
+			<file href="loms/18.xml" />
+		</resource>
+		<resource identifier="LO_19_R" type="imswl_xmlv1p1">
+			<file href="loms/19.xml" />
+		</resource>
+		<resource identifier="LO_20_R" type="imswl_xmlv1p1">
+			<file href="loms/20.xml" />
+		</resource>
+		<resource identifier="LO_21_R" type="imswl_xmlv1p1">
+			<file href="loms/21.xml" />
+		</resource>
+		<resource identifier="LO_22_R" type="imswl_xmlv1p1">
+			<file href="loms/22.xml" />
+		</resource>
+		<resource identifier="LO_23_R" type="imswl_xmlv1p1">
+			<file href="loms/23.xml" />
+		</resource>
+		<resource identifier="LO_24_R" type="imswl_xmlv1p1">
+			<file href="loms/24.xml" />
+		</resource>
+		<resource identifier="LO_25_R" type="imswl_xmlv1p1">
+			<file href="loms/25.xml" />
+		</resource>
+	</resources>
+</manifest>
