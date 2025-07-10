@@ -8,6 +8,7 @@ import statementsRouter from "./features/statements/statements.routes";
 import modulesRouter from "./features/modules/modules.routes";
 import coursesRouter from "./features/courses/courses.routes";
 import metricsRouter from "./features/metrics/metrics.routes";
+import recommenderRouter from "./features/recommender/recommender.routes";
 
 const app = express();
 const PORT = config.port;
@@ -23,6 +24,7 @@ app.use("/actors", actorsRouter);
 app.use("/statements", statementsRouter);
 app.use("/modules", modulesRouter);
 app.use("/courses", coursesRouter);
+app.use("/recommendation", recommenderRouter);
 app.use(/.*\/metrics/, metricsRouter);
 
 console.log('Backend should be running!')

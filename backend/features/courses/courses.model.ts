@@ -5,6 +5,7 @@ export interface CourseAttributes {
   id: string;
   title: string;
   description: string;
+  subject: string;
   language: string;
 }
 
@@ -15,6 +16,7 @@ export class Course
   public id!: string;
   public title!: string;
   public description!: string;
+  public subject!: string;
   public language!: string;
 }
 
@@ -31,6 +33,10 @@ Course.init(
       allowNull: false,
     },
     description: {
+      type: DataTypes.TEXT,
+      allowNull: false,
+    },
+    subject: {
       type: DataTypes.TEXT,
       allowNull: false,
     },
