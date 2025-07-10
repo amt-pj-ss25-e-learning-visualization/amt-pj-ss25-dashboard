@@ -15,4 +15,10 @@ router.get("/similar/:actor_id", RecommenderController.getSimilarStudentsRecomme
  */
 router.get("/topic/:actor_id", RecommenderController.getTopicInterestRecommendations);
 
+/**
+ * Recommend to review modules based on the forgetting curve.
+ * @query {string} actorId - The ID of the actor (student).
+ */
+router.get("/review/:actor_id", RecommenderController.getReviewRecommendations);
+
 export default router;

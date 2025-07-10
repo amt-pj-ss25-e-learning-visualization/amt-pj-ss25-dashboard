@@ -8,7 +8,7 @@ import { Op } from "sequelize";
  * NOTE: Current implementation with sequelize operators heavily increases API response times (without: ~1800ms => with: ~150ms).
  */
 export class TopicInterestRecommender {
-  static async getRecommendations(actorId: string): Promise<Module[]> {
+  static async getRecommendations(actorId: string, top: number): Promise<Module[]> {
     try {
       // Query the statements to find completed modules for the given actor
       const completedStatements = await Statement.findAll({
@@ -65,6 +65,7 @@ export class TopicInterestRecommender {
           parent_id: null,
           course_id: { [Op.in]: matchingCourseIds },
         },
+        limit: top
       });
 
       return recommendedModules;
