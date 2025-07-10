@@ -4,8 +4,7 @@ import { Course } from "../../courses/courses.model";
 import { Op } from "sequelize";
 
 /**
- * TopicInterestRecommender class provides methods to recommend modules based on the topics
- * of courses that a student has completed.
+ * TopicInterestRecommender recommends modules based on the topics of courses that a given actors has completed.
  * NOTE: Current implementation with sequelize operators heavily increases API response times (without: ~1800ms => with: ~150ms).
  */
 export class TopicInterestRecommender {
