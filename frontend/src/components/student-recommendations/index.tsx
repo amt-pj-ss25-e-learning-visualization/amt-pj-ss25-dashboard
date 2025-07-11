@@ -13,7 +13,7 @@ import {
 } from "@/components/ui/table";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
-import { BookOpenText } from "lucide-react";
+import { BookOpenText, LockOpen } from "lucide-react";
 
 export default function StudentRecommendations() {
   const { currentActor } = useActor();
@@ -43,7 +43,10 @@ export default function StudentRecommendations() {
   return (
     <div className="py-4">
       <Card className="p-4">
-        <h3 className="text-xl font-semibold mb-2">Explore new courses</h3>
+        <h3 className="text-xl font-semibold flex gap-2">
+          <LockOpen color="green" />
+          New course recommendations
+        </h3>
         <p className="mb-4 text-sm text-muted-foreground">
           We've looked at every module you've already visited and are showing
           any courses you haven't touched yet. These are new opportunities to
