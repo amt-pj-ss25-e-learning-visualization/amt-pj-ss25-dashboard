@@ -10,7 +10,7 @@ import {
 import { useCourses } from "@/hooks/use-courses";
 import { Link } from "react-router-dom";
 
-export default function CourseList() {
+export default function AllCourses() {
   const { data: courses, loading, error } = useCourses();
 
   if (loading) return <p className="text-sm">Loading courses...</p>;

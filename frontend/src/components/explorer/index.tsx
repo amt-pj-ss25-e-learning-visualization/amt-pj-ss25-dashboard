@@ -3,7 +3,6 @@ import { useStatements } from "@/hooks/use-statements";
 import { useActors } from "@/hooks/use-actors";
 import { useModules } from "@/hooks/use-modules";
 import { useCourses } from "@/hooks/use-courses";
-import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import {
   Select,
   SelectContent,
@@ -22,7 +21,7 @@ import {
 import { formatDateTime } from "@/utils/date";
 import { Button } from "@/components/ui/button";
 
-export default function ExplorerView() {
+export default function Explorer() {
   const [selectedVerb, setSelectedVerb] = useState<string | undefined>();
   const [page, setPage] = useState(1);
   const pageSize = 10;

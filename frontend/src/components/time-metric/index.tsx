@@ -1,12 +1,16 @@
 import { Clock } from "lucide-react";
 
-type Props = {
+const TimeMetric = ({
+  timeSpent,
+  lastVisit,
+  visits,
+}: {
   timeSpent?: string;
   lastVisit?: string;
   visits?: number;
-};
-export const TimeMetric = ({ timeSpent, lastVisit, visits }: Props) => {
+}) => {
   if (!timeSpent) return null;
+
   return (
     <div className="ml-4 px-4 flex items-center gap-2">
       <Clock height={20} width={20} />
@@ -22,3 +26,5 @@ export const TimeMetric = ({ timeSpent, lastVisit, visits }: Props) => {
     </div>
   );
 };
+
+export default TimeMetric;

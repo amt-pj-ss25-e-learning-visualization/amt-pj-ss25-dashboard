@@ -86,3 +86,12 @@ export type StatementDto = {
   result?: Result | null;
   timestamp: string | Date;
 };
+
+export type SubModuleType = CourseDetailsDto["modules"][number]["submodules"][number];
+
+export type ResourceType = CourseDetailsDto["modules"][number]["submodules"][number]["resources"][number];
+
+export type ModuleType = CourseDetailsDto["modules"][number];
+
+export const PROGRESS_KEYS = ["performance", "masteryRaw", "completion"] as const;
+export type ProgressType = typeof PROGRESS_KEYS[number];

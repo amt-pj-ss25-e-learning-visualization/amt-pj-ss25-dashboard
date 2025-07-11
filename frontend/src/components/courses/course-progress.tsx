@@ -20,32 +20,20 @@ import {
   ChartTooltip,
   ChartTooltipContent,
 } from "../ui/chart";
-
-const colors: Record<string, string> = {
-  performance: "#60A5FA",
-  mastery: "#6366F1",
-  completion: "#0bbc5a",
-};
-
-const descriptions: Record<string, string> = {
-  performance:
-    "Performance measures your engagement and consistency in the course.",
-  mastery: "Mastery reflects how well you understand the course material.",
-  completion: "Completion shows how much of the course you've finished.",
-};
+import { progresDescriptions, progressColors } from "@/utils/progress";
 
 const chartConfig = {
   performance: {
     label: "Performance",
-    color: colors.performance,
+    color: progressColors.performance,
   },
   mastery: {
     label: "Mastery",
-    color: colors.Mastery,
+    color: progressColors.Mastery,
   },
   completion: {
     label: "Completion",
-    color: colors.Completion,
+    color: progressColors.Completion,
   },
 } satisfies ChartConfig;
 
@@ -118,14 +106,14 @@ export function CourseProgress({ course }: { course: CourseDetailsDto }) {
             <Bar
               dataKey="performance"
               stackId="a"
-              fill={colors.performance}
+              fill={progressColors.performance}
               radius={[8, 0, 0, 8]}
             />
-            <Bar dataKey="mastery" stackId="a" fill={colors.mastery} />
+            <Bar dataKey="mastery" stackId="a" fill={progressColors.mastery} />
             <Bar
               dataKey="completion"
               stackId="a"
-              fill={colors.completion}
+              fill={progressColors.completion}
               radius={[0, 8, 8, 0]}
             />
           </BarChart>
@@ -153,7 +141,7 @@ export function CourseProgress({ course }: { course: CourseDetailsDto }) {
                             <Info className="w-3 h-3 text-muted-foreground cursor-pointer" />
                           </TooltipTrigger>
                           <TooltipContent side="top" className="text-xs">
-                            {descriptions[key]}
+                            {progresDescriptions[key]}
                           </TooltipContent>
                         </Tooltip>
                       </div>
@@ -164,7 +152,7 @@ export function CourseProgress({ course }: { course: CourseDetailsDto }) {
                       <Progress
                         value={value}
                         className="h-2"
-                        progressColor={colors[key]}
+                        progressColor={progressColors[key]}
                       />
                       <span className="text-xs text-muted-foreground ml-1">
                         You
@@ -175,7 +163,7 @@ export function CourseProgress({ course }: { course: CourseDetailsDto }) {
                       <Progress
                         value={classAvg}
                         className="h-2 opacity-60"
-                        progressColor={colors[key]}
+                        progressColor={progressColors[key]}
                       />
                       <div className="absolute top-005 right-0 text-[10px] text-muted-foreground">
                         {classAvg}%

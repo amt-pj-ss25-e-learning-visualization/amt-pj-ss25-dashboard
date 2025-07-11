@@ -5,13 +5,9 @@ import {
   AccordionTrigger,
 } from "../ui/accordion";
 import { Submodule } from "../submodule";
-import { CourseDetailsDto } from "@/types/dto";
+import { ModuleType } from "@/types/dto";
 
-type Props = {
-  module: CourseDetailsDto["modules"][number];
-};
-
-export const Module = ({ module }: Props) => {
+export const Module = ({ module }: { module: ModuleType }) => {
   return (
     <AccordionItem
       value={module.id}

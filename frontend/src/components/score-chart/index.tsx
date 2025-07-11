@@ -7,23 +7,17 @@ import {
 } from "recharts";
 import { ChartContainer, ChartTooltip, ChartTooltipContent } from "../ui/chart";
 
-type Props = {
+const ScoreChart = ({
+  score,
+  max,
+  mean,
+  passed,
+}: {
   score: number;
   max: number;
   mean: number;
   passed: boolean;
-};
-
-const chartConfig = {
-  avg: {
-    label: "Avg. Student Score",
-  },
-  actor: {
-    label: "Your Highscore",
-  },
-};
-
-export const Score = ({ score, max, mean, passed }: Props) => {
+}) => {
   const chartData = [
     {
       label: "avg",
@@ -41,7 +35,14 @@ export const Score = ({ score, max, mean, passed }: Props) => {
   return (
     <div>
       <ChartContainer
-        config={chartConfig}
+        config={{
+          avg: {
+            label: "Avg. Student Score",
+          },
+          actor: {
+            label: "Your Highscore",
+          },
+        }}
         className="mx-auto aspect-square max-h-[250px]"
       >
         <RadialBarChart
@@ -106,3 +107,4 @@ export const Score = ({ score, max, mean, passed }: Props) => {
     </div>
   );
 };
+export default ScoreChart;
