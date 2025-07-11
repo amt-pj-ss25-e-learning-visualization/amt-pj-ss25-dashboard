@@ -16,6 +16,7 @@ export default function AllCourses() {
   if (loading) return <p className="text-sm">Loading courses...</p>;
   if (error)
     return <p className="text-sm text-red-500">Failed to load courses.</p>;
+
   if (!courses || courses.length === 0)
     return <p className="text-sm">No courses found.</p>;
 
@@ -27,7 +28,7 @@ export default function AllCourses() {
           <Link key={course.id} to={`/courses/${course.id}`}>
             <Card className="hover:border-blue-600 hover:shadow-lg transition-all cursor-pointer h-full">
               <CardHeader>
-                <CardTitle className="flex items-center gap-2 text-lg">
+                <CardTitle className="flex items-center gap-2 text-lg capitalize">
                   <BookOpen className="w-5 h-5 text-blue-600" />
                   <span>{course.title}</span>
                 </CardTitle>

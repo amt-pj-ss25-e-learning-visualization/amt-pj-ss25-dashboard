@@ -58,6 +58,7 @@ export interface ModuleDto {
   parent_id?: string | null;
   submodules?: any;
   instructor?: any;
+  course?: any;
 }
 
 export type Score = {
@@ -95,3 +96,15 @@ export type ModuleType = CourseDetailsDto["modules"][number];
 
 export const PROGRESS_KEYS = ["performance", "masteryRaw", "completion"] as const;
 export type ProgressType = typeof PROGRESS_KEYS[number];
+
+export type MetricKey =
+  | "attempts"
+  | "performance"
+  | "masteryRaw"
+  | "masteryEbbinghaus"
+  | "completion"
+  | "timeSpent"
+  | "realVsExpectedTime"
+  | "lastVisit"
+  | "totalVisits"
+  | "rating";

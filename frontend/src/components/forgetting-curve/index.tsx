@@ -15,7 +15,7 @@ import { Tooltip, TooltipContent, TooltipTrigger } from "../ui/tooltip";
 
 const chartConfig = {
   ebb: {
-    label: "Ebbinghaus %",
+    label: "Mastery %",
     color: masteryColors.ebb,
   },
 } satisfies ChartConfig;

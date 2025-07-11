@@ -5,16 +5,18 @@ import { Accordion } from "../ui/accordion";
 import { Module } from "../modules";
 import { CourseProgress } from "./course-progress";
 import { languageLabel } from "@/utils/language";
+import { useActor } from "@/context/actor-context";
 
 export default function CourseDetails({
   course,
 }: {
   course: CourseDetailsDto;
 }) {
+  const { currentActor } = useActor();
   return (
     <Card className="w-full max-w-screen-xl mx-auto border-0 shadow-none">
       <CardHeader>
-        <CardTitle className="text-3xl flex gap-2 items-center text-blue-700">
+        <CardTitle className="text-3xl flex gap-2 items-center text-blue-700 capitalize">
           <BookOpen className="w-6 h-6" />
           {course.title}
         </CardTitle>
@@ -31,13 +33,15 @@ export default function CourseDetails({
         <CourseProgress course={course} />
       </CardContent>
 
-      <CardContent className="space-y-8">
-        <Accordion type="multiple" className="w-full flex flex-col gap-4">
-          {course.modules.map((module) => (
-            <Module key={module.id} module={module} />
-          ))}
-        </Accordion>
-      </CardContent>
+      {currentActor && currentActor.role === "student" && (
+        <CardContent className="space-y-8">
+          <Accordion type="multiple" className="w-full flex flex-col gap-4">
+            {course.modules.map((module) => (
+              <Module key={module.id} module={module} />
+            ))}
+          </Accordion>
+        </CardContent>
+      )}
     </Card>
   );
 }

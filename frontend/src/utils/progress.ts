@@ -24,5 +24,5 @@ export const masteryColors: Record<string, string> = {
 };
 
 export const masteryDescription: Record<string, string> = {
-  ebb: "This chart shows your “forgetting curve” in percentages: how well you retain what you've learned over time. The higher the line, the more you're remembering since you first studied the material."
+  ebb: "This chart shows your 'forgetting curve' in percentages: how well you retain what you've learned over time. The higher the line, the more you're remembering since you first studied the material."
 }
