@@ -13,6 +13,13 @@ import { CourseDto } from "@/types/dto";
 import { InfoIcon } from "lucide-react";
 import { Tooltip, TooltipContent, TooltipTrigger } from "../ui/tooltip";
 
+const chartConfig = {
+  ebb: {
+    label: "Ebbinghaus %",
+    color: masteryColors.ebb,
+  },
+} satisfies ChartConfig;
+
 export default function ForgettingCurve({
   metrics,
   course,
@@ -27,13 +34,6 @@ export default function ForgettingCurve({
     module: `Month ${i + 1}`,
     ebb: v * 100,
   }));
-
-  const chartConfig = {
-    ebb: {
-      label: "Ebbinghaus %",
-      color: masteryColors.ebb,
-    },
-  } satisfies ChartConfig;
 
   return (
     <div className="space-y-2">

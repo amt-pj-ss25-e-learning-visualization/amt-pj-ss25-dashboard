@@ -1,17 +1,22 @@
+import { Bar, BarChart, CartesianGrid, XAxis, YAxis } from "recharts";
 import {
-  BarChart,
-  Bar,
-  XAxis,
-  YAxis,
-  Tooltip,
-  ResponsiveContainer,
-} from "recharts";
+  ChartConfig,
+  ChartContainer,
+  ChartTooltip,
+  ChartTooltipContent,
+} from "@/components/ui/chart";
 import { useStatementsByActor } from "@/hooks/use-statements";
 import { ActorDto, StatementDto } from "@/types/dto";
 import { Folder, FileText, Clock } from "lucide-react";
 import { formatDateTime } from "@/utils/date";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import StudentRecommendations from "../student-recommendations";
+
+const chartConfig = {
+  verb: {
+    label: "Verb",
+  },
+} satisfies ChartConfig;
 
 export default function StudentActivity({
   currentActor,
@@ -103,14 +108,27 @@ export default function StudentActivity({
             </CardTitle>
           </CardHeader>
           <CardContent className="h-[500px]">
-            <ResponsiveContainer width="100%" height="100%">
-              <BarChart data={chartData}>
-                <XAxis dataKey="verb" />
+            <ChartContainer
+              config={chartConfig}
+              style={{ width: "100%", height: "100%" }}
+            >
+              <BarChart accessibilityLayer data={chartData}>
+                <CartesianGrid vertical={false} />
+
+                <XAxis
+                  dataKey="verb"
+                  tickLine={false}
+                  tickMargin={10}
+                  axisLine={false}
+                />
+                <ChartTooltip
+                  cursor={false}
+                  content={<ChartTooltipContent hideLabel />}
+                />
                 <YAxis allowDecimals={false} />
-                <Tooltip />
-                <Bar dataKey="count" fill="#3b82f6" />
+                <Bar dataKey="count" fill="#3b82f6" radius={8} />
               </BarChart>
-            </ResponsiveContainer>
+            </ChartContainer>
           </CardContent>
         </Card>
       </div>
