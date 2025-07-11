@@ -15,6 +15,7 @@ export function formatDateTime(
 }
 
 
+// Converts a duration in milliseconds into a human-readable string in hours and minutes 
 export const formatDuration = (milli: number): string => {
   const totalSeconds = Math.floor(milli / 1000);
   const hours = Math.floor(totalSeconds / 3600);

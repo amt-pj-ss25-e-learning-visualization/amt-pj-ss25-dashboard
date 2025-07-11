@@ -1,0 +1,252 @@
+<?xml version='1.0' encoding='utf-8'?>
+<manifest xmlns:lomimscc="http://ltsc.ieee.org/xsd/imsccv1p1/LOM/manifest" xmlns="http://www.imsglobal.org/xsd/imsccv1p1/imscp_v1p1" xmlns:lom="http://ltsc.ieee.org/xsd/imsccv1p1/LOM/resource" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" identifier="R_PG22AIWH" xsi:schemaLocation="http://www.imsglobal.org/xsd/imsccv1p1/imscp_v1p1 http://www.imsglobal.org/profile/cc/ccv1p1/ccv1p1_imscp_v1p2_v1p0.xsd http://ltsc.ieee.org/xsd/imsccv1p1/LOM/manifest http://www.imsglobal.org/profile/cc/ccv1p1/LOM/ccv1p1_lommanifest_v1p0.xsd http://ltsc.ieee.org/xsd/imsccv1p1/LOM/resource http://www.imsglobal.org/profile/cc/ccv1p1/LOM/ccv1p1_lomresource_v1p0.xsd">
+	<metadata>
+		<schema>IMS Common Cartridge</schema>
+		<schemaversion>1.1.0</schemaversion>
+		<lomimscc:lom>
+			<lomimscc:general>
+				<lomimscc:title>
+					<lomimscc:string language="en">horticulture production manager</lomimscc:string>
+				</lomimscc:title>
+				<lomimscc:language>en</lomimscc:language>
+				<lomimscc:description>
+					<lomimscc:string language="en">Horticultural production managers plan the production, manage the enterprise and participate in the production</lomimscc:string>
+				</lomimscc:description>
+				<lomimscc:identifier>
+					<lomimscc:catalog>Horticulture</lomimscc:catalog>
+					<lomimscc:entry>6113.2</lomimscc:entry>
+				</lomimscc:identifier>
+			</lomimscc:general>
+		</lomimscc:lom>
+	</metadata>
+	<organizations>
+		<organization identifier="O_931LWJ8K" structure="rooted-hierarchy">
+			<item identifier="root">
+				<item identifier="M_T38EFW5W">
+					<title>prune plants</title>
+					<item identifier="SUB_GC5Q8LIE" identifierref="LO_01_R">
+						<title>variety of botanicals</title>
+					</item>
+					<item identifier="SUB_662N0WVL" identifierref="LO_02_R">
+						<title>pruning types</title>
+					</item>
+				</item>
+				<item identifier="M_15HNZCS2">
+					<title>supervise crop production</title>
+					<item identifier="SUB_CP40D1G7" identifierref="LO_03_R">
+						<title>crop production principles</title>
+					</item>
+					<item identifier="SUB_RKL2UMKX" identifierref="LO_04_R">
+						<title>technical equipment for crop production</title>
+					</item>
+				</item>
+				<item identifier="M_I26MUAKO">
+					<title>make independent operating decisions</title>
+					<item identifier="SUB_89PDYJXZ" identifierref="LO_05_R">
+						<title>make decisions</title>
+					</item>
+					<item identifier="SUB_MPX9AZLX" identifierref="LO_06_R">
+						<title>decision support systems</title>
+					</item>
+				</item>
+				<item identifier="M_UCB0GRL6">
+					<title>develop agricultural production plans</title>
+					<item identifier="SUB_6U2X0VUU" identifierref="LO_07_R">
+						<title>control production</title>
+					</item>
+					<item identifier="SUB_AWT36OKB" identifierref="LO_08_R">
+						<title>agricultural production principles</title>
+					</item>
+				</item>
+				<item identifier="M_HZK2J1A9">
+					<title>store crops</title>
+					<item identifier="SUB_WGAP8JT4" identifierref="LO_09_R">
+						<title>store products</title>
+					</item>
+					<item identifier="SUB_4HFZ9Y16" identifierref="LO_10_R">
+						<title>technical equipment for crop production</title>
+					</item>
+				</item>
+				<item identifier="M_DG0S8C4O">
+					<title>manage production enterprise</title>
+					<item identifier="SUB_GUVNAEKW" identifierref="LO_11_R">
+						<title>instruct others</title>
+					</item>
+					<item identifier="SUB_72KR026V" identifierref="LO_12_R">
+						<title>lead others</title>
+					</item>
+					<item identifier="SUB_9QA4PBF3" identifierref="LO_13_R">
+						<title>motivate others</title>
+					</item>
+					<item identifier="SUB_VENGU4UZ" identifierref="LO_14_R">
+						<title>give advice to others</title>
+					</item>
+				</item>
+				<item identifier="M_CVXN5A4T">
+					<title>coordinate greenhouse environment</title>
+					<item identifier="SUB_SBMYZQF2" identifierref="LO_15_R">
+						<title>greenhouse types</title>
+					</item>
+				</item>
+				<item identifier="M_0PFF05QN">
+					<title>supervise hygiene procedures in agricultural settings</title>
+					<item identifier="SUB_LP6FO55J" identifierref="LO_16_R">
+						<title>follow hygienic work practices</title>
+					</item>
+				</item>
+				<item identifier="M_IXJNWI2C">
+					<title>maintain storage facilities</title>
+					<item identifier="SUB_7ZGCRS4A" identifierref="LO_17_R">
+						<title>airtight storage</title>
+					</item>
+					<item identifier="SUB_GIIJYMX5" identifierref="LO_18_R">
+						<title>quality criteria for storage facilities</title>
+					</item>
+				</item>
+				<item identifier="M_FY8MRVQS">
+					<title>ensure soil fertility</title>
+					<item identifier="SUB_BQV0K92A" identifierref="LO_19_R">
+						<title>soil science</title>
+					</item>
+					<item identifier="SUB_4WWN9W64" identifierref="LO_20_R">
+						<title>soil structure</title>
+					</item>
+				</item>
+				<item identifier="M_KYD8RWW7">
+					<title>use agricultural information systems and databases</title>
+					<item identifier="SUB_A8T8AYJK" identifierref="LO_21_R">
+						<title>use databases</title>
+					</item>
+					<item identifier="SUB_O7Y9642X" identifierref="LO_22_R">
+						<title>database management systems</title>
+					</item>
+					<item identifier="SUB_YBJ83LLJ" identifierref="LO_23_R">
+						<title>database</title>
+					</item>
+				</item>
+				<item identifier="M_PWAM1VTW">
+					<title>propagate plants</title>
+					<item identifier="SUB_DQDK1JEC" identifierref="LO_24_R">
+						<title>plant propagation</title>
+					</item>
+				</item>
+				<item identifier="M_I0M2TSL0">
+					<title>optimise production</title>
+					<item identifier="SUB_QEKDOBTE" identifierref="LO_25_R">
+						<title>quality and cycle time optimisation</title>
+					</item>
+				</item>
+				<item identifier="M_ONTG14Q7">
+					<title>operate horticulture equipment</title>
+					<item identifier="SUB_9TI3NRBC" identifierref="LO_26_R">
+						<title>horticultural design</title>
+					</item>
+				</item>
+				<item identifier="M_72HMF9SF">
+					<title>execute disease and pest control activities</title>
+					<item identifier="SUB_DNRBQQFS" identifierref="LO_27_R">
+						<title>pest control in plants</title>
+					</item>
+					<item identifier="SUB_MV8DISH3" identifierref="LO_28_R">
+						<title>pests and diseases</title>
+					</item>
+				</item>
+				<item identifier="M_SZ1N3WRA">
+					<title>harvest crop</title>
+					<item identifier="SUB_NWRN35E8" identifierref="LO_29_R">
+						<title>manage crop production</title>
+					</item>
+				</item>
+			</item>
+		</organization>
+	</organizations>
+	<resources>
+		<resource identifier="LO_01_R" type="imswl_xmlv1p1">
+			<file href="loms/01.xml" />
+		</resource>
+		<resource identifier="LO_02_R" type="imswl_xmlv1p1">
+			<file href="loms/02.xml" />
+		</resource>
+		<resource identifier="LO_03_R" type="imswl_xmlv1p1">
+			<file href="loms/03.xml" />
+		</resource>
+		<resource identifier="LO_04_R" type="imswl_xmlv1p1">
+			<file href="loms/04.xml" />
+		</resource>
+		<resource identifier="LO_05_R" type="imswl_xmlv1p1">
+			<file href="loms/05.xml" />
+		</resource>
+		<resource identifier="LO_06_R" type="imswl_xmlv1p1">
+			<file href="loms/06.xml" />
+		</resource>
+		<resource identifier="LO_07_R" type="imswl_xmlv1p1">
+			<file href="loms/07.xml" />
+		</resource>
+		<resource identifier="LO_08_R" type="imswl_xmlv1p1">
+			<file href="loms/08.xml" />
+		</resource>
+		<resource identifier="LO_09_R" type="imswl_xmlv1p1">
+			<file href="loms/09.xml" />
+		</resource>
+		<resource identifier="LO_10_R" type="imswl_xmlv1p1">
+			<file href="loms/10.xml" />
+		</resource>
+		<resource identifier="LO_11_R" type="imswl_xmlv1p1">
+			<file href="loms/11.xml" />
+		</resource>
+		<resource identifier="LO_12_R" type="imswl_xmlv1p1">
+			<file href="loms/12.xml" />
+		</resource>
+		<resource identifier="LO_13_R" type="imswl_xmlv1p1">
+			<file href="loms/13.xml" />
+		</resource>
+		<resource identifier="LO_14_R" type="imswl_xmlv1p1">
+			<file href="loms/14.xml" />
+		</resource>
+		<resource identifier="LO_15_R" type="imswl_xmlv1p1">
+			<file href="loms/15.xml" />
+		</resource>
+		<resource identifier="LO_16_R" type="imswl_xmlv1p1">
+			<file href="loms/16.xml" />
+		</resource>
+		<resource identifier="LO_17_R" type="imswl_xmlv1p1">
+			<file href="loms/17.xml" />
+		</resource>
+		<resource identifier="LO_18_R" type="imswl_xmlv1p1">
+			<file href="loms/18.xml" />
+		</resource>
+		<resource identifier="LO_19_R" type="imswl_xmlv1p1">
+			<file href="loms/19.xml" />
+		</resource>
+		<resource identifier="LO_20_R" type="imswl_xmlv1p1">
+			<file href="loms/20.xml" />
+		</resource>
+		<resource identifier="LO_21_R" type="imswl_xmlv1p1">
+			<file href="loms/21.xml" />
+		</resource>
+		<resource identifier="LO_22_R" type="imswl_xmlv1p1">
+			<file href="loms/22.xml" />
+		</resource>
+		<resource identifier="LO_23_R" type="imswl_xmlv1p1">
+			<file href="loms/23.xml" />
+		</resource>
+		<resource identifier="LO_24_R" type="imswl_xmlv1p1">
+			<file href="loms/24.xml" />
+		</resource>
+		<resource identifier="LO_25_R" type="imswl_xmlv1p1">
+			<file href="loms/25.xml" />
+		</resource>
+		<resource identifier="LO_26_R" type="imswl_xmlv1p1">
+			<file href="loms/26.xml" />
+		</resource>
+		<resource identifier="LO_27_R" type="imswl_xmlv1p1">
+			<file href="loms/27.xml" />
+		</resource>
+		<resource identifier="LO_28_R" type="imswl_xmlv1p1">
+			<file href="loms/28.xml" />
+		</resource>
+		<resource identifier="LO_29_R" type="imswl_xmlv1p1">
+			<file href="loms/29.xml" />
+		</resource>
+	</resources>
+</manifest>

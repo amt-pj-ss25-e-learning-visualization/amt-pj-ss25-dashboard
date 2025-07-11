@@ -1,8 +1,9 @@
 const languageMap: Record<string, string> = {
-  en: "English",
+  "en": "English",
+  "en-US": "English",
   "de": "German",
   "de-de": "German",
-  fr: "French",
+  "fr": "French",
 };
 
 export function languageLabel(code: string): string {

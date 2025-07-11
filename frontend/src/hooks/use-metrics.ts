@@ -1,12 +1,26 @@
 import { useApi } from "./use-api";
-import { ScoreDTO } from "../../../backend/features/metrics/metrics.dto";
+import { ModuleMetricsDTO, CourseScoreDTO } from "../../../backend/features/metrics/metrics.dto";
 
-export function useScore(moduleId?: string, actorId?: string) {
-  return useApi<ScoreDTO["response"]>([
+
+// Fetches module metrics for a given module and actor by calling the generic useApi hook with the appropriate endpoint segments
+export function useMetrics(moduleId?: string, actorId?: string) {
+  return useApi<ModuleMetricsDTO["response"]>([
     "modules",
     moduleId,
     "actors",
     actorId,
-    "metrics/moduleScore",
+    "metrics",
+  ]);
+}
+
+// Fetches and returns the aggregated metric of a course based on the module metrics
+export function useAggregatedMetrics(courseId?: string, actorId?: string) {
+  return useApi<CourseScoreDTO["response"]>([
+    "courses",
+    courseId,
+    "actors",
+    actorId,
+    "metrics",
+    "aggregated"
   ]);
 }

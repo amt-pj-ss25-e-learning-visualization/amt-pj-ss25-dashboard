@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='utf-8'?>
+<lom xmlns="http://ltsc.ieee.org/xsd/LOM">
+	<general>
+		<identifier>
+			<entry>https://example.com/objectMetadata/18</entry>
+		</identifier>
+		<title>
+			<string language="en-US">Learning Object 18</string>
+		</title>
+		<language>en-US</language>
+		<description>
+			<string language="en-US">Quality criteria for storage facilities such as safe locking systems, ventilation, regularly inspected fireproofing systems, etc.</string>
+		</description>
+		<keyword>
+			<string language="en-US">Learning</string>
+			<string language="en-US">Object</string>
+			<string language="en-US">18</string>
+		</keyword>
+	</general>
+	<educational>
+		<interactivityType>
+			<source>LOMv1.0</source>
+			<value>expositive</value>
+		</interactivityType>
+		<learningResourceType>
+			<source>LOMv1.0</source>
+			<value>index</value>
+		</learningResourceType>
+		<interactivityLevel>
+			<source>LOMv1.0</source>
+			<value>high</value>
+		</interactivityLevel>
+		<semanticDensity>
+			<source>LOMv1.0</source>
+			<value>very high</value>
+		</semanticDensity>
+		<difficulty>
+			<source>LOMv1.0</source>
+			<value>very easy</value>
+		</difficulty>
+		<typicalLearningTime>
+			<duration>PT19M20S</duration>
+		</typicalLearningTime>
+	</educational>
+	<classification>
+		<purpose>
+			<source>LOMv1.0</source>
+			<value>competency</value>
+		</purpose>
+		<taxonPath>
+			<source>
+				<string language="en-US">ESCO</string>
+			</source>
+			<taxon>
+				<id>http://data.europa.eu/esco/skill/14026826-61f5-4476-a217-4e4d62e86b4f</id>
+				<entry>
+					<string language="en-US">quality criteria for storage facilities</string>
+				</entry>
+			</taxon>
+		</taxonPath>
+	</classification>
+</lom>

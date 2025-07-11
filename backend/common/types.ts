@@ -10,7 +10,7 @@ export type DTO = {
   response: any;
 };
 
-export type Request<P extends DTO = DTO> = ExpressRequest<
+export type Request<P extends Partial<DTO> = DTO> = ExpressRequest<
   P["params"],
   P["response"],
   P["body"],
@@ -18,14 +18,19 @@ export type Request<P extends DTO = DTO> = ExpressRequest<
 >;
 
 export type ErrorResponse = {
+  /**
+   * A message describing the error.
+   */
   message: string;
+  /**
+   * The actual error message from the system
+   */
   error?: any;
 };
 
-export type Response<P extends DTO = DTO> = ExpressResponse<
-  P["response"] | ErrorResponse
+export type Response<P extends Partial<DTO> = DTO> = ExpressResponse<
+  ErrorResponse | P["response"]
 >;
-
 export type ISO8601Duration = `P${`${number}Y` | ""}${`${number}M` | ""}${
   | `${number}D`
   | ""}${"T" | ""}${`${number}H` | ""}${`${number}M` | ""}${`${number}S` | ""}`;

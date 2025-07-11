@@ -25,7 +25,7 @@ if __name__ == "__main__":
     print(f"Found {len(resources)} resources in manifest.")
 
     print(">> Parsing course metadata...")
-    course_title, course_desc, course_lang = parse_course_metadata(IMS_MANIFEST)
+    course_title, course_desc, course_lang, course_subj = parse_course_metadata(IMS_MANIFEST)
     print(f"Course title: {course_title}")
 
     print(">> Parsing modules from manifest...")
@@ -49,20 +49,20 @@ if __name__ == "__main__":
             print(">> Inserting course into 'courses' table...")
             course_id = str(uuid.uuid4())
             cur.execute("""
-                INSERT INTO courses (id, title, description, language)
-                VALUES (%s, %s, %s, %s)
-            """, (course_id, course_title, course_desc, course_lang))
+                INSERT INTO courses (id, title, description, subject, language)
+                VALUES (%s, %s, %s, %s, %s)
+            """, (course_id, course_title, course_desc, course_subj, course_lang))
 
             print(">> Inserting learning resources into 'learning_resources' table...")
             resource_id_map = {}
             lr_count = 0
-            for identifier, url in resources.items():
-                if not url.endswith('.xml'):
+            for identifier, path in resources.items():  # 'path' is now relative to the manifest location
+                if not path.endswith('.xml'):
                     continue
-                xml_bytes = get_resource_xml(url)
+                xml_bytes = get_resource_xml(path)  # Pass the relative path directly
                 meta = parse_learning_resource_xml(xml_bytes)
-                lr_id = str(uuid.uuid5(uuid.NAMESPACE_URL, url))
-                resource_id_map[url] = lr_id
+                lr_id = str(uuid.uuid5(uuid.NAMESPACE_URL, path))
+                resource_id_map[path] = lr_id
                 cur.execute("""
                     INSERT INTO learning_resources
                     (id, title, description, language, interactivity_type, interactivity_level, learning_resource_type, semantic_density, difficulty, typical_learning_time)
@@ -87,7 +87,7 @@ if __name__ == "__main__":
             for mod in modules:
                 cur.execute("""
                     INSERT INTO modules (id, course_id, parent_id, title, instructor_id)
-                    VALUES (%s, %s, %s, %s, %s)
+                    VALUES (%s, %s, %s, %s, %s) ON CONFLICT (id) DO NOTHING
                 """, (
                     mod['id'],
                     course_id,
@@ -112,11 +112,11 @@ if __name__ == "__main__":
             print(f"Linked {link_count} resources to modules.")
 
             print(">> Building statement-to-module map...")
-            statement_id_to_module_id = build_statement_id_to_module_id_map(data, modules, resources)
+            statement_id_to_module_id = build_statement_id_to_module_id_map(data, modules)
             
             print(">> Inserting xAPI statements - this may take a while...")
             insert_statements(
-                cur, data, modules, resources, statement_id_to_module_id,
+                cur, data, modules, statement_id_to_module_id,
                 get_or_create_actor, link_instructor_to_module
             )
             print("All xAPI statements inserted.")

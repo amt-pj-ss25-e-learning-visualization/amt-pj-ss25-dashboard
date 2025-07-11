@@ -1,0 +1,225 @@
+<?xml version='1.0' encoding='utf-8'?>
+<manifest xmlns:lomimscc="http://ltsc.ieee.org/xsd/imsccv1p1/LOM/manifest" xmlns="http://www.imsglobal.org/xsd/imsccv1p1/imscp_v1p1" xmlns:lom="http://ltsc.ieee.org/xsd/imsccv1p1/LOM/resource" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" identifier="R_GT8U8A1S" xsi:schemaLocation="http://www.imsglobal.org/xsd/imsccv1p1/imscp_v1p1 http://www.imsglobal.org/profile/cc/ccv1p1/ccv1p1_imscp_v1p2_v1p0.xsd http://ltsc.ieee.org/xsd/imsccv1p1/LOM/manifest http://www.imsglobal.org/profile/cc/ccv1p1/LOM/ccv1p1_lommanifest_v1p0.xsd http://ltsc.ieee.org/xsd/imsccv1p1/LOM/resource http://www.imsglobal.org/profile/cc/ccv1p1/LOM/ccv1p1_lomresource_v1p0.xsd">
+	<metadata>
+		<schema>IMS Common Cartridge</schema>
+		<schemaversion>1.1.0</schemaversion>
+		<lomimscc:lom>
+			<lomimscc:general>
+				<lomimscc:title>
+					<lomimscc:string language="en">data centre operator</lomimscc:string>
+				</lomimscc:title>
+				<lomimscc:language>en</lomimscc:language>
+				<lomimscc:description>
+					<lomimscc:string language="en">Data centre operators maintain computer operations within the data centre. They manage daily activities within the centre to solve problems, maintain the system availability, and evaluate the system's performance.</lomimscc:string>
+				</lomimscc:description>
+				<lomimscc:identifier>
+					<lomimscc:catalog>IT</lomimscc:catalog>
+					<lomimscc:entry>3511.1</lomimscc:entry>
+				</lomimscc:identifier>
+			</lomimscc:general>
+		</lomimscc:lom>
+	</metadata>
+	<organizations>
+		<organization identifier="O_14Q51IT2" structure="rooted-hierarchy">
+			<item identifier="root">
+				<item identifier="M_JK2X18LW">
+					<title>maintain ICT server</title>
+					<item identifier="SUB_ZU006RRB" identifierref="LO_01_R">
+						<title>maintain ICT system</title>
+					</item>
+					<item identifier="SUB_R5FPQXA0" identifierref="LO_02_R">
+						<title>proxy servers</title>
+					</item>
+				</item>
+				<item identifier="M_JCCF3GOM">
+					<title>keep up with the latest information systems solutions</title>
+					<item identifier="SUB_2U9QIVFS" identifierref="LO_03_R">
+						<title>demonstrate willingness to learn</title>
+					</item>
+				</item>
+				<item identifier="M_6Y8JC6Q3">
+					<title>manage database advanced</title>
+					<item identifier="SUB_PLNTF9GJ" identifierref="LO_04_R">
+						<title>database management systems</title>
+					</item>
+					<item identifier="SUB_981QSH0L" identifierref="LO_05_R">
+						<title>museum databases</title>
+					</item>
+					<item identifier="SUB_LC93Y63I" identifierref="LO_06_R">
+						<title>database</title>
+					</item>
+				</item>
+				<item identifier="M_CVTM0RP6">
+					<title>develop contingency plans for emergencies</title>
+					<item identifier="SUB_RQTJOJ0O" identifierref="LO_07_R">
+						<title>manage emergency evacuation plans</title>
+					</item>
+				</item>
+				<item identifier="M_F6EDHVOI">
+					<title>administer ICT system</title>
+					<item identifier="SUB_X433D3ZT" identifierref="LO_08_R">
+						<title>maintain ICT system</title>
+					</item>
+					<item identifier="SUB_6QQWO3IE" identifierref="LO_09_R">
+						<title>ICT system integration</title>
+					</item>
+				</item>
+				<item identifier="M_XMU12JZ2">
+					<title>resource description framework query language</title>
+					<item identifier="SUB_LAHVMKXU" identifierref="LO_10_R">
+						<title>query languages</title>
+					</item>
+					<item identifier="SUB_25WFTFU9" identifierref="LO_11_R">
+						<title>query languages</title>
+					</item>
+				</item>
+				<item identifier="M_5KHL2ZI1">
+					<title>maintain database security</title>
+					<item identifier="SUB_OZ8C2K6J" identifierref="LO_12_R">
+						<title>maintain database</title>
+					</item>
+				</item>
+				<item identifier="M_0N0926KV">
+					<title>monitor system performance</title>
+					<item identifier="SUB_QMA4HPAT" identifierref="LO_13_R">
+						<title>systems theory</title>
+					</item>
+				</item>
+				<item identifier="M_RQBAU0GC">
+					<title>balance database resources</title>
+					<item identifier="SUB_TR2UH1TI" identifierref="LO_14_R">
+						<title>manage database intro</title>
+					</item>
+					<item identifier="SUB_2OVD6W5N" identifierref="LO_15_R">
+						<title>use databases</title>
+					</item>
+					<item identifier="SUB_KGWZD8CO" identifierref="LO_16_R">
+						<title>database development tools</title>
+					</item>
+					<item identifier="SUB_4TN789C7" identifierref="LO_17_R">
+						<title>database</title>
+					</item>
+				</item>
+				<item identifier="M_YNMYN497">
+					<title>provide technical documentation</title>
+					<item identifier="SUB_RY7F4IIM" identifierref="LO_18_R">
+						<title>provide documentation</title>
+					</item>
+					<item identifier="SUB_SHXW2HPP" identifierref="LO_19_R">
+						<title>documentation types</title>
+					</item>
+				</item>
+				<item identifier="M_2N8N7CNE">
+					<title>maintain database performance</title>
+					<item identifier="SUB_6MBI2I22" identifierref="LO_20_R">
+						<title>manage database</title>
+					</item>
+					<item identifier="SUB_W1GGXJ5R" identifierref="LO_21_R">
+						<title>database</title>
+					</item>
+				</item>
+				<item identifier="M_XBNGQDQ1">
+					<title>analyse ICT system</title>
+					<item identifier="SUB_6POMDVXD" identifierref="LO_22_R">
+						<title>ICT system integration</title>
+					</item>
+					<item identifier="SUB_YZ5H7XUQ" identifierref="LO_23_R">
+						<title>business ICT systems</title>
+					</item>
+				</item>
+				<item identifier="M_47WG9BAX">
+					<title>migrate existing data</title>
+					<item identifier="SUB_BFBCDIFV" identifierref="LO_24_R">
+						<title>unstructured data</title>
+					</item>
+					<item identifier="SUB_QJCJ73L6" identifierref="LO_25_R">
+						<title>data storage</title>
+					</item>
+					<item identifier="SUB_T2F89OJW" identifierref="LO_26_R">
+						<title>data mining</title>
+					</item>
+				</item>
+			</item>
+		</organization>
+	</organizations>
+	<resources>
+		<resource identifier="LO_01_R" type="imswl_xmlv1p1">
+			<file href="loms/01.xml" />
+		</resource>
+		<resource identifier="LO_02_R" type="imswl_xmlv1p1">
+			<file href="loms/02.xml" />
+		</resource>
+		<resource identifier="LO_03_R" type="imswl_xmlv1p1">
+			<file href="loms/03.xml" />
+		</resource>
+		<resource identifier="LO_04_R" type="imswl_xmlv1p1">
+			<file href="loms/04.xml" />
+		</resource>
+		<resource identifier="LO_05_R" type="imswl_xmlv1p1">
+			<file href="loms/05.xml" />
+		</resource>
+		<resource identifier="LO_06_R" type="imswl_xmlv1p1">
+			<file href="loms/06.xml" />
+		</resource>
+		<resource identifier="LO_07_R" type="imswl_xmlv1p1">
+			<file href="loms/07.xml" />
+		</resource>
+		<resource identifier="LO_08_R" type="imswl_xmlv1p1">
+			<file href="loms/08.xml" />
+		</resource>
+		<resource identifier="LO_09_R" type="imswl_xmlv1p1">
+			<file href="loms/09.xml" />
+		</resource>
+		<resource identifier="LO_10_R" type="imswl_xmlv1p1">
+			<file href="loms/10.xml" />
+		</resource>
+		<resource identifier="LO_11_R" type="imswl_xmlv1p1">
+			<file href="loms/11.xml" />
+		</resource>
+		<resource identifier="LO_12_R" type="imswl_xmlv1p1">
+			<file href="loms/12.xml" />
+		</resource>
+		<resource identifier="LO_13_R" type="imswl_xmlv1p1">
+			<file href="loms/13.xml" />
+		</resource>
+		<resource identifier="LO_14_R" type="imswl_xmlv1p1">
+			<file href="loms/14.xml" />
+		</resource>
+		<resource identifier="LO_15_R" type="imswl_xmlv1p1">
+			<file href="loms/15.xml" />
+		</resource>
+		<resource identifier="LO_16_R" type="imswl_xmlv1p1">
+			<file href="loms/16.xml" />
+		</resource>
+		<resource identifier="LO_17_R" type="imswl_xmlv1p1">
+			<file href="loms/17.xml" />
+		</resource>
+		<resource identifier="LO_18_R" type="imswl_xmlv1p1">
+			<file href="loms/18.xml" />
+		</resource>
+		<resource identifier="LO_19_R" type="imswl_xmlv1p1">
+			<file href="loms/19.xml" />
+		</resource>
+		<resource identifier="LO_20_R" type="imswl_xmlv1p1">
+			<file href="loms/20.xml" />
+		</resource>
+		<resource identifier="LO_21_R" type="imswl_xmlv1p1">
+			<file href="loms/21.xml" />
+		</resource>
+		<resource identifier="LO_22_R" type="imswl_xmlv1p1">
+			<file href="loms/22.xml" />
+		</resource>
+		<resource identifier="LO_23_R" type="imswl_xmlv1p1">
+			<file href="loms/23.xml" />
+		</resource>
+		<resource identifier="LO_24_R" type="imswl_xmlv1p1">
+			<file href="loms/24.xml" />
+		</resource>
+		<resource identifier="LO_25_R" type="imswl_xmlv1p1">
+			<file href="loms/25.xml" />
+		</resource>
+		<resource identifier="LO_26_R" type="imswl_xmlv1p1">
+			<file href="loms/26.xml" />
+		</resource>
+	</resources>
+</manifest>

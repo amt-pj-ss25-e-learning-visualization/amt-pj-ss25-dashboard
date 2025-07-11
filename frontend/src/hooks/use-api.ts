@@ -1,6 +1,9 @@
 import { url } from "@/lib/utils";
 import { useEffect, useState } from "react";
 
+
+// Generic hook for fetching data from the server via dynamic endpoint paths. Accepts an array of path segments and optional fetch options.
+
 export function useApi<T>(
   paths: (string | undefined)[],
   options?: RequestInit

@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='utf-8'?>
+<lom xmlns="http://ltsc.ieee.org/xsd/LOM">
+	<general>
+		<identifier>
+			<entry>https://example.com/objectMetadata/07</entry>
+		</identifier>
+		<title>
+			<string language="en-US">Learning Object 07</string>
+		</title>
+		<language>en-US</language>
+		<description>
+			<string language="en-US">Plan, coordinate, and direct all production activities to insure the goods are made on time, in correct order, of adequate quality and composition, starting from intake goods up to shipping.</string>
+		</description>
+		<keyword>
+			<string language="en-US">Learning</string>
+			<string language="en-US">Object</string>
+			<string language="en-US">07</string>
+		</keyword>
+	</general>
+	<educational>
+		<interactivityType>
+			<source>LOMv1.0</source>
+			<value>active</value>
+		</interactivityType>
+		<learningResourceType>
+			<source>LOMv1.0</source>
+			<value>index</value>
+		</learningResourceType>
+		<interactivityLevel>
+			<source>LOMv1.0</source>
+			<value>high</value>
+		</interactivityLevel>
+		<semanticDensity>
+			<source>LOMv1.0</source>
+			<value>low</value>
+		</semanticDensity>
+		<difficulty>
+			<source>LOMv1.0</source>
+			<value>difficult</value>
+		</difficulty>
+		<typicalLearningTime>
+			<duration>PT27M6S</duration>
+		</typicalLearningTime>
+	</educational>
+	<classification>
+		<purpose>
+			<source>LOMv1.0</source>
+			<value>competency</value>
+		</purpose>
+		<taxonPath>
+			<source>
+				<string language="en-US">ESCO</string>
+			</source>
+			<taxon>
+				<id>http://data.europa.eu/esco/skill/feceacee-d425-4e73-821a-02dfb85084db</id>
+				<entry>
+					<string language="en-US">control production</string>
+				</entry>
+			</taxon>
+		</taxonPath>
+	</classification>
+</lom>

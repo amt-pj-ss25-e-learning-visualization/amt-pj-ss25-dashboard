@@ -13,22 +13,31 @@ from xAPI.utils import (
 from xAPI.config import TEST_PASS_THRESHOLD
 from xAPI.session_generators import generate_learning_session, generate_test_session
 
-def generate_user_journey_of_inconsistent_learner(user_id, start_date, profile):
+def generate_user_journey_of_inconsistent_learner(user_id, start_date, profile, skip_probability):
     """
     Generate a learning journey for an inconsistent learner.
+    Some submodules may be skipped based on the skip_probability.
     """
     statements = []
     current_date = start_date
     completed_materials = set()
     learning_sessions = {}
 
-    uncompleted_materials = {material for subcourse in COURSE_STRUCTURE.values() for material in subcourse["materials"]}
+    uncompleted_materials = {
+        submodule["title"]
+        for module in COURSE_STRUCTURE["modules"]
+        for submodule in module["submodules"]
+    }
 
     while current_date < start_date + timedelta(days=90):
         if not uncompleted_materials:
             break
 
         material = random.choice(list(uncompleted_materials))
+
+        if random.random() < skip_probability:
+            uncompleted_materials.remove(material)
+            continue
 
         if random.random() < profile["completion_rate"] * 1.5:
             duration = random.randint(

@@ -2,11 +2,7 @@ import { ModuleDto } from "@/types/dto";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Folder, User } from "lucide-react";
 
-interface Props {
-  module: ModuleDto;
-}
-
-export default function ModuleDetails({ module }: Props) {
+export default function ModuleDetails({ module }: { module: ModuleDto }) {
   return (
     <Card className="w-full">
       <CardHeader>

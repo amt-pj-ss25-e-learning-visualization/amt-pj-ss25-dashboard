@@ -44,3 +44,29 @@ export interface CompletionSummary {
   label?: string;
   value?: number;
 }
+
+export interface Metric {
+  data: number[];
+  mean: number | null;
+  min: number | null;
+  max: number | null;
+}
+
+export interface Metrics {
+  attempts: Metric;
+  performance: Metric;
+  masteryRaw: Metric;
+  masteryEbbinghaus: Metric;
+  completion: Metric;
+  timeSpent: Metric;
+  realVsExpectedTime: Metric;
+  lastVisit: Metric;
+  totalVisits: Metric;
+  rating: Metric;
+}
+
+export interface ProgressMetrics {
+  performance: number;
+  masteryRaw: number;
+  completion: number;
+}

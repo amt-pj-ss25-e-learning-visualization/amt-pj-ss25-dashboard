@@ -1,37 +1,12 @@
-import { Request, Response } from "express";
+import { Request, Response } from "../../common/types";
 import { BaseController } from "../../common/baseController";
 import { Course } from "./courses.model";
-import { Module } from "../modules/modules.model";
-import { Actor } from "../actors/actors.model";
-import { LearningResource } from "../learningResources/learningResources.model";
+import { Courses } from "./courses.service";
 
 class CoursesController extends BaseController<Course> {
+  private courseService = new Courses();
   constructor() {
     super(Course);
-  }
-
-  /**
-   * Fetches submodules recursively for a given module ID.
-   * @param {string} moduleId - The ID of the module to fetch submodules for.
-   * @returns {Promise<any[]>} - An array of submodules.
-   */
-  private async fetchSubmodules(moduleId: string): Promise<any[]> {
-    const submodules = await Module.findAll({
-      where: { parent_id: moduleId },
-      include: [
-        { model: Actor, as: "instructor" },
-        { model: LearningResource, as: "resources" },
-      ],
-    });
-    return Promise.all(
-      submodules.map(async (submodule: any) => {
-        const plainSubmodule = submodule.get({ plain: true });
-        plainSubmodule.submodules = await this.fetchSubmodules(
-          plainSubmodule.id
-        );
-        return plainSubmodule;
-      })
-    );
   }
 
   /**
@@ -40,40 +15,13 @@ class CoursesController extends BaseController<Course> {
   getById = async (req: Request, res: Response) => {
     try {
       const id = req.params.id;
-      const course = await this.model.findByPk(id);
+      const course = await this.courseService.getCourseTree(id);
       if (!course) {
-        res
-          .status(404)
-          .json({ error: `404: Course with id '${id}' not found!` });
+        console.log("Course not found!");
+        res.status(404).json({ message: "Course not found!" });
         return;
       }
-      // Fetch top-level modules for this course
-      const modules = await Module.findAll({
-        where: { course_id: id, parent_id: null },
-        include: [
-          { model: Actor, as: "instructor" },
-          { model: LearningResource, as: "resources" },
-        ],
-      });
-      // Recursively fetch submodules for each top-level module
-      const modulesWithHierarchy = await Promise.all(
-        modules.map(async (mod: any) => {
-          const plainMod = mod.get({ plain: true });
-          plainMod.submodules = await this.fetchSubmodules(plainMod.id);
-          return plainMod;
-        })
-      );
-
-      const courseObj = course.get({ plain: true }) as any;
-      courseObj.modules = modulesWithHierarchy;
-
-      res.json(
-        this.omitFields(courseObj, [
-          "course_id",
-          "instructor_id",
-          "module_resources",
-        ])
-      );
+      res.json(course);
     } catch (error) {
       console.error("Error fetching course by ID:", error);
       res.status(500).json({ error: "500: Unexpected error occured!" });

@@ -14,9 +14,10 @@ from xAPI.journeys.inconsistent import generate_user_journey_of_inconsistent_lea
 from xAPI.journeys.u_shaped import generate_user_journey_of_ushaped_learner
 from xAPI.journeys.diminished import generate_user_journey_of_diminished_drive_easy_quitter
 
-def generate_multi_duration_dataset():
+def generate_multi_duration_dataset(skip_probability=0.35):
     """
     Generate dataset with multiple instances of each user type at different durations.
+    Some students will not participate in certain modules or submodules based on the skip_probability.
     """
     all_statements = []
 
@@ -30,13 +31,13 @@ def generate_multi_duration_dataset():
             profile = generate_user_profile()
 
             if user_type == "consistent":
-                statements = generate_user_journey_consistent(user_id, start_date, profile)
+                statements = generate_user_journey_consistent(user_id, start_date, profile, skip_probability)
             elif user_type == "inconsistent":
-                statements = generate_user_journey_of_inconsistent_learner(user_id, start_date, profile)
+                statements = generate_user_journey_of_inconsistent_learner(user_id, start_date, profile, skip_probability)
             elif user_type == "u_shaped":
-                statements = generate_user_journey_of_ushaped_learner(user_id, start_date, profile)
+                statements = generate_user_journey_of_ushaped_learner(user_id, start_date, profile, skip_probability)
             elif user_type == "diminished":
-                statements = generate_user_journey_of_diminished_drive_easy_quitter(user_id, start_date, profile)
+                statements = generate_user_journey_of_diminished_drive_easy_quitter(user_id, start_date, profile, skip_probability)
             else:
                 raise ValueError(f"Unknown user type: {user_type}")
 

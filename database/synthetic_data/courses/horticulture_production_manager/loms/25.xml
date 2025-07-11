@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='utf-8'?>
+<lom xmlns="http://ltsc.ieee.org/xsd/LOM">
+	<general>
+		<identifier>
+			<entry>https://example.com/objectMetadata/25</entry>
+		</identifier>
+		<title>
+			<string language="en-US">Learning Object 25</string>
+		</title>
+		<language>en-US</language>
+		<description>
+			<string language="en-US">The most optimal rotation or cycle time and over-all quality of a tool or a machine's processes.</string>
+		</description>
+		<keyword>
+			<string language="en-US">Learning</string>
+			<string language="en-US">Object</string>
+			<string language="en-US">25</string>
+		</keyword>
+	</general>
+	<educational>
+		<interactivityType>
+			<source>LOMv1.0</source>
+			<value>active</value>
+		</interactivityType>
+		<learningResourceType>
+			<source>LOMv1.0</source>
+			<value>graph</value>
+		</learningResourceType>
+		<interactivityLevel>
+			<source>LOMv1.0</source>
+			<value>low</value>
+		</interactivityLevel>
+		<semanticDensity>
+			<source>LOMv1.0</source>
+			<value>medium</value>
+		</semanticDensity>
+		<difficulty>
+			<source>LOMv1.0</source>
+			<value>difficult</value>
+		</difficulty>
+		<typicalLearningTime>
+			<duration>PT25M31S</duration>
+		</typicalLearningTime>
+	</educational>
+	<classification>
+		<purpose>
+			<source>LOMv1.0</source>
+			<value>competency</value>
+		</purpose>
+		<taxonPath>
+			<source>
+				<string language="en-US">ESCO</string>
+			</source>
+			<taxon>
+				<id>http://data.europa.eu/esco/skill/3b3b7373-220a-4287-87cf-e24a208b63c6</id>
+				<entry>
+					<string language="en-US">quality and cycle time optimisation</string>
+				</entry>
+			</taxon>
+		</taxonPath>
+	</classification>
+</lom>

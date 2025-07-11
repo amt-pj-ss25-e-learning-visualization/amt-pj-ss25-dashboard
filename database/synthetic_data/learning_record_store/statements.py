@@ -1,16 +1,16 @@
 import json
 
-def find_module_for_statement(stmt, modules, resources):
+def find_module_for_statement(stmt, modules):
     """
     Try to find the module whose title matches the statement's object definition name.
     """
-    object_name = stmt.get('object', {}).get('definition', {}).get('name', {}).get('de-DE')
+    object_name = stmt.get('object', {}).get('definition', {}).get('name', {}).get('en-US')
     for mod in modules:
         if mod['title'] == object_name:
             return mod['id']
     return None
 
-def build_statement_id_to_module_id_map(data, modules, resources):
+def build_statement_id_to_module_id_map(data, modules):
     """
     Build a mapping from statement ID to module ID for all non-evaluated statements.
     """
@@ -18,20 +18,20 @@ def build_statement_id_to_module_id_map(data, modules, resources):
     for stmt in data:
         verb = stmt['verb']['id']
         if verb != 'http://adlnet.gov/expapi/verbs/evaluated':
-            module_id = find_module_for_statement(stmt, modules, resources)
+            module_id = find_module_for_statement(stmt, modules)
             statement_id_to_module_id[stmt['id']] = module_id
     return statement_id_to_module_id
 
-def insert_statements(cur, data, modules, resources, statement_id_to_module_id, get_or_create_actor, link_instructor_to_module):
+def insert_statements(cur, data, modules, statement_id_to_module_id, get_or_create_actor, link_instructor_to_module):
     """
     Insert all statements into the database.
     """
     for stmt in data:
         actor_id = get_or_create_actor(cur, stmt['actor'])
-        verb = stmt['verb']['id']
+        verb = stmt['verb']['id'].split('/')[-1]
 
-        if verb != 'http://adlnet.gov/expapi/verbs/evaluated':
-            module_id = find_module_for_statement(stmt, modules, resources)
+        if verb != 'evaluated':
+            module_id = find_module_for_statement(stmt, modules)
         else:
             statement_ref_id = stmt.get('object', {}).get('id')
             module_id = statement_id_to_module_id.get(statement_ref_id)

@@ -1,5 +1,6 @@
 import { useActor } from "@/context/actor-context";
-import ActorActivity from "../actor-activity";
+import StudentActivity from "../student-activity";
+import InstructorActivity from "../instructor-activity";
 
 export default function Dashboard() {
   const { currentActor } = useActor();
@@ -17,7 +18,12 @@ export default function Dashboard() {
           </p>
         </div>
       )}
-      <ActorActivity />
+      {currentActor?.role === "student" && (
+        <StudentActivity currentActor={currentActor} />
+      )}
+      {currentActor?.role === "instructor" && (
+        <InstructorActivity currentActor={currentActor} />
+      )}
     </div>
   );
 }
