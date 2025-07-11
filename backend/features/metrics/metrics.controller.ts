@@ -1,4 +1,4 @@
-import { CourseScoreDTO, ModuleMetricsDTO } from "./metrics.dto";
+import { CourseMetricDTO, ModuleMetricsDTO } from "./metrics.dto";
 import { Request, Response } from "../../common/types";
 import { Metrics } from "./metrics.service";
 import { Module } from "../modules/modules.model";
@@ -38,8 +38,8 @@ class MetricsController {
   }
 
   async getCourseMetrics(
-    req: Request<CourseScoreDTO>,
-    res: Response<CourseScoreDTO>
+    req: Request<CourseMetricDTO>,
+    res: Response<CourseMetricDTO>
   ) {
     try {
       const { courseId, actorId } = req.params;

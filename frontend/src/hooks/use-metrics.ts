@@ -1,12 +1,26 @@
 import { useApi } from "./use-api";
-import { ModuleMetricsDTO } from "../../../backend/features/metrics/metrics.dto";
+import {
+  ModuleMetricsDTO,
+  CourseMetricDTO,
+} from "../../../backend/features/metrics/metrics.dto";
 
-export function useMetrics(moduleId?: string, actorId?: string) {
+export function useModuleMetrics(moduleId: string, actorId?: string) {
   return useApi<ModuleMetricsDTO["response"]>([
     "modules",
     moduleId,
-    "actors",
+    actorId ? "actors" : undefined,
     actorId,
     "metrics",
+  ]);
+}
+
+export function useCourseMetrics(courseId: string, actorId?: string) {
+  return useApi<CourseMetricDTO["response"]>([
+    "courses",
+    courseId,
+    actorId ? "actors" : undefined,
+    actorId,
+    "metrics",
+    "aggregated",
   ]);
 }

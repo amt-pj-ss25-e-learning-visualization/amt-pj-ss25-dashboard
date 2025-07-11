@@ -3,11 +3,12 @@ import { CheckCircle, Layers, Sparkles } from "lucide-react";
 import { Ressource } from "../ressource";
 import { useActor } from "@/context/actor-context";
 import { useStatementsByActorAndModule } from "@/hooks/use-statements";
-import { useMetrics } from "@/hooks/use-metrics";
+import { useModuleMetrics } from "@/hooks/use-metrics";
 import { cn } from "@/lib/utils";
 import { StarRating } from "../rating";
 import { TimeMetric } from "../timeMetric";
 import { Score } from "../score";
+import { formatDuration } from "@/utils/date";
 
 type Module = CourseDetailsDto["modules"][number]["submodules"][number];
 
@@ -15,18 +16,10 @@ type Props = {
   module: Module;
 };
 
-const formatDuration = (milli: number): string => {
-  const totalSeconds = Math.floor(milli / 1000);
-  const hours = Math.floor(totalSeconds / 3600);
-  const minutes = Math.floor((totalSeconds % 3600) / 60);
-
-  return `${hours}h ${minutes}m`;
-};
-
 export const Submodule = ({ module }: Props) => {
   const { currentActor } = useActor();
   const { data } = useStatementsByActorAndModule(module.id, currentActor?.id);
-  const { data: metrics } = useMetrics(module.id, currentActor?.id);
+  const { data: metrics } = useModuleMetrics(module.id, currentActor?.id);
 
   if (!data || !metrics || !currentActor) return null;
   // TODO: make this part nicer
