@@ -1,5 +1,5 @@
 import { MenuItems } from "@/types/menu";
-import { Home, BookCopy, Telescope } from "lucide-react";
+import { Home, BookCopy, Telescope, LibraryBig } from "lucide-react";
 
 export const menuItems: MenuItems[] = [
   {
@@ -12,7 +12,15 @@ export const menuItems: MenuItems[] = [
     id: "courses",
     title: "Courses",
     url: "/courses",
+    icon: LibraryBig,
+    roles: ["student", "instructor"],
+  },
+  {
+    id: "modules",
+    title: "Modules",
+    url: "/modules",
     icon: BookCopy,
+    roles: ["instructor"],
   },
   {
     id: "explorer",

@@ -6,6 +6,8 @@ import Dashboard from "./components/dashboard";
 import Explorer from "./components/explorer";
 import AllCourses from "./components/courses/all-courses";
 import CourseDetailsOverview from "./components/courses/course-details-overview";
+import AllModules from "./components/modules/all-modules";
+import ModuleDetailsOverview from "./components/modules/module-details-overview";
 
 export default function App() {
   return (
@@ -16,6 +18,8 @@ export default function App() {
             <Route path="/" element={<Dashboard />} />
             <Route path="/courses" element={<AllCourses />} />
             <Route path="/courses/:id" element={<CourseDetailsOverview />} />
+            <Route path="/modules" element={<AllModules />} />
+            <Route path="/modules/:id" element={<ModuleDetailsOverview />} />
             <Route path="/explorer" element={<Explorer />} />
           </Routes>
         </Router>

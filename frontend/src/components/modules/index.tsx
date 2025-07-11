@@ -16,7 +16,7 @@ export const Module = ({ module }: { module: ModuleType }) => {
     >
       <AccordionTrigger className="hover:no-underline p-0">
         <div className="flex flex-col">
-          <div className="flex items-center gap-2 text-lg font-semibold text-blue-800 mb-1">
+          <div className="flex items-center gap-2 text-lg font-semibold text-blue-800 mb-1 capitalize">
             <Folder className="w-5 h-5" />
             {module.title}
           </div>

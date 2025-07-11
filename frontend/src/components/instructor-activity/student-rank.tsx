@@ -69,7 +69,7 @@ function StudentRank() {
           </TooltipTrigger>
           <TooltipContent side="top" className="max-w-xs">
             <p className="text-sm">
-              We take each student’s raw scores from all “evaluated” statements,
+              We take each student's raw scores from all "evaluated" statements,
               compute the arithmetic mean (sum of raw scores divided by number
               of statements), and then rank students by that average. Only the
               top 10 are shown here.
@@ -83,7 +83,7 @@ function StudentRank() {
           <TableRow>
             <TableHead>#</TableHead>
             <TableHead>Student</TableHead>
-            <TableHead className="text-right">Avg Score</TableHead>
+            <TableHead className="text-right">Average Score</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
@@ -92,7 +92,7 @@ function StudentRank() {
             return (
               <TableRow
                 key={row.actorId}
-                className={id <= 2 ? "bg-green-300" : ""}
+                className={id <= 2 ? "bg-green-100" : ""}
               >
                 <TableCell>{id + 1}</TableCell>
                 <TableCell>{actor?.name ?? "Unknown"}</TableCell>

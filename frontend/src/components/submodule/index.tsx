@@ -1,4 +1,4 @@
-import { CheckCircle, Layers, Sparkles } from "lucide-react";
+import { CheckCircle, InfoIcon, Layers, Sparkles } from "lucide-react";
 import { useActor } from "@/context/actor-context";
 import { useStatementsByActorAndModule } from "@/hooks/use-statements";
 import { useModuleMetrics } from "@/hooks/use-metrics";
@@ -8,7 +8,12 @@ import StarRating from "../star-rating";
 import TimeMetric from "../time-metric";
 import ScoreChart from "../score-chart";
 import Resource from "../resource";
-import { ResourceType, SubModuleType } from "@/types/dto";
+import { ResourceType } from "@/types/dto";
+import {
+  Tooltip,
+  TooltipTrigger,
+  TooltipContent,
+} from "@/components/ui/tooltip";
 
 export const Submodule = ({ module }: any) => {
   const { currentActor } = useActor();
@@ -50,14 +55,24 @@ export const Submodule = ({ module }: any) => {
         )}
       >
         <Layers className="w-4 h-4" />
-        {module.title}
+        <span className="capitalize">{module.title}</span>
         {completed && (
           <span className="flex-1 flex justify-end">
             <CheckCircle />
           </span>
         )}
         {visits === 0 && (
-          <Sparkles size={18} className="fill-amber-400 text-amber-300" />
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <div className="flex items-center gap-1 cursor-pointer">
+                <Sparkles size={18} className="fill-amber-400 text-amber-300" />
+                <InfoIcon color="blue" className="w-4 h-4 text-gray-500" />
+              </div>
+            </TooltipTrigger>
+            <TooltipContent side="top">
+              You haven't visited this submodule yet!
+            </TooltipContent>
+          </Tooltip>
         )}
       </div>
       {!completed && visits > 0 && (

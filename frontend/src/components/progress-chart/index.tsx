@@ -96,7 +96,7 @@ export function ProgressChart({ course }: { course: CourseDetailsDto }) {
               className="cursor-pointer"
               onClick={() => setExpanded((prev) => !prev)}
             >
-              {expanded ? "Collapse" : "Expand stats"}
+              {expanded ? "Collapse" : "Expand all metrics"}
             </Button>
           </div>
 
