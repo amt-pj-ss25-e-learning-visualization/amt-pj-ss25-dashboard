@@ -35,7 +35,7 @@ export const MetricNames = [
   "totalVisits",
   "rating",
 ] as const;
-type MetricName = (typeof MetricNames)[number];
+export type MetricName = (typeof MetricNames)[number];
 export type MetricObject = {
   [metric in MetricName]: Metric;
 };
