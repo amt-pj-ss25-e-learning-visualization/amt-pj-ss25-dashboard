@@ -1,5 +1,6 @@
 import { useActor } from "@/context/actor-context";
 import { useStatementsByActorAndModule } from "@/hooks/use-statements";
+<<<<<<< HEAD
 import { useMetrics } from "@/hooks/use-metrics";
 import { SubModuleType } from "@/types/dto";
 import { cn } from "@/lib/utils";
@@ -19,6 +20,25 @@ export const Submodule = ({ module }: { module: SubModuleType }) => {
     currentActor?.id
   );
   const { data: metrics }: any = useMetrics(module.id, currentActor?.id);
+=======
+import { useModuleMetrics } from "@/hooks/use-metrics";
+import { cn } from "@/lib/utils";
+import { StarRating } from "../rating";
+import { TimeMetric } from "../timeMetric";
+import { Score } from "../score";
+import { formatDuration } from "@/utils/date";
+
+type Module = CourseDetailsDto["modules"][number]["submodules"][number];
+
+type Props = {
+  module: Module;
+};
+
+export const Submodule = ({ module }: Props) => {
+  const { currentActor } = useActor();
+  const { data } = useStatementsByActorAndModule(module.id, currentActor?.id);
+  const { data: metrics } = useModuleMetrics(module.id, currentActor?.id);
+>>>>>>> 3d2c7b35fa57dd802e4ba1b36c647efec2a7f722
 
   if (!statements || !metrics || !currentActor) return null;
 

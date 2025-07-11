@@ -9,7 +9,7 @@ export interface ModuleMetricsDTO extends DTO {
   response: MetricObject;
 }
 
-export interface CourseScoreDTO extends DTO {
+export interface CourseMetricDTO extends DTO {
   params: {
     courseId: string;
     actorId: string;

@@ -66,7 +66,7 @@ export function omitFields(obj: any, fields: string[]): any {
 }
 
 export const forgettingEffect = (timeSince: number, reps: number = 1) =>
-  (reps * 1.84) / ((Math.log10(timeSince) ^ 1.25) + reps * 1.84);
+  (reps * 1.84) / ((Math.log10(timeSince) ** 1.25) + reps * 1.84);
 
 export const sum = (...nums: number[]) => {
   return nums.reduce((prev, curr) => prev + curr, 0);
