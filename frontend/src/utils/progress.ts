@@ -13,14 +13,14 @@ export const progressColors: Record<string, string> = {
 export const progresDescriptions: Record<string, string> = {
   attempts: "How many test attempts the student has made for this module.",
   performance: "The best test result achieved by the student in this module.",
-  masteryRaw: "The student’s last evaluation score on this module’s content.",
+  masteryRaw: "The student's last evaluation score on this module's content.",
   masteryEbbinghaus: "The mastery raw score adjusted for forgetting using the Ebbinghaus retention curve.",
   completion: "Indicates whether the student has passed (completed) this module.",
   timeSpent: "The total time the student has spent interacting with this module.",
   realVsExpectedTime: "The ratio of actual time spent per session to the expected time defined by the learning resource.",
-  lastVisit: "The timestamp of the student’s most recent entry or exit of this module.",
+  lastVisit: "The timestamp of the student's most recent entry or exit of this module.",
   totalVisits: "The total number of times the student has opened or visited this module.",
-  rating: "The student’s most recent star rating or feedback score for this module."
+  rating: "The student's most recent star rating or feedback score for this module."
 };
 
 

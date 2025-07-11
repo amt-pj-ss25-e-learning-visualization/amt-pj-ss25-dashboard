@@ -1,5 +1,5 @@
 import { MenuItems } from "@/types/menu";
-import { Home, BookCopy, Telescope, Newspaper } from "lucide-react";
+import { Home, BookCopy, Telescope } from "lucide-react";
 
 export const menuItems: MenuItems[] = [
   {
