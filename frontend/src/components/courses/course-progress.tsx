@@ -1,12 +1,5 @@
-import {
-  BarChart,
-  Bar,
-  XAxis,
-  YAxis,
-  Tooltip as RechartsTooltip,
-  ResponsiveContainer,
-} from "recharts";
-import { useState } from "react";
+import { BarChart, Bar, XAxis, YAxis } from "recharts";
+import { useMemo, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
@@ -19,25 +12,19 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-
-const data: any = [
-  {
-    performance: 40,
-    mastery: 30,
-    completion: 10,
-  },
-];
-
-const classAverages: any = {
-  performance: 50,
-  mastery: 45,
-  completion: 60,
-};
+import { useCourseMetrics } from "@/hooks/use-metrics";
+import { useActor } from "@/context/actor-context";
+import {
+  ChartConfig,
+  ChartContainer,
+  ChartTooltip,
+  ChartTooltipContent,
+} from "../ui/chart";
 
 const colors: Record<string, string> = {
   performance: "#60A5FA",
   mastery: "#6366F1",
-  completion: "#9CA3AF",
+  completion: "#0bbc5a",
 };
 
 const descriptions: Record<string, string> = {
@@ -47,8 +34,54 @@ const descriptions: Record<string, string> = {
   completion: "Completion shows how much of the course you've finished.",
 };
 
+const chartConfig = {
+  performance: {
+    label: "Performance",
+    color: colors.performance,
+  },
+  mastery: {
+    label: "Mastery",
+    color: colors.Mastery,
+  },
+  completion: {
+    label: "Completion",
+    color: colors.Completion,
+  },
+} satisfies ChartConfig;
+
 export function CourseProgress({ course }: { course: CourseDetailsDto }) {
   const [expanded, setExpanded] = useState(false);
+  const { currentActor } = useActor();
+  const { data: metrics } = useCourseMetrics(course.id, currentActor?.id);
+
+  const data = useMemo(() => {
+    if (!currentActor || !metrics) return undefined;
+    const performance = Math.round(
+      100 *
+        (metrics.performance.data.find((d) => d.actor === currentActor.id)
+          ?.mean || 0)
+    );
+    const mastery = Math.round(
+      100 *
+        (metrics.masteryEbbinghaus.data.find((d) => d.actor === currentActor.id)
+          ?.mean || 0)
+    );
+    const completion = Math.round(
+      100 *
+        (metrics.completion.data.find((d) => d.actor === currentActor.id)
+          ?.mean || 0)
+    );
+    return {
+      actor: { performance, mastery, completion },
+      avg: {
+        performance: Math.round(100 * metrics.performance.mean),
+        mastery: Math.round(100 * metrics.masteryEbbinghaus.mean),
+        completion: Math.round(100 * metrics.completion.mean),
+      },
+    };
+  }, [metrics]);
+
+  if (!data || !currentActor) return null;
 
   return (
     <TooltipProvider>
@@ -67,11 +100,21 @@ export function CourseProgress({ course }: { course: CourseDetailsDto }) {
           </Button>
         </div>
 
-        <ResponsiveContainer width="100%" height={60}>
-          <BarChart layout="vertical" data={data}>
-            <XAxis type="number" hide domain={[0, 100]} />
+        <ChartContainer
+          className="h-15 border-1 rounded-2xl"
+          config={chartConfig}
+        >
+          <BarChart
+            layout="vertical"
+            data={[data.actor]}
+            margin={{ top: 0, bottom: 0, left: 8, right: 8 }}
+          >
+            <XAxis type="number" hide domain={[0, 300]} />
             <YAxis type="category" dataKey="name" hide />
-            <RechartsTooltip />
+            <ChartTooltip
+              cursor={false}
+              content={<ChartTooltipContent hideLabel className="w-[150px]" />}
+            />
             <Bar
               dataKey="performance"
               stackId="a"
@@ -86,27 +129,31 @@ export function CourseProgress({ course }: { course: CourseDetailsDto }) {
               radius={[0, 8, 8, 0]}
             />
           </BarChart>
-        </ResponsiveContainer>
+        </ChartContainer>
 
         {expanded && (
           <>
             <Separator />
             <div className="space-y-6">
-              {Object.keys(data[0]).map((learningKey) => {
-                const value = data[0][learningKey];
-                const classAvg = classAverages[learningKey];
+              {Object.keys(data.actor).map((learningKey) => {
+                const key = learningKey as
+                  | "performance"
+                  | "mastery"
+                  | "completion";
+                const value = data.actor[key];
+                const classAvg = data.avg[key];
 
                 return (
-                  <div key={learningKey}>
+                  <div key={key}>
                     <div className="flex justify-between items-center text-sm font-medium mb-1">
                       <div className="flex items-center gap-1 capitalize">
-                        {learningKey}
+                        {key}
                         <Tooltip>
                           <TooltipTrigger asChild>
                             <Info className="w-3 h-3 text-muted-foreground cursor-pointer" />
                           </TooltipTrigger>
                           <TooltipContent side="top" className="text-xs">
-                            {descriptions[learningKey]}
+                            {descriptions[key]}
                           </TooltipContent>
                         </Tooltip>
                       </div>
@@ -117,7 +164,7 @@ export function CourseProgress({ course }: { course: CourseDetailsDto }) {
                       <Progress
                         value={value}
                         className="h-2"
-                        progressColor={colors[learningKey]}
+                        progressColor={colors[key]}
                       />
                       <span className="text-xs text-muted-foreground ml-1">
                         You
@@ -128,7 +175,7 @@ export function CourseProgress({ course }: { course: CourseDetailsDto }) {
                       <Progress
                         value={classAvg}
                         className="h-2 opacity-60"
-                        progressColor={colors[learningKey]}
+                        progressColor={colors[key]}
                       />
                       <div className="absolute top-005 right-0 text-[10px] text-muted-foreground">
                         {classAvg}%
