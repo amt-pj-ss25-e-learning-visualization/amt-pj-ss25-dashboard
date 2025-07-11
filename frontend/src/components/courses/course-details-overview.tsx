@@ -4,7 +4,7 @@ import { ArrowLeft } from "lucide-react";
 import { useCourseById } from "@/hooks/use-courses";
 import CourseDetails from "./course-details";
 
-export default function CourseDetailsView() {
+export default function CourseDetailsOverview() {
   const { id } = useParams();
   const { data: course, loading, error } = useCourseById(id);
   const navigate = useNavigate();

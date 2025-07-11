@@ -1,22 +1,16 @@
-import { CourseDetailsDto } from "@/types/dto";
 import { CheckCircle, Layers, Sparkles } from "lucide-react";
-import { Ressource } from "../ressource";
 import { useActor } from "@/context/actor-context";
 import { useStatementsByActorAndModule } from "@/hooks/use-statements";
 import { useModuleMetrics } from "@/hooks/use-metrics";
 import { cn } from "@/lib/utils";
-import { StarRating } from "../rating";
-import { TimeMetric } from "../timeMetric";
-import { Score } from "../score";
 import { formatDuration } from "@/utils/date";
+import StarRating from "../star-rating";
+import TimeMetric from "../time-metric";
+import ScoreChart from "../score-chart";
+import Resource from "../resource";
+import { ResourceType, SubModuleType } from "@/types/dto";
 
-type Module = CourseDetailsDto["modules"][number]["submodules"][number];
-
-type Props = {
-  module: Module;
-};
-
-export const Submodule = ({ module }: Props) => {
+export const Submodule = ({ module }: any) => {
   const { currentActor } = useActor();
   const { data } = useStatementsByActorAndModule(module.id, currentActor?.id);
   const { data: metrics } = useModuleMetrics(module.id, currentActor?.id);
@@ -74,7 +68,7 @@ export const Submodule = ({ module }: Props) => {
         />
       )}
       {performance !== undefined && (
-        <Score
+        <ScoreChart
           score={Math.round(performance * 100)}
           max={100}
           mean={Math.round(metrics.performance.mean * 100)}
@@ -82,8 +76,8 @@ export const Submodule = ({ module }: Props) => {
         />
       )}
       {module.resources.length &&
-        module.resources.map((ressource) => (
-          <Ressource key={ressource.id} ressource={ressource} />
+        module.resources.map((resource: ResourceType) => (
+          <Resource key={resource.id} resource={resource} />
         ))}
       <div className="mt-4 mr-4 flex gap-2 w-full items-center justify-end">
         {metrics?.rating ? "Your rating of this module:" : "Rate this module:"}

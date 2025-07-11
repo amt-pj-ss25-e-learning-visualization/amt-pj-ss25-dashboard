@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";
 import ModuleDetails from "./module-details";
 
-export default function ModuleDetailsView() {
+export default function ModuleDetailsOverview() {
   const { id } = useParams();
   const { data: module, loading, error } = useModuleById(id);
   const navigate = useNavigate();

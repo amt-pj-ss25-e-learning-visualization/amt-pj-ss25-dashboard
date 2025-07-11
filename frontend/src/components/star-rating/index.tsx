@@ -1,11 +1,7 @@
 import { cn } from "@/lib/utils";
 import { Star } from "lucide-react";
 
-type Props = {
-  rating?: number;
-  of?: number;
-};
-export const StarRating = ({ rating, of = 5 }: Props) => {
+const StarRating = ({ rating, of = 5 }: { rating?: number; of?: number }) => {
   const filledStars = rating !== undefined ? Math.round(rating) : 0;
   const emptyStarts =
     rating !== undefined && of !== undefined ? Math.round(of - rating) : 5;
@@ -25,3 +21,5 @@ export const StarRating = ({ rating, of = 5 }: Props) => {
     </div>
   );
 };
+
+export default StarRating;
