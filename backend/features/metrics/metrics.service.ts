@@ -44,7 +44,7 @@ export class Metrics {
       (b, a) =>
         new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime()
     );
-    const learningResource = (
+    const learningResources = (
       (await Module.findOne({
         where: { id: module_id },
         include: [
@@ -54,7 +54,7 @@ export class Metrics {
           },
         ],
       })) as Module & { resources: LearningResource[] }
-    ).resources[0];
+    ).resources;
 
     return {
       attempts: this.getAttempts(statements),
@@ -65,7 +65,7 @@ export class Metrics {
       timeSpent: this.getTimeSpent(statements),
       realVsExpectedTime: this.getTimeToExpectedTime(
         statements,
-        learningResource
+        learningResources
       ),
       lastVisit: this.getLastVisit(statements),
       totalVisits: this.getTotalVisits(statements),
@@ -204,10 +204,12 @@ export class Metrics {
 
   private static getTimeToExpectedTime(
     statements: Statement[],
-    resource: LearningResource
+    resources: LearningResource[]
   ): Metric {
-    const expectedTime = parseISO8601(
-      resource.typical_learning_time as ISO8601Duration
+    const expectedTime = sum(
+      ...resources.map((r) =>
+        parseISO8601(r.typical_learning_time as ISO8601Duration)
+      )
     );
     const data = this.calculateOnActor(
       statements,
