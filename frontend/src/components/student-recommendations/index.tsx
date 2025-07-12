@@ -70,7 +70,7 @@ export default function StudentRecommendations() {
               {newCourses.map((course, i) => (
                 <TableRow key={course.id}>
                   <TableCell>{i + 1}</TableCell>
-                  <TableCell>{course.title}</TableCell>
+                  <TableCell className="capitalize">{course.title}</TableCell>
                   <TableCell className="max-w-xs truncate">
                     {course.description}
                   </TableCell>
