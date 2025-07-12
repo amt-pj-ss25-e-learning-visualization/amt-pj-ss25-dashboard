@@ -5,13 +5,9 @@ import {
   AccordionTrigger,
 } from "../ui/accordion";
 import { Submodule } from "../submodule";
-import { CourseDetailsDto } from "@/types/dto";
+import { ModuleType } from "@/types/dto";
 
-type Props = {
-  module: CourseDetailsDto["modules"][number];
-};
-
-export const Module = ({ module }: Props) => {
+export const Module = ({ module }: { module: ModuleType }) => {
   return (
     <AccordionItem
       value={module.id}
@@ -20,7 +16,7 @@ export const Module = ({ module }: Props) => {
     >
       <AccordionTrigger className="hover:no-underline p-0">
         <div className="flex flex-col">
-          <div className="flex items-center gap-2 text-lg font-semibold text-blue-800 mb-1">
+          <div className="flex items-center gap-2 text-lg font-semibold text-blue-800 mb-1 capitalize">
             <Folder className="w-5 h-5" />
             {module.title}
           </div>

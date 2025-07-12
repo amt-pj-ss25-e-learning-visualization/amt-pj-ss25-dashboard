@@ -5,4 +5,5 @@ export interface MenuItems {
   title: string;
   url: string;
   icon: React.ForwardRefExoticComponent<Omit<LucideProps, "ref"> & React.RefAttributes<SVGSVGElement>>;
+  roles?: string[]
 }

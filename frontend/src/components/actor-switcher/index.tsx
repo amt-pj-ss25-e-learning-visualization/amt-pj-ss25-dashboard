@@ -11,7 +11,7 @@ export default function ActorSwitcher() {
   const { actors, currentActor, setCurrentActor } = useActor();
 
   if (!actors.length) return <p className="text-sm">No actors found!</p>;
-  if (!currentActor) return <p className="text-sm">Loading currentActor</p>;
+  if (!currentActor) return <p className="text-sm">Loading current actor...</p>;
 
   return (
     <div className="w-full mb-4">

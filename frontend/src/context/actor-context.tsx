@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, useEffect } from "react";
+import { createContext, useContext, useState, useEffect, useRef } from "react";
 import { useActors } from "@/hooks/use-actors";
 import { ActorDto } from "@/types/dto";
 
@@ -12,12 +12,24 @@ const ActorContext = createContext<ActorContextType | undefined>(undefined);
 
 export function ActorProvider({ children }: { children: React.ReactNode }) {
   const { data: actors } = useActors();
-  const [currentActor, setCurrentActor] = useState<ActorDto | null>(null);
+  const [currentActor, setCurrentActorState] = useState<ActorDto | null>(null);
+  const initialized = useRef(false);
+
+  const setCurrentActor = (actor: ActorDto) => {
+    localStorage.setItem("selectedActorId", actor.id);
+    setCurrentActorState(actor);
+  };
 
   useEffect(() => {
-    if (!currentActor && actors.length > 0) {
-      setCurrentActor(actors[0]);
-    }
+    if (actors.length === 0) return;
+
+     if (!initialized.current) {
+       initialized.current = true;
+
+       const saved = localStorage.getItem("selectedActorId");
+       const found = saved ? actors.find((a) => a.id === saved) : null;
+       setCurrentActorState(found || actors[0]);
+     }
   }, [actors]);
 
   return (

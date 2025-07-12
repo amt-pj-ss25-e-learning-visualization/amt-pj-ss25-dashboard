@@ -1,22 +1,21 @@
-import { CourseDetailsDto } from "@/types/dto";
-import { CheckCircle, Layers, Sparkles } from "lucide-react";
-import { Ressource } from "../ressource";
+import { CheckCircle, InfoIcon, Layers, Sparkles } from "lucide-react";
 import { useActor } from "@/context/actor-context";
 import { useStatementsByActorAndModule } from "@/hooks/use-statements";
 import { useModuleMetrics } from "@/hooks/use-metrics";
 import { cn } from "@/lib/utils";
-import { StarRating } from "../rating";
-import { TimeMetric } from "../timeMetric";
-import { Score } from "../score";
 import { formatDuration } from "@/utils/date";
+import StarRating from "../star-rating";
+import TimeMetric from "../time-metric";
+import Resource from "../resource";
+import { ResourceType } from "@/types/dto";
+import {
+  Tooltip,
+  TooltipTrigger,
+  TooltipContent,
+} from "@/components/ui/tooltip";
+import MasteryChart from "../mastery-chart";
 
-type Module = CourseDetailsDto["modules"][number]["submodules"][number];
-
-type Props = {
-  module: Module;
-};
-
-export const Submodule = ({ module }: Props) => {
+export const Submodule = ({ module }: any) => {
   const { currentActor } = useActor();
   const { data } = useStatementsByActorAndModule(module.id, currentActor?.id);
   const { data: metrics } = useModuleMetrics(module.id, currentActor?.id);
@@ -41,6 +40,14 @@ export const Submodule = ({ module }: Props) => {
   const rating = metrics.rating.data.find(
     (d) => d.actor === currentActor.id
   )?.value;
+  const masteryRaw =
+    metrics.masteryRaw.data.find((d) => d.actor === currentActor.id)?.value ||
+    0;
+  const masteryEbbinghaus = metrics.masteryEbbinghaus.data.find(
+    (d) => d.actor === currentActor.id
+  )?.value;
+  const attempts =
+    metrics.attempts.data.find((d) => d.actor === currentActor.id)?.value || 0;
 
   return (
     <div
@@ -56,16 +63,35 @@ export const Submodule = ({ module }: Props) => {
         )}
       >
         <Layers className="w-4 h-4" />
-        {module.title}
+        <span className="capitalize">{module.title}</span>
         {completed && (
           <span className="flex-1 flex justify-end">
             <CheckCircle />
           </span>
         )}
         {visits === 0 && (
-          <Sparkles size={18} className="fill-amber-400 text-amber-300" />
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <div className="flex items-center gap-1 cursor-pointer">
+                <Sparkles size={18} className="fill-amber-400 text-amber-300" />
+                <InfoIcon color="blue" className="w-4 h-4 text-gray-500" />
+              </div>
+            </TooltipTrigger>
+            <TooltipContent side="top">
+              You haven't visited this submodule yet!
+            </TooltipContent>
+          </Tooltip>
         )}
       </div>
+      <MasteryChart
+        raw={Math.round(masteryRaw * 100)}
+        ebbinghaus={Math.round((masteryEbbinghaus || masteryRaw) * 100)}
+        performance={Math.round((performance || 0) * 100)}
+        passed={completed}
+        avgMastery={Math.round(metrics.masteryEbbinghaus.mean * 100)}
+        avgPerformance={Math.round(metrics.performance.mean * 100)}
+        attempts={attempts}
+      />
       {!completed && visits > 0 && (
         <TimeMetric
           timeSpent={formatDuration(timeSpent || 0)}
@@ -73,17 +99,9 @@ export const Submodule = ({ module }: Props) => {
           visits={visits}
         />
       )}
-      {performance !== undefined && (
-        <Score
-          score={Math.round(performance * 100)}
-          max={100}
-          mean={Math.round(metrics.performance.mean * 100)}
-          passed={completed}
-        />
-      )}
       {module.resources.length &&
-        module.resources.map((ressource) => (
-          <Ressource key={ressource.id} ressource={ressource} />
+        module.resources.map((resource: ResourceType) => (
+          <Resource key={resource.id} resource={resource} />
         ))}
       <div className="mt-4 mr-4 flex gap-2 w-full items-center justify-end">
         {metrics?.rating ? "Your rating of this module:" : "Rate this module:"}

@@ -58,6 +58,7 @@ export interface ModuleDto {
   parent_id?: string | null;
   submodules?: any;
   instructor?: any;
+  course?: any;
 }
 
 export type Score = {
@@ -86,3 +87,32 @@ export type StatementDto = {
   result?: Result | null;
   timestamp: string | Date;
 };
+
+export type SubModuleType = CourseDetailsDto["modules"][number]["submodules"][number];
+
+export type ResourceType = CourseDetailsDto["modules"][number]["submodules"][number]["resources"][number];
+
+export type ModuleType = CourseDetailsDto["modules"][number];
+
+export const PROGRESS_KEYS = ["performance", "masteryRaw", "completion"] as const;
+export type ProgressType = typeof PROGRESS_KEYS[number];
+
+export type MetricKey =
+  | "attempts"
+  | "performance"
+  | "masteryRaw"
+  | "masteryEbbinghaus"
+  | "completion"
+  | "timeSpent"
+  | "realVsExpectedTime"
+  | "lastVisit"
+  | "totalVisits"
+  | "rating";
+
+export type RecommenderDto = {
+  id: string;
+  course_id: string;
+  parent_id: string | null;
+  title: string;
+  instructor_id: string;
+}
