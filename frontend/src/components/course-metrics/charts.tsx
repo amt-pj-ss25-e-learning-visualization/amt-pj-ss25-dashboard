@@ -27,7 +27,7 @@ const chartConfig = {
   },
 } satisfies ChartConfig;
 
-export function MetricOverview({
+export default function Charts({
   metricKey,
   open,
   onOpenChange,

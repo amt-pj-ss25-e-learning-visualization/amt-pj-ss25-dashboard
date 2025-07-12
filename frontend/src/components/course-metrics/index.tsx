@@ -26,9 +26,9 @@ import { CourseDetailsDto, MetricKey } from "@/types/dto";
 import { columnConfig } from "./table-config";
 import { cn } from "@/lib/utils";
 import { Button } from "../ui/button";
-import { MetricOverview } from "./metric-overview";
+import Charts from "./charts";
 
-export default function StudentOverview({
+export default function CourseMetrics({
   course,
 }: {
   course: CourseDetailsDto;
@@ -177,7 +177,7 @@ export default function StudentOverview({
         </TableBody>
       </Table>
 
-      <MetricOverview
+      <Charts
         metricKey={openMetric}
         open={openMetric !== null}
         onOpenChange={(o) => !o && setOpenMetric(null)}

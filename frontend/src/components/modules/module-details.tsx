@@ -1,23 +1,10 @@
 import { ModuleDto } from "@/types/dto";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
-import {
-  BookOpen,
-  Flag,
-  Folder,
-  LanguagesIcon,
-  Mail,
-  User,
-} from "lucide-react";
-import { useModuleMetrics } from "@/hooks/use-metrics";
-import { useActor } from "@/context/actor-context";
+import { BookOpen, Folder, LanguagesIcon, Mail, User } from "lucide-react";
 import { languageLabel } from "@/utils/language";
+import ModuleMetrics from "./module-metrics";
 
 export default function ModuleDetails({ module }: { module: ModuleDto }) {
-  const { currentActor } = useActor();
-  const { data: metrics } = useModuleMetrics(module.id, currentActor?.id);
-
-  console.log(module, metrics);
-
   return (
     <Card className="w-full">
       <CardHeader>
@@ -67,6 +54,8 @@ export default function ModuleDetails({ module }: { module: ModuleDto }) {
           <p className="italic text-sm text-gray-400">No instructor assigned</p>
         )}
       </CardContent>
+
+      <ModuleMetrics module={module} />
     </Card>
   );
 }
