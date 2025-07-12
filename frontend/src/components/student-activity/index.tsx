@@ -10,7 +10,8 @@ import { ActorDto, StatementDto } from "@/types/dto";
 import { Folder, FileText, Clock } from "lucide-react";
 import { formatDateTime } from "@/utils/date";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
-import StudentRecommendations from "../student-recommendations";
+import RecommenderSystem from "../student-recommendations/recommender-system";
+import NewCourses from "../student-recommendations/new-courses";
 
 const chartConfig = {
   verb: {
@@ -59,6 +60,8 @@ export default function StudentActivity({
 
   return (
     <div>
+      <RecommenderSystem />
+      <NewCourses />
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <Card className="w-full">
           <CardHeader>
@@ -132,8 +135,6 @@ export default function StudentActivity({
           </CardContent>
         </Card>
       </div>
-
-      <StudentRecommendations />
     </div>
   );
 }

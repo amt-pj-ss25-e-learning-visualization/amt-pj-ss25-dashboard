@@ -15,7 +15,7 @@ import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
 import { BookOpenText, LockOpen } from "lucide-react";
 
-export default function StudentRecommendations() {
+export default function NewCourses() {
   const { currentActor } = useActor();
   const { data: courses = [] } = useCourses();
   const { data: modules = [] } = useModules();
@@ -47,7 +47,7 @@ export default function StudentRecommendations() {
           <LockOpen color="green" />
           New course recommendations
         </h3>
-        <p className="mb-4 text-sm text-muted-foreground">
+        <p className="mb-4 text-sm text-gray-600">
           We've looked at every module you've already visited and are showing
           any courses you haven't touched yet. These are new opportunities to
           keep learning.
@@ -81,7 +81,7 @@ export default function StudentRecommendations() {
                       className="cursor-pointer"
                       onClick={() => navigate(`/courses/${course.id}`)}
                     >
-                      <span>View</span>
+                      <span>View course</span>
                       <span>
                         <BookOpenText />
                       </span>

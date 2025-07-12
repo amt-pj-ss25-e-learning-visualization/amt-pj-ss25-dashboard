@@ -108,3 +108,11 @@ export type MetricKey =
   | "lastVisit"
   | "totalVisits"
   | "rating";
+
+export type RecommenderDto = {
+  id: string;
+  course_id: string;
+  parent_id: string | null;
+  title: string;
+  instructor_id: string;
+}
