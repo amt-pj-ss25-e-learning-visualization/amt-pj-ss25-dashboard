@@ -21,7 +21,7 @@ import {
   ChartTooltipContent,
 } from "../ui/chart";
 import { progresDescriptions, progressColors } from "@/utils/progress";
-import ForgettingCurve from "../forgetting-curve";
+// import ForgettingCurve from "../forgetting-curve";
 
 const chartConfig = {
   performance: {
@@ -194,7 +194,7 @@ export function ProgressChart({ course }: { course: CourseDetailsDto }) {
                   );
                 })}
               </div>
-              <ForgettingCurve course={course} metrics={metrics} />
+              {/* <ForgettingCurve course={course} metrics={metrics} /> */}
             </>
           )}
         </Card>
