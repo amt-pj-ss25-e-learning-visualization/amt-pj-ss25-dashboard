@@ -6,7 +6,6 @@ import { cn } from "@/lib/utils";
 import { formatDuration } from "@/utils/date";
 import StarRating from "../star-rating";
 import TimeMetric from "../time-metric";
-import ScoreChart from "../score-chart";
 import Resource from "../resource";
 import { ResourceType } from "@/types/dto";
 import {
@@ -14,6 +13,7 @@ import {
   TooltipTrigger,
   TooltipContent,
 } from "@/components/ui/tooltip";
+import MasteryChart from "../mastery-chart";
 
 export const Submodule = ({ module }: any) => {
   const { currentActor } = useActor();
@@ -40,6 +40,14 @@ export const Submodule = ({ module }: any) => {
   const rating = metrics.rating.data.find(
     (d) => d.actor === currentActor.id
   )?.value;
+  const masteryRaw =
+    metrics.masteryRaw.data.find((d) => d.actor === currentActor.id)?.value ||
+    0;
+  const masteryEbbinghaus = metrics.masteryEbbinghaus.data.find(
+    (d) => d.actor === currentActor.id
+  )?.value;
+  const attempts =
+    metrics.attempts.data.find((d) => d.actor === currentActor.id)?.value || 0;
 
   return (
     <div
@@ -75,19 +83,20 @@ export const Submodule = ({ module }: any) => {
           </Tooltip>
         )}
       </div>
+      <MasteryChart
+        raw={Math.round(masteryRaw * 100)}
+        ebbinghaus={Math.round((masteryEbbinghaus || masteryRaw) * 100)}
+        performance={Math.round((performance || 0) * 100)}
+        passed={completed}
+        avgMastery={Math.round(metrics.masteryEbbinghaus.mean * 100)}
+        avgPerformance={Math.round(metrics.performance.mean * 100)}
+        attempts={attempts}
+      />
       {!completed && visits > 0 && (
         <TimeMetric
           timeSpent={formatDuration(timeSpent || 0)}
           lastVisit={formatDuration(lastVisit || 0)}
           visits={visits}
-        />
-      )}
-      {performance !== undefined && (
-        <ScoreChart
-          score={Math.round(performance * 100)}
-          max={100}
-          mean={Math.round(metrics.performance.mean * 100)}
-          passed={completed}
         />
       )}
       {module.resources.length &&

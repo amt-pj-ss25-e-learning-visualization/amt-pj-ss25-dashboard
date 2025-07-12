@@ -21,7 +21,7 @@ import {
   ChartTooltipContent,
 } from "../ui/chart";
 import { progresDescriptions, progressColors } from "@/utils/progress";
-// import ForgettingCurve from "../forgetting-curve";
+import ForgettingCurve from "../forgetting-curve";
 
 const chartConfig = {
   performance: {
@@ -45,6 +45,11 @@ export function ProgressChart({ course }: { course: CourseDetailsDto }) {
 
   const data = useMemo(() => {
     if (!currentActor || !metrics) return undefined;
+    const moduleCount = course.modules.reduce(
+      (prev, curr) => prev + curr.submodules.length,
+      0
+    );
+
     const performance = Math.round(
       100 *
         (metrics.performance.data.find((d) => d.actor === currentActor.id)
@@ -56,16 +61,20 @@ export function ProgressChart({ course }: { course: CourseDetailsDto }) {
           ?.mean || 0)
     );
     const completion = Math.round(
-      100 *
+      (100 *
         (metrics.completion.data.find((d) => d.actor === currentActor.id)
-          ?.mean || 0)
+          ?.sum || 0)) /
+        moduleCount
     );
+
     return {
       actor: { performance, mastery, completion },
       avg: {
         performance: Math.round(100 * metrics.performance.mean),
         mastery: Math.round(100 * metrics.masteryEbbinghaus.mean),
-        completion: Math.round(100 * metrics.completion.mean),
+        completion: Math.round(
+          (100 * metrics.completion.meanOfSums) / moduleCount
+        ),
       },
     };
   }, [metrics]);
@@ -194,7 +203,7 @@ export function ProgressChart({ course }: { course: CourseDetailsDto }) {
                   );
                 })}
               </div>
-              {/* <ForgettingCurve course={course} metrics={metrics} /> */}
+              <ForgettingCurve course={course} metrics={metrics} />
             </>
           )}
         </Card>

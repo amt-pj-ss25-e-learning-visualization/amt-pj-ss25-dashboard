@@ -24,7 +24,7 @@ app.use("/actors", actorsRouter);
 app.use("/statements", statementsRouter);
 app.use("/modules", modulesRouter);
 app.use("/courses", coursesRouter);
-app.use("/recommendation", recommenderRouter);
+app.use("/recommendations", recommenderRouter);
 app.use(/.*\/metrics/, metricsRouter);
 
 console.log('Backend should be running!')
