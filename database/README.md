@@ -44,6 +44,7 @@ For manual setup of the LRS, ensure you have a running PostgreSQL instance and a
       ```bash
       PATH/TO/REPO/database/setup_postgres.sh
       ```
+Afterwards, the PostgreSQL database is exposed at the default port `5432`
 
 ### 1.2 **Manual Setup**:
    Manually import the initial batch of synthetic data. This process will create the required schemas and tables and insert the synthetic data into the corresponding tables.
