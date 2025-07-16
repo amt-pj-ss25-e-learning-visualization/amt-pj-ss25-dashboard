@@ -17,7 +17,7 @@ class CoursesController extends BaseController<Course> {
       const id = req.params.id;
       const course = await this.courseService.getCourseTree(id);
       if (!course) {
-        console.log("Course not found!");
+        console.error("Course not found!");
         res.status(404).json({ message: "Course not found!" });
         return;
       }

@@ -1,0 +1,47 @@
+services:
+  database:
+    image: postgres:latest
+    container_name: database
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: mypostgres
+      POSTGRES_DB: lms
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./database/dumpfile.sql:/docker-entrypoint-initdb.d/dumpfile.sql:ro
+      - pgdata:/var/lib/postgresql/data
+  backend:
+    build:
+      context: ./backend
+    container_name: backend
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    depends_on:
+      - database
+    environment:
+      PORT: 3000
+      NODE_ENV: development
+      DB_HOST: database
+      DB_PORT: 5432
+      DB_NAME: lms
+      DB_USER: admin
+      DB_PASSWORD: mypostgres
+    volumes:
+      - ./backend:/app
+  frontend:
+    build:
+      context: ./frontend
+    container_name: frontend
+    restart: unless-stopped
+    ports:
+      - "5173:5173"
+    depends_on:
+      - backend
+    environment:
+      VITE_SERVER: "http://localhost:3000"
+
+volumes:
+  pgdata:

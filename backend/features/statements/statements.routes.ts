@@ -37,6 +37,5 @@ router.get(
     module_id: "moduleId",
   })
 );
-// TODO: Do we need an endpoint for filtering by timestamp (e.g. last X entries for a specific student/module)?
 
 export default router;

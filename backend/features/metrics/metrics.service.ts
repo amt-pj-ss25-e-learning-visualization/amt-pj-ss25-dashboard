@@ -19,20 +19,6 @@ import {
 
 /**
  * Class that contains functions for the calculation of metrics.
- *```
- * const {
- *  attempts,
- *  performance,
- *  masteryRaw,
- *  masteryEbbinghaus,
- *  completion,
- *  timeSpent,
- *  realVsExpectedTime,
- *  lastVisit,
- *  totalVisits,
- *  rating
- * } = await Metrics.compute("some_module_id")
- * ```
  */
 export class Metrics {
   /**
@@ -73,6 +59,10 @@ export class Metrics {
     };
   }
 
+  /**
+   * Aggregates each of the metrics for each actor and also the mean values.
+   * This can be used to calculate metric values on a course level, for instance.
+   */
   static aggregate(metrics: MetricObject[]): AggregatedMetricObject {
     const aggregatedMetrics: Partial<AggregatedMetricObject> = {};
     for (const metricName of MetricNames) {
@@ -113,6 +103,9 @@ export class Metrics {
 
   /* --------------------------- METRIC CALCULATION --------------------------- */
 
+  /**
+   * Attempts calculated as the number of `scored` statements for an actor.
+   */
   private static getAttempts(statements: Statement[]): Metric {
     const data = this.calculateOnActor(
       statements,
@@ -125,6 +118,9 @@ export class Metrics {
     return { data, ...this.getStatistics(withoutNoAttempt) };
   }
 
+  /**
+   * Performance calculated as the highest result value of an actor's `scored` statements.
+   */
   private static getPerformance(statements: Statement[]): Metric {
     const data = this.calculateOnActor(
       statements,
@@ -139,6 +135,13 @@ export class Metrics {
     return { data, ...this.getStatistics(data, "value") };
   }
 
+  /**
+   * Mastery calculated based on the most recent `evaluated` statement.
+   * If `withForgetting = true` then the forgetting curve function is applied
+   * for the period from the last `evaluated` statement until the `completed` statement.
+   * For evaluations beyond this period the value falls back to the value without
+   * the forgetting curve function applied.
+   */
   private static getMastery(
     statements: Statement[],
     withForgetting: boolean
@@ -174,6 +177,10 @@ export class Metrics {
     return { data, ...this.getStatistics(data, "value") };
   }
 
+  /**
+   * For all modules an actor initilized, the function checks if the actor has also a
+   * `completed` statement for that module. If yes the value is 1, otherwise 0.
+   */
   private static getCompletion(statements: Statement[]): Metric {
     const completedStatementsGrouped = groupBy(
       statements.filter((statement) => statement.verb === Verb.completed),
@@ -202,6 +209,11 @@ export class Metrics {
     return { data, ...this.getStatistics(data, "value") };
   }
 
+  /**
+   * Calculates the expected time as sum of the `typical_learning_time` of all learning resources.
+   * Then the function calculates the average of the actual time spent divided by the expected time
+   * across all learning sessions.
+   */
   private static getTimeToExpectedTime(
     statements: Statement[],
     resources: LearningResource[]
@@ -224,6 +236,10 @@ export class Metrics {
     return { data, ...this.getStatistics(data, "value") };
   }
 
+  /**
+   * Calculates the time that has passed since the last initialization or exit of a module.
+   * The time is calculated only up to the completion of the module.
+   */
   private static getLastVisit(statements: Statement[]): Metric {
     const completedStatementsGrouped = groupBy(
       statements.filter((statement) => statement.verb === Verb.completed),
@@ -249,6 +265,9 @@ export class Metrics {
     return { data, ...this.getStatistics(data, "value") };
   }
 
+  /**
+   * Number of module visits calculated as number of `initilized` statements.
+   */
   private static getTotalVisits(statements: Statement[]): Metric {
     const data = this.calculateOnActor(
       statements,
@@ -258,6 +277,9 @@ export class Metrics {
     return { data, ...this.getStatistics(data, "value") };
   }
 
+  /**
+   * The most recent rating of the module.
+   */
   private static getRating(statements: Statement[]): Metric {
     const data = this.calculateOnActor(
       statements,
@@ -273,6 +295,11 @@ export class Metrics {
 
   /* ---------------------------------- UTILS --------------------------------- */
 
+  /**
+   * This function filters statements by a given set of verbs, groups them by `actor_id`,
+   * then performs a specified calculation for each actor and pushes the respective actor
+   * and calculation outcome into a result array.
+   */
   private static calculateOnActor(
     statements: Statement[],
     verbs: Verb[],

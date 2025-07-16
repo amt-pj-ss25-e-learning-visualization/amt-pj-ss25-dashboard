@@ -21,7 +21,6 @@ export const Submodule = ({ module }: any) => {
   const { data: metrics } = useModuleMetrics(module.id, currentActor?.id);
 
   if (!data || !metrics || !currentActor) return null;
-  // TODO: make this part nicer
   const completed = !!metrics.completion.data.find(
     (d) => d.actor === currentActor.id
   )?.value;

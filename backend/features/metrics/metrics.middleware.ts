@@ -3,6 +3,9 @@ import { Request, Response } from "../../common/types";
 import { match } from "path-to-regexp";
 
 class MetricsMiddleware {
+  /**
+   * Middleware to check if the base url is matchinh with a specified pattern
+   */
   allowPath(pattern: string) {
     const matcher = match(pattern);
 
